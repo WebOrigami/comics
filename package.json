@@ -5,6 +5,6 @@
     "@weborigami/origami": "0.2.2"
   },
   "scripts": {
-    "build": "ori 'copy src/cached.ori, files:narration'"
+    "build": "ori 'copy src/narrate.ori(script.yaml), files:narration'"
   }
 }

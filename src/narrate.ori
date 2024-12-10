@@ -1,4 +1,6 @@
-(script) => map(script, {
-  extension: "→.mp3"
-  value: narrate.js
-})
+(script) =>
+  map(script, {
+    extension: "→.mp3"
+    value: narrate.js
+  })
+  → =cache(_, scope:cache)
