@@ -1,0 +1,10 @@
+{
+  "name": "intro-screencast",
+  "type": "module",
+  "dependencies": {
+    "@weborigami/origami": "0.2.2"
+  },
+  "scripts": {
+    "build": "ori 'copy src/cached.ori, files:narration'"
+  }
+}

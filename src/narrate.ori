@@ -1,0 +1,4 @@
+(script) => map(script, {
+  extension: "→.mp3"
+  value: narrate.js
+})
