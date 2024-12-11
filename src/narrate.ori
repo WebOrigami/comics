@@ -1,6 +1,8 @@
 (script) =>
   map(script, {
-    extension: "→.mp3"
+    // Include the key (index) in the file name, plus the beginning of the text
+    // so that we can readily identify the audio file contents.
+    key: (value, key) => `${ slash/remove(key) }-${ name.js(first(value)) }.mp3`
     value: narrate.js
   })
   → =cache(_, scope:cache)
