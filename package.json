@@ -5,6 +5,7 @@
     "@weborigami/origami": "0.2.2"
   },
   "scripts": {
-    "build": "ori 'copy src/narrate.ori(script.yaml), files:narration'"
+    "build": "ori 'copy src/narrate.ori(script.yaml), files:narration'",
+    "transcript": "ori src/transcript.ori script.yaml > transcript.txt"
   }
 }

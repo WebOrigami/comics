@@ -1,85 +1,85 @@
-- shimmer: |
+- Alice: >
     This short video introduces the basic concepts of the Origami programming
     language, a general-purpose language with a focus on creating websites.
-- echo: |
+- Bob: >
     Origami is designed to complement HTML and CSS to do the things those
     languages can't do, including defining a site's overall structure, and
     transforming the content you create by hand into HTML and other resources that
     you can deploy anywhere.
-- shimmer: |
+- Alice: >
     Using a language for this purpose lets you be the one directing the action —
     nothing happens unless you ask for it. In exchange for having to learn a new
     language, you end up with a site whose construction you can understand.
-- echo: |
+- Bob: >
     To illustrate the basic ideas in their plainest form, let's start by writing
     some expressions in Origami using the command-line interface called ori. If
     I type "ori 1 plus 1", it evaluates that and displays 2.
-- echo: |
+- Bob: >
     If I type "ori hello”, oree displays hello. In the shell, you'll need to
     escape quotes or surround them with extra quotes because the shell itself
     consumes quote marks.
-- shimmer: |
+- Alice: >
     In addition to basic numbers and strings, you can reference files. Think of
     each file as if it were a spreadsheet cell. Instead of the A1, B2 style cell
     references in a spreadsheet, we can use paths and file names to refer to
     things. Unlike most programming languages, names in Origami can include
     characters like periods and hyphens.
-- echo: |
+- Bob: >
     Where a spreadsheet has built-in math functions, Origami has built-in functions
     for transforming data and creating parts of sites. We can call a function that
     transforms markdown to HTML, giving it a markdown file as input.
-- echo: |
+- Bob: >
     To avoid having to quote parentheses in the shell, we can omit them and
     Origami will figure out where they would be.
-- shimmer: |
+- Alice: >
     In addition to the file system, Origami can work with other hierarchical
     tree structures, like objects in memory, data in files, or content on a
     server.
-- shimmer: |
+- Alice: >
     Just like your operating system can associate file extensions with
     particular applications, Origami can associate file extensions with
     functions that know how to unpack that kind of data so you can traverse into
     the data with a path like this.
-- echo: |
+- Bob: >
     Origami resolves references using the same kind of scoping that programming
     languages provide, but Origami's notion of scope extends to the file system.
     If I try to display the README file and that file doesn't exist in this
     folder, Origami searches up the folder hierarchy and finds the README in the
     project's top-level folder.
-- shimmer: |
+- Alice: >
     You don't have to know JavaScript to use Origami -- but if you do know
-    JavaScript, you can use to easily extend what Origami can do. You can write
-    a function like this and then call it from the shell.
-- shimmer: |
+    JavaScript, you can use it to easily extend what Origami can do. You can
+    write a function like this and then call it from the shell.
+- Alice: >
     Using a file association for .js files, Origami imports the JavaScript
     module and calls the function it exports.
-- shimmer: |
+- Alice: >
     You can freely compose these ideas, so you can read data out of a file and
     then pass it to a JavaScript function.
-- echo: |
+- Bob: >
     As an Origami expression grows in complexity, you can save it in its own
     file so you can invoke it by name.
-- echo: |
+- Bob: >
     If we ask Origami for this dot ori file, we get the file's contents back.
     Adding a slash lets Origami know we want to evaluate the file as an
     expression. So this kind of dot ori file is like a spreadsheet cell that
     contains a formula — instead of looking at the formula, we can ask to see
     its value.
-- shimmer: |
+- Alice: >
     Origami is good for creating lots of things but especially websites. You can
     think about a site as a tree of resources. To define that tree, you can
     create an expression that defines an object. This tiny object has a single
     property called "a" and, like with any other tree, we can use a path to
     traverse that tree and get the value of that property.
-- echo: |
+- Bob: >
     You can define a website with an Origami file that creates an object with
     the structure you want. This little site has a single page called index dot
     html. We'll define the value of that index page by calling a function to say
     hello.
-- echo: |
+- Bob: >
     In the shell, we can ask Origami to evaluate that file to see the tree it
     represents.
-- shimmer: |
+- Alice: >
     And we can serve the tree defined by this file, and then navigate to that
     location in a browser to see the index page. Although this particular site
     is trivial, creating a real site is just a matter of filling out the site's
