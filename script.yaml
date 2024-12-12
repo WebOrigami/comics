@@ -1,15 +1,15 @@
-- Alice: >
-    This short video introduces the basic concepts of the Origami programming
-    language, a general-purpose language with a focus on creating websites.
-- Bob: >
-    Origami is designed to complement HTML and CSS to do the things those
-    languages can't do, including defining a site's overall structure, and
-    transforming the content you create by hand into HTML and other resources that
-    you can deploy anywhere.
-- Alice: >
-    Using a language for this purpose lets you be the one directing the action —
-    nothing happens unless you ask for it. In exchange for having to learn a new
-    language, you end up with a site whose construction you can understand.
+# - Alice: >
+#     This short video introduces the basic concepts of the Origami programming
+#     language, a general-purpose language with a focus on creating websites.
+# - Bob: >
+#     Origami is designed to complement HTML and CSS to do the things those
+#     languages can't do, including defining a site's overall structure, and
+#     transforming the content you create by hand into HTML and other resources that
+#     you can deploy anywhere.
+# - Alice: >
+#     Using a language for this purpose lets you be the one directing the action —
+#     nothing happens unless you ask for it. In exchange for having to learn a new
+#     language, you end up with a site whose construction you can understand.
 - Bob: >
     To illustrate the basic ideas in their plainest form, let's start by writing
     some expressions in Origami using the command-line interface called ori. If

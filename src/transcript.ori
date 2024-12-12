@@ -1,7 +1,8 @@
 (script) => indent`
   ${
-    map(script, =map(_, (text, actor) => indent`
-      >> ${ from(actor)/toUpperCase() }: ${ text }
+    map(script, =map(_, (text) => indent`
+      ${ text }
+      
     `))
   }
 `
