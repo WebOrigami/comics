@@ -1,0 +1,4 @@
+{
+  assets
+  index.html = index.ori.html(screenplay.yaml)
+}

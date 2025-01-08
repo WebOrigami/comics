@@ -1,0 +1,15 @@
+- name: Alice
+  image: van.jpg
+  location: Honolulu
+  bio: After working as a manager for numerous startups over the years, I
+    decided to take the plunge and start a business of my own.
+- name: Bob
+  image: kingfisher.jpg
+  location: Los Angeles
+  bio: Having been an art student for 11 years, I constantly explore various
+    disciplines to incorporate artistic pursuits into product design studies.
+- name: Carol
+  image: venice.jpg
+  location: Venice
+  bio: I open the line of communication between clients, customers, and
+    businesses to get projects done.

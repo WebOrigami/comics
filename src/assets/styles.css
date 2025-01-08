@@ -1,0 +1,86 @@
+@font-face {
+  font-display: fallback;
+  font-family: "Anime Ace";
+  font-style: normal;
+  font-weight: 400;
+  src: url("/assets/fonts/animeace.ttf");
+}
+
+@font-face {
+  font-display: fallback;
+  font-family: "Anime Ace";
+  font-style: italic;
+  font-weight: 400;
+  src: url("/assets/fonts/animeace_i.ttf");
+}
+
+@font-face {
+  font-display: fallback;
+  font-family: "Anime Ace";
+  font-style: bold;
+  font-weight: 700;
+  src: url("/assets/fonts/animeace_b.ttf");
+}
+
+html {
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+}
+
+body {
+  --gap: 2rem;
+  --gutter: clamp(1rem, 3vw, 2rem);
+  background: #faf9f6;
+  display: grid;
+  font-family: "Anime Ace", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  gap: var(--gap) 0;
+  grid-template-columns: var(--gutter) 1fr var(--gutter);
+  justify-content: center;
+  justify-items: center;
+  margin: 0;
+  margin: 20vh 0;
+  padding: var(--gap) 0;
+}
+
+section {
+  aspect-ratio: 4 / 3;
+  border: 2px solid #333;
+  box-sizing: border-box;
+  display: grid;
+  grid-column: 2;
+  grid-template-rows: auto 1fr;
+  max-height: 98svh;
+  max-width: 800px;
+  scroll-snap-align: center;
+  width: 100%;
+}
+
+.terminal {
+  background: #1d2225;
+  color: white;
+  font-family: 'Courier New', Courier, monospace;
+  margin: 0;
+  overflow: hidden;
+  padding: 0.5rem;
+}
+
+.caption {
+  align-items: center;
+  background: white;
+  display: flex;
+  gap: 1rem;
+  padding: 0.5rem;
+}
+.caption[data-speaker="Alice"] {
+  flex-direction: row-reverse;
+}
+
+.caption p {
+  margin: 0;
+}
+
+.icon {
+  height: 64px;
+  object-fit: contain;
+  width: 64px;
+}

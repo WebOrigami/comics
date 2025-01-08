@@ -1,0 +1,12 @@
+<section>
+  <div class="caption" data-speaker="${ _/actor }">
+    <img class="icon" src="/assets/${ _/actor }.png" />
+    ${ mdHtml(_/narration) }
+  </div>
+  <pre class="terminal">
+${ _/command ? indent`
+<strong>$ ori ${ _/command }</strong>
+${ escapeHtml.js(ori(_/runCommand ?? _/command)) }
+` : "" }
+</pre>
+</section>

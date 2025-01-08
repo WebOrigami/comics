@@ -1,0 +1,63 @@
+- actor: Bob
+  command: 1 + 1
+  narration: >
+    If I type **ori 1 + 1** it evaluates that and displays **2**.
+
+- actor: Bob
+  command: \"hello\"
+  runCommand: «hello»
+  narration: >
+    If I type **ori "hello"** ori displays **hello**. (In the shell, you need to
+    escape quotes or use nested quotes.)
+
+- actor: Bob
+  # actions:
+  #   - cd source
+  #   - select hello.md
+  narration: >
+    But that's boring — to build a site, you'll want to reference **files**!
+
+- actor: Alice
+  command: hello.md
+  narration: >
+    Think of a file as a spreadsheet cell. Instead of A1, B2 style references in
+    a spreadsheet, you use **paths** and file names to refer to things.
+
+- actor: Alice
+  command: hello.md
+  narration: >
+    Unlike most programming languages, Origami lets you use characters like
+    periods and hyphens when naming things!
+
+- actor: Bob
+  narration: >
+    Where a spreadsheet has built-in math functions, Origami has built-in functions
+    for transforming data and creating parts of sites.
+
+- actor: Bob
+  command: "mdHtml(hello.md)"
+  narration: >
+    We can call a function that transforms markdown to HTML, passing our
+    markdown file as input.
+
+- actor: Bob
+  command: mdHtml hello.md
+  runCommand: mdHtml hello.md
+  narration: >
+    To avoid quoting parentheses in the shell, we can **omit them**! Origami
+    figures out where they would be.
+
+- actor: Alice
+  command: teamData.yaml
+  runCommand: yaml(teamData.yaml)
+  narration: >
+    In addition to the file system, Origami can work with other hierarchical
+    tree structures, like objects in memory, data in files, or content on a
+    server.
+
+- actor: Alice
+  command: teamData.yaml/0/name
+  narration: >
+    Just like your operating system associates file extensions with
+    applications, Origami associates extensions with functions that know how to
+    traverse data with paths.
