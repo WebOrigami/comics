@@ -42,6 +42,10 @@ body {
   padding: var(--gap) 0;
 }
 
+p {
+  margin: 0;
+}
+
 section {
   aspect-ratio: 4 / 3;
   border: 2px solid #333;
@@ -51,6 +55,7 @@ section {
   grid-template-rows: auto 1fr;
   max-height: 98svh;
   max-width: 800px;
+  position: relative;
   scroll-snap-align: center;
   width: 100%;
 }
@@ -70,17 +75,30 @@ section {
   display: flex;
   gap: 1rem;
   padding: 0.5rem;
-}
-.caption[data-speaker="Alice"] {
-  flex-direction: row-reverse;
-}
 
-.caption p {
-  margin: 0;
+  &[data-speaker="Alice"] {
+    flex-direction: row-reverse;
+  }
 }
 
 .icon {
   height: 64px;
   object-fit: contain;
   width: 64px;
+}
+
+.footnote {
+  bottom: 0.5em;
+  display: flex;
+  flex-direction: row-reverse;
+  left: 0.5em;
+  position: absolute;
+  right: 0.5em;
+  
+  p {
+    background: palegoldenrod;
+    padding: 0.5em;
+    text-wrap: balance;
+    width: fit-content;
+  }
 }

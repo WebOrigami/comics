@@ -7,8 +7,8 @@
   command: \"hello\"
   runCommand: «hello»
   narration: >
-    If I type **ori "hello"** ori displays **hello**. (In the shell, you need to
-    escape quotes or use nested quotes.)
+    If I type **ori "hello"** ori displays **hello**.
+  footnote: In the shell, you need to escape quotes or use nested quotes.
 
 - actor: Bob
   # actions:
@@ -20,12 +20,10 @@
 - actor: Alice
   command: hello.md
   narration: >
-    Think of a file as a spreadsheet cell. Instead of A1, B2 style references in
-    a spreadsheet, you use **paths** and file names to refer to things.
-
-- actor: Alice
-  command: hello.md
-  narration: >
+    Think of a file as a spreadsheet cell… but instead of A1, B2 style
+    references in a spreadsheet, you use **paths** and file names to refer to
+    things.
+  footnote: >
     Unlike most programming languages, Origami lets you use characters like
     periods and hyphens when naming things!
 
@@ -35,7 +33,8 @@
     for transforming data and creating parts of sites.
 
 - actor: Bob
-  command: "mdHtml(hello.md)"
+  command: '"mdHtml(hello.md)"'
+  runCommand: "mdHtml(hello.md)"
   narration: >
     We can call a function that transforms markdown to HTML, passing our
     markdown file as input.

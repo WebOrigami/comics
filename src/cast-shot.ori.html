@@ -9,4 +9,7 @@ ${ _/command ? indent`
 ${ escapeHtml.js(ori(_/runCommand ?? _/command)) }
 ` : "" }
 </pre>
+  ${ _/footnote ? indent`
+  <div class="footnote">${ mdHtml(_/footnote) }</div>
+  ` : "" }
 </section>
