@@ -39,6 +39,9 @@ export default class ScreencastComic extends HTMLElement {
       this.items.forEach((item, index) => {
         item.selected = index === selectedIndex;
       });
+      if (this.playing) {
+        this.selectedItem?.play();
+      }
     });
 
     // When playing, automatically advance to the next item
@@ -46,16 +49,27 @@ export default class ScreencastComic extends HTMLElement {
       this.setAttribute("data-playing", this.playing);
       if (this.playing) {
         console.log("playing");
-        this.selectNextTimeout = setInterval(() => {
-          this.selectNext();
-          if (this.selectedIndex === this.items.length - 1) {
-            this.playing = false;
-          }
-        }, 2000);
+        // this.selectNextTimeout = setInterval(() => {
+        //   this.selectNext();
+        //   if (this.selectedIndex === this.items.length - 1) {
+        //     this.playing = false;
+        //   }
+        // }, 2000);
+        this.selectedItem?.play();
       } else {
         console.log("pausing");
         clearInterval(this.selectNextTimeout);
         this.selectNextTimeout = null;
+        this.selectedItem?.pause();
+      }
+    });
+
+    // When a panel finishes, advance to the next panel
+    this.addEventListener("panel-ended", () => {
+      if (this.selectedIndex < this.items.length - 1) {
+        this.selectNext();
+      } else {
+        this.playing = false;
       }
     });
 

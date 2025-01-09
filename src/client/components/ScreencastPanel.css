@@ -1,6 +1,6 @@
 screencast-panel {
   aspect-ratio: 4 / 3;
-  border: 2px solid #333;
+  border: 3px solid #333;
   box-sizing: border-box;
   display: grid;
   grid-column: 2;
@@ -61,7 +61,7 @@ screencast-panel {
     
     .button {
       align-content: center;
-      background: none;
+      background: rgba(0, 0, 0, 0.5);
       border-radius: 50%;
       border: 2px solid white;
       color: white;
@@ -69,6 +69,10 @@ screencast-panel {
       height: 6em;
       justify-content: center;
       width: 6em;
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.25);
+      }
       
       .iconContainer {
         font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -83,6 +87,13 @@ screencast-panel {
     .controls {
       display: grid;
     }
+  }
+}
+
+/* On narrow screens, use a taller aspect ratio */
+@container (max-width: 500px) {
+  screencast-panel {
+    aspect-ratio: 1;
   }
 }
 

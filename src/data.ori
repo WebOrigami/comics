@@ -1,0 +1,4 @@
+// Use slugs as keys
+map(screenplay.yaml, {
+  key: (panel, index) => `${ slash/remove(index)/padStart(3, "0") }-${ name.js(panel/narration) }`
+})

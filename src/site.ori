@@ -1,5 +1,6 @@
 {
   ...client
+  index.html = index.ori.html(data.ori)
   preact: node_modules/@preact/signals-core/dist
-  index.html = index.ori.html(screenplay.yaml)
+  narration/ = narrate/narrate.ori
 }

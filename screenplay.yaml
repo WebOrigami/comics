@@ -11,9 +11,6 @@
   footnote: In the shell, you need to escape quotes or use nested quotes.
 
 - actor: Bob
-  # actions:
-  #   - cd source
-  #   - select hello.md
   narration: >
     But to build a site, you'll want to reference **files**!
 
@@ -57,5 +54,5 @@
   command: teamData.yaml/0/name
   narration: >
     Just like your operating system associates file extensions with
-    applications, Origami associates extensions with functions that know how to
-    traverse data with paths.
+    applications, Origami associates extensions with handlers that can traverse
+    into data.

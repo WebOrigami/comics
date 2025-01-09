@@ -1,19 +1,24 @@
+---
+(panel, key) => @template()
+---
+
 <screencast-panel>
-  <div class="caption" data-speaker="${ _/actor }">
-    <img class="icon" src="/assets/${ _/actor }.png" />
-    ${ mdHtml(_/narration) }
+  <div class="caption" data-speaker="${ panel/actor }">
+    <img class="icon" src="/assets/${ panel/actor }.png" />
+    ${ mdHtml(panel/narration) }
   </div>
   <pre class="terminal">
-${ _/command ? indent`
-<strong>$ ori ${ _/command }</strong>
-${ escapeHtml.js(ori(_/runCommand ?? _/command)) }
+${ panel/command ? indent`
+<strong>$ ori ${ panel/command }</strong>
+${ escapeHtml.js(ori(panel/runCommand ?? panel/command)) }
 ` : "" }
 </pre>
-  ${ _/footnote ? indent`
-  <div class="footnote">${ mdHtml(_/footnote) }</div>
+  ${ panel/footnote ? indent`
+  <div class="footnote">${ mdHtml(panel/footnote) }</div>
   ` : "" }
   <div class="controls">
     <button class="button play"><div class="iconContainer">⏵</div></button>
     <button class="button pause"><div class="iconContainer">⏸︎</div></button>
   </div>
+  <audio src="/narration/${ key }.mp3"></audio>
 </screencast-panel>

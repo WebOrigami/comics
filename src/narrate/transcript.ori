@@ -1,8 +1,0 @@
-(script) => indent`
-  ${
-    map(script, =map(_, (text) => indent`
-      ${ text }
-      
-    `))
-  }
-`

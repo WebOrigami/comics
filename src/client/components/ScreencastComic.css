@@ -23,9 +23,10 @@
 }
 
 screencast-comic {
-  --gap: 2rem;
+  --gap: 1rem;
   --gutter: clamp(1rem, 3vw, 2rem);
   background: #faf9f6;
+  container-type: inline-size;
   display: grid;
   font-family: "Anime Ace", "Helvetica Neue", Helvetica, Arial, sans-serif;
   gap: var(--gap) 0;
@@ -34,11 +35,14 @@ screencast-comic {
   justify-items: center;
   padding: 20vh 0;
 
+  > * {
+    transition: opacity 0.75s;
+  }
+
   /* If this attribute is set, JS is loaded */
   &[data-playing="true"] {
+    /* During playback, panels that aren't selected are faded */
     > * {
-      transition: opacity 0.75s;
-
       &[aria-selected="false"] {
         opacity: 0.66;
       }
