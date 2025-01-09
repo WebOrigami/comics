@@ -1,0 +1,96 @@
+screencast-panel {
+  aspect-ratio: 4 / 3;
+  border: 2px solid #333;
+  box-sizing: border-box;
+  display: grid;
+  grid-column: 2;
+  grid-template-rows: auto 1fr;
+  max-height: 98svh;
+  max-width: 800px;
+  position: relative;
+  scroll-snap-align: center;
+  width: 100%;
+
+  p {
+    margin: 0;
+  }
+  
+  .icon {
+    height: 64px;
+    object-fit: contain;
+    width: 64px;
+  }
+
+  .caption {
+    align-items: center;
+    background: white;
+    display: flex;
+    gap: 1rem;
+    padding: 0.5rem;
+
+    &[data-speaker="Alice"] {
+      flex-direction: row-reverse;
+    }
+  }
+
+  .footnote {
+    bottom: 0.5em;
+    display: flex;
+    flex-direction: row-reverse;
+    left: 0.5em;
+    position: absolute;
+    right: 0.5em;
+
+    p {
+      background: palegoldenrod;
+      padding: 0.5em;
+      text-wrap: balance;
+      width: fit-content;
+    }
+  }
+
+  .controls {
+    align-content: center;
+    bottom: 0;
+    display: none;
+    justify-content: center;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    
+    .button {
+      align-content: center;
+      background: none;
+      border-radius: 50%;
+      border: 2px solid white;
+      color: white;
+      cursor: pointer;
+      height: 6em;
+      justify-content: center;
+      width: 6em;
+      
+      .iconContainer {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 4rem;
+        line-height: 1;
+      }
+    }
+
+  }
+
+  &:hover {
+    .controls {
+      display: grid;
+    }
+  }
+}
+
+.terminal {
+  background: #1d2225;
+  color: white;
+  font-family: 'Courier New', Courier, monospace;
+  margin: 0;
+  overflow: hidden;
+  padding: 0.5rem;
+}

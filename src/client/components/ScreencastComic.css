@@ -1,0 +1,63 @@
+@font-face {
+  font-display: fallback;
+  font-family: "Anime Ace";
+  font-style: normal;
+  font-weight: 400;
+  src: url("/assets/fonts/animeace.ttf");
+}
+
+@font-face {
+  font-display: fallback;
+  font-family: "Anime Ace";
+  font-style: italic;
+  font-weight: 400;
+  src: url("/assets/fonts/animeace_i.ttf");
+}
+
+@font-face {
+  font-display: fallback;
+  font-family: "Anime Ace";
+  font-style: bold;
+  font-weight: 700;
+  src: url("/assets/fonts/animeace_b.ttf");
+}
+
+screencast-comic {
+  --gap: 2rem;
+  --gutter: clamp(1rem, 3vw, 2rem);
+  background: #faf9f6;
+  display: grid;
+  font-family: "Anime Ace", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  gap: var(--gap) 0;
+  grid-template-columns: var(--gutter) 1fr var(--gutter);
+  justify-content: center;
+  justify-items: center;
+  padding: 20vh 0;
+
+  /* If this attribute is set, JS is loaded */
+  &[data-playing="true"] {
+    > * {
+      transition: opacity 0.75s;
+
+      &[aria-selected="false"] {
+        opacity: 0.66;
+      }
+    }
+
+    .button.play {
+      display: none;
+    }
+    .button.pause {
+      display: grid;
+    }
+  }
+
+  &[data-playing="false"] {
+    .button.play {
+      display: grid;
+    }
+    .button.pause {
+      display: none;
+    }
+  }
+}

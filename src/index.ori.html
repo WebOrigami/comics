@@ -5,8 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Origami Intro Screencast</title>
     <link rel="stylesheet" href="/assets/styles.css" />
+    <link rel="stylesheet" href="/components/ScreencastComic.css" />
+    <link rel="stylesheet" href="/components/ScreencastPanel.css" />
+    <script type="importmap">
+      {
+        "imports": {
+          "@preact/signals-core": "/preact/signals-core.module.js"
+        }
+      }
+    </script>
+    <!-- Panel needs to be loaded before Comic -->
+    <script type="module" src="/components/ScreencastPanel.js"></script>
+    <script type="module" src="/components/ScreencastComic.js"></script>
   </head>
   <body>
-${ map(_, cast-shot.ori.html) }
+    <screencast-comic autofocus tabindex="0">
+${ map(_, panel.ori.html) }
+    </screencast-comic>
   </body>
 </html>

@@ -15,7 +15,7 @@
   #   - cd source
   #   - select hello.md
   narration: >
-    But that's boring — to build a site, you'll want to reference **files**!
+    But to build a site, you'll want to reference **files**!
 
 - actor: Alice
   command: hello.md
@@ -50,9 +50,8 @@
   command: teamData.yaml
   runCommand: yaml(teamData.yaml)
   narration: >
-    In addition to the file system, Origami can work with other hierarchical
-    tree structures, like objects in memory, data in files, or content on a
-    server.
+    In addition to the file system, Origami can work with other tree structures,
+    like objects in memory, data in files, or content on a server.
 
 - actor: Alice
   command: teamData.yaml/0/name

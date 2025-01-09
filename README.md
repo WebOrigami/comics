@@ -1,3 +1,10 @@
+## Components
+
+- Without JavaScript, the page displays as a scrollable comic.
+- Light DOM components: components handle behavior, but no shadow DOM or styling so that the comic works without JS.
+
+## Narration
+
 This project uses Origami to generate the audio for an Origami intro video.
 
 The dialogue of the video is defined in [script.yaml](script.yaml). This contains an array of lines the virtual actors should say. A line starts with the name of the actor that should say the line.

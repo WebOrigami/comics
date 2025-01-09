@@ -1,4 +1,4 @@
-<section>
+<screencast-panel>
   <div class="caption" data-speaker="${ _/actor }">
     <img class="icon" src="/assets/${ _/actor }.png" />
     ${ mdHtml(_/narration) }
@@ -12,4 +12,8 @@ ${ escapeHtml.js(ori(_/runCommand ?? _/command)) }
   ${ _/footnote ? indent`
   <div class="footnote">${ mdHtml(_/footnote) }</div>
   ` : "" }
-</section>
+  <div class="controls">
+    <button class="button play"><div class="iconContainer">⏵</div></button>
+    <button class="button pause"><div class="iconContainer">⏸︎</div></button>
+  </div>
+</screencast-panel>
