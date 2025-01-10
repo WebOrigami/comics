@@ -86,7 +86,7 @@ screencast-panel {
   /* Only enable hover effects if JavaScript is enabled */
   &[aria-selected]:hover {
     .controls {
-      /* display: grid; */
+      display: grid;
     }
   }
 }

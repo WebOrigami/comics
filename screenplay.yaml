@@ -22,7 +22,7 @@
     things.
   footnote: >
     Unlike most programming languages, Origami lets you use characters like
-    periods and hyphens to name things!
+    periods and hyphens in names!
 
 - actor: Bob
   narration: >
@@ -53,6 +53,6 @@
 - actor: Alice
   command: teamData.yaml/0/name
   narration: >
-    Just like your operating system that associates file extensions with
+    Just like your operating system associates file extensions with
     applications, Origami associates extensions with handlers that can traverse
     into data.

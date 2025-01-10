@@ -20,17 +20,17 @@ export default class ScreencastComic extends HTMLElement {
     }
 
     // Clicking an item selects it
-    // this.addEventListener("click", (event) => {
-    //   const item = event.target.closest("screencast-panel");
-    //   if (item) {
-    //     this.selectedIndex = this.items.indexOf(item);
-    //   }
-    //   const playButton = event.target.closest("button");
-    //   if (playButton) {
-    //     // Toggle play state
-    //     this.playing = !this.playing;
-    //   }
-    // });
+    this.addEventListener("click", (event) => {
+      const item = event.target.closest("screencast-panel");
+      if (item) {
+        this.selectedIndex = this.items.indexOf(item);
+      }
+      const playButton = event.target.closest("button");
+      if (playButton) {
+        // Toggle play state
+        this.playing = !this.playing;
+      }
+    });
 
     // Tell items whether they're selected
     effect(() => {
@@ -49,12 +49,6 @@ export default class ScreencastComic extends HTMLElement {
       this.setAttribute("data-playing", this.playing);
       if (this.playing) {
         console.log("playing");
-        // this.selectNextTimeout = setInterval(() => {
-        //   this.selectNext();
-        //   if (this.selectedIndex === this.items.length - 1) {
-        //     this.playing = false;
-        //   }
-        // }, 2000);
         this.selectedItem?.play();
       } else {
         console.log("pausing");
@@ -119,18 +113,18 @@ export default class ScreencastComic extends HTMLElement {
     // });
 
     // If we have items, select one
-    if (this.items.length > 0) {
-      if (document.documentElement.scrollTop > 0) {
-        // Page was reloaded while scrolled down, select item in center
-        const centerItem = this.getCenterItem();
-        if (centerItem) {
-          this.selectedIndex = this.items.indexOf(centerItem);
-        }
-      } else {
-        // Select first item by default
-        this.selectFirst();
-      }
-    }
+    // if (this.items.length > 0) {
+    //   if (document.documentElement.scrollTop > 0) {
+    //     // Page was reloaded while scrolled down, select item in center
+    //     const centerItem = this.getCenterItem();
+    //     if (centerItem) {
+    //       this.selectedIndex = this.items.indexOf(centerItem);
+    //     }
+    //   } else {
+    //     // Select first item by default
+    //     this.selectFirst();
+    //   }
+    // }
   }
 
   get items() {

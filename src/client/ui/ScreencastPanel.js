@@ -31,6 +31,7 @@ export default class ScreencastPanel extends HTMLElement {
 
   play() {
     this.audioElement?.play();
+    this.querySelector("screencast-terminal")?.play();
   }
 
   pause() {

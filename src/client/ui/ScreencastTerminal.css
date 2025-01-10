@@ -1,0 +1,56 @@
+screencast-terminal {
+  background: #1d2225;
+  color: white;
+  display: grid;
+  font-family: 'Courier New', Courier, monospace;
+  grid-auto-rows: min-content;
+  padding: 0.5rem;
+
+  .prompt {
+    color: #FAC863;
+    font-weight: bold;  
+  }
+
+  .line1 .cursor {
+    display: none;
+  }
+
+  .command {
+    display: inline-block;
+    font-weight: bold;
+    overflow: clip;
+    text-wrap: nowrap;
+  }
+
+  pre {
+    font-family: inherit;
+    margin: 0;
+    overflow: hidden;
+  }
+
+  &.starting,
+  &.typing,
+  &.waiting {
+    .line1 .cursor {
+      display: inline;
+    }
+
+    .output {
+      display: none;
+    }
+
+    .line2 {
+      display: none;
+    }
+  }
+
+  &.running {
+    .output {
+      display: none;
+    }
+
+    .line2 .prompt {
+      display: none;
+    }
+  }
+}
