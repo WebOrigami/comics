@@ -20,17 +20,17 @@ export default class ScreencastComic extends HTMLElement {
     }
 
     // Clicking an item selects it
-    this.addEventListener("click", (event) => {
-      const item = event.target.closest("screencast-panel");
-      if (item) {
-        this.selectedIndex = this.items.indexOf(item);
-      }
-      const playButton = event.target.closest("button");
-      if (playButton) {
-        // Toggle play state
-        this.playing = !this.playing;
-      }
-    });
+    // this.addEventListener("click", (event) => {
+    //   const item = event.target.closest("screencast-panel");
+    //   if (item) {
+    //     this.selectedIndex = this.items.indexOf(item);
+    //   }
+    //   const playButton = event.target.closest("button");
+    //   if (playButton) {
+    //     // Toggle play state
+    //     this.playing = !this.playing;
+    //   }
+    // });
 
     // Tell items whether they're selected
     effect(() => {

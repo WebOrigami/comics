@@ -1,0 +1,5 @@
+<screencast-terminal>${ _/command ? indent`
+  <div><span class="prompt">$ </span><span class="command">ori ${ _/command }</span></div>
+<pre class="result">${ escapeHtml.js(ori(_/runCommand ?? _/command)) }</pre>
+` : "" }
+</screencast-terminal>

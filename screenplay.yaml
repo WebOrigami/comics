@@ -18,11 +18,11 @@
   command: hello.md
   narration: >
     Think of a file as a spreadsheet cell… but instead of A1, B2 style
-    references in a spreadsheet, you use **paths** and file names to refer to
+    references like a spreadsheet, you use **paths** and file names to refer to
     things.
   footnote: >
     Unlike most programming languages, Origami lets you use characters like
-    periods and hyphens when naming things!
+    periods and hyphens to name things!
 
 - actor: Bob
   narration: >
@@ -53,6 +53,6 @@
 - actor: Alice
   command: teamData.yaml/0/name
   narration: >
-    Just like your operating system associates file extensions with
+    Just like your operating system that associates file extensions with
     applications, Origami associates extensions with handlers that can traverse
     into data.

@@ -7,13 +7,7 @@
     <img class="icon" src="/assets/${ panel/actor }.png" />
     ${ mdHtml(panel/narration) }
   </div>
-  <pre class="terminal">
-${ panel/command ? indent`
-<strong>$ ori ${ panel/command }</strong>
-${ escapeHtml.js(ori(panel/runCommand ?? panel/command)) }
-` : "" }
-</pre>
-  ${ panel/footnote ? indent`
+${ terminal.ori.html(panel)} ${ panel/footnote ? indent`
   <div class="footnote">${ mdHtml(panel/footnote) }</div>
   ` : "" }
   <div class="controls">

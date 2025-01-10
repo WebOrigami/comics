@@ -83,25 +83,18 @@ screencast-panel {
 
   }
 
-  &:hover {
+  /* Only enable hover effects if JavaScript is enabled */
+  &[aria-selected]:hover {
     .controls {
-      display: grid;
+      /* display: grid; */
     }
   }
 }
+
 
 /* On narrow screens, use a taller aspect ratio */
 @container (max-width: 500px) {
   screencast-panel {
     aspect-ratio: 1;
   }
-}
-
-.terminal {
-  background: #1d2225;
-  color: white;
-  font-family: 'Courier New', Courier, monospace;
-  margin: 0;
-  overflow: hidden;
-  padding: 0.5rem;
 }
