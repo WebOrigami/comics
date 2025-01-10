@@ -6,9 +6,15 @@ screencast-terminal {
   grid-auto-rows: min-content;
   padding: 0.5rem;
 
+  .line1 {
+    /* Without this Safari messes up vertical alignement */
+    display: flex;
+  }
+
   .prompt {
     color: #FAC863;
-    font-weight: bold;  
+    font-weight: bold;
+    width: 2ch; /* Since we have to use grid */
   }
 
   .line1 .cursor {

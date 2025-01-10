@@ -1,21 +1,18 @@
-## Components
+This screencast takes the form of a comic that is completely generated from the screenplay in [screenplay.yaml](screenplay.yaml).
 
-- Without JavaScript, the page displays as a scrollable comic.
-- Light DOM components: components handle behavior, but no shadow DOM or styling so that the comic works without JS.
+## User interface
+
+- If JavaScript is disabled, the page displays as a static, scrollable comic using only HTML and CSS.
+- Light DOM components: components handle behavior only; all contents are generated at build time. Styles are nested beneath custom element names so that they only apply to the relevant portions of the light DOM.
+- Responsive comic panels.
+- Generated voice narration (see below).
+- Sound effects. To round out the simulated UI, the comic uses Web Audio API to play typing sounds.
+- At build time, Origami generates the actual output that will be shown in the simulated terminal.
 
 ## Narration
 
-This project uses Origami to generate the audio for an Origami intro video.
+This project uses Origami to generate the audio narration from the screenplay.
 
-The dialogue of the video is defined in [script.yaml](script.yaml). This contains an array of lines the virtual actors should say. A line starts with the name of the actor that should say the line.
-
-For example, this shows two lines of dialogue between the virtual actors named Alice and Bob:
-
-```
-- Alice: Hi there!
-- Bob: Nice to be here.
-```
-
-A small Origami script [narrate.ori](src/narrate.ori) reads these array entries, then invokes the OpenAI text-to-speech API to obtain an MP3 file with the generated narration. This is then saved in a `.mp3` file with a name like `0-hi-there.mp3` that includes both the array index and the beginning of that entry's text so that it can be easily identified.
+A small Origami script [narrate.ori](src/narrate/narrate.ori) invokes the OpenAI text-to-speech API to obtain an MP3 file with the generated narration. This is then saved in a `.mp3` file with a name like `000-hi-there.mp3` that includes both a numerical index and the beginning of that entry's text so that it can be easily identified.
 
 The final voice files are saved in the [narration](narration) folder.
