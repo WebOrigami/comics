@@ -50,6 +50,7 @@ export default class ScreencastPanel extends HTMLElement {
           );
         }, 500);
         this.playingSignal.value = false;
+        this.reset();
       }
     });
   }
@@ -78,21 +79,28 @@ export default class ScreencastPanel extends HTMLElement {
     this.playingSignal.value = false;
   }
 
+  // Reset the audio to the beginning
+  reset() {
+    if (this.audioElement) {
+      this.audioElement.currentTime = 0;
+    }
+  }
+
   get selected() {
     return this.selectedSignal.value;
   }
   set selected(selected) {
-    this.selectedSignal.value = selected;
-
     // If we lose selection while play, pause the audio
-    if (!selected) {
+    if (!selected && this.playing) {
       this.pause();
-
-      // Reset the audio to the beginning
-      if (this.audioElement) {
-        this.audioElement.currentTime = 0;
-      }
     }
+
+    // If selection state has changed, reset the audio
+    // if (this.selected !== selected) {
+    //   this.reset();
+    // }
+
+    this.selectedSignal.value = selected;
   }
 }
 

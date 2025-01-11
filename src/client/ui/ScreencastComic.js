@@ -61,7 +61,7 @@ export default class ScreencastComic extends HTMLElement {
       }
     });
 
-    // When playing, automatically advance to the next item
+    // When playing, automatically play the selected panel
     effect(() => {
       this.setAttribute("data-playing", this.playing);
       if (this.playing) {
@@ -69,18 +69,18 @@ export default class ScreencastComic extends HTMLElement {
       } else {
         clearInterval(this.selectNextTimeout);
         this.selectNextTimeout = null;
-        this.selectedItem?.pause();
+        this.selectedItem?.pause?.();
       }
     });
 
     // When a panel finishes, advance to the next panel
-    this.addEventListener("panel-ended", () => {
-      if (this.selectedIndex < this.items.length - 1) {
-        this.selectNext();
-      } else {
-        this.playing = false;
-      }
-    });
+    // this.addEventListener("panel-ended", () => {
+    //   if (this.selectedIndex < this.items.length - 1) {
+    //     this.selectNext();
+    //   } else {
+    //     this.playing = false;
+    //   }
+    // });
 
     // Home/End/Up/Down keys move selection, Space toggles play
     this.addEventListener("keydown", (event) => {

@@ -44,16 +44,15 @@ export default class ScreencastTerminal extends HTMLElement {
             new CustomEvent("animation-ended", { bubbles: true })
           );
         } else {
+          let delay = 100 + Math.random() * 100;
           // Give a shorter delay if typing an alphabetic character
           const character =
             this.phase(this.time) === "typing"
               ? this.command.textContent[this.time - startingFrames]
               : null;
-          const baseDelay = 150;
-          const delay =
-            character && /[A-Za-z]/i.test(character)
-              ? baseDelay / 2
-              : baseDelay;
+          if (character && /[A-Za-z]/i.test(character)) {
+            delay /= 2;
+          }
           this.nextFrameTimeout = setTimeout(() => {
             this.time++;
           }, delay);
@@ -111,7 +110,9 @@ export default class ScreencastTerminal extends HTMLElement {
 
       // Play sound effects; don't wait
       if (phase === "typing" && time > 0) {
-        playSoundEffect("keyClick");
+        const character = this.command.textContent[time - startingFrames - 1];
+        const effect = character === " " ? "spaceClick" : "keyClick";
+        playSoundEffect(effect);
       } else if (
         time ===
         startingFrames + this.textLength + waitingPhaseFrames
