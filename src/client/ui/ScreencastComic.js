@@ -87,12 +87,20 @@ export default class ScreencastComic extends HTMLElement {
       switch (event.key) {
         case "ArrowUp":
           event.preventDefault();
-          this.selectPrevious();
+          if (event.altKey || event.metaKey) {
+            this.selectFirst();
+          } else {
+            this.selectPrevious();
+          }
           break;
 
         case "ArrowDown":
           event.preventDefault();
-          this.selectNext();
+          if (event.altKey || event.metaKey) {
+            this.selectLast();
+          } else {
+            this.selectNext();
+          }
           break;
 
         case "End":
