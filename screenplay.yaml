@@ -53,6 +53,34 @@
 - actor: Alice
   command: teamData.yaml/0/name
   narration: >
-    Just like your operating system associates file extensions with
+    Just like your operating system associates **file extensions** with
     applications, Origami associates extensions with handlers that can traverse
     into data.
+
+- actor: Bob
+  narration: >
+    Origami resolves references using the same scoping that programming
+    languages provide, but Origami's scope extends to the file system.
+
+- actor: Bob
+  command: README.md
+  narration: >
+    If I ask for a file that doesn't exist in this folder, Origami searches up
+    the folder hierarchy until it finds the file.
+
+- actor: Alice
+  narration: >
+    You don't have to know **JavaScript** to use Origami -- but if you do know
+    JavaScript, you can use it to easily extend what Origami can do.
+
+- actor: Alice
+  command: greet.js \"world\"
+  runCommand: greet.js «world»
+  narration: >
+    You can call a JavaScript function using its **file name**.
+
+- actor: Alice
+  command: greet.js teamData.yaml/0/name
+  narration: >
+    You can freely compose these ideas, so you can read data out of a file and
+    then pass it to a JavaScript function.
