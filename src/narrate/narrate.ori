@@ -2,4 +2,4 @@ map(data.ori, {
   extension: "->.mp3"
   value: narrate.js
 })
-→ =cache(_, scope:cache)
+→ =cache(_, files:narration)
