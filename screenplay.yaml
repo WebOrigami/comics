@@ -27,7 +27,7 @@
 - actor: Bob
   narration: >
     Where a spreadsheet has built-in math functions, Origami has built-in functions
-    for transforming data and creating parts of sites.
+    for transforming data for use in sites.
 
 - actor: Bob
   command: '"mdHtml(hello.md)"'

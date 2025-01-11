@@ -4,7 +4,8 @@ export default class ScreencastComic extends HTMLElement {
   constructor() {
     super();
     this.playingSignal = signal(false);
-    this.scrollingExpectedSignal = signal(false);
+    this.scrollIntoView = true;
+    this.scrollingExpected = false;
     this.scrollingExpectedTimeout = null;
     this.selectNextTimeout = null;
     this.selectedIndexSignal = signal(-1);
@@ -35,7 +36,13 @@ export default class ScreencastComic extends HTMLElement {
     // Tell items whether they're selected
     effect(() => {
       const selectedIndex = this.selectedIndex;
-      this.selectedItem?.scrollIntoView({ behavior: "smooth" });
+      console.log(selectedIndex);
+      if (this.scrollIntoView) {
+        this.selectedItem?.scrollIntoView({ behavior: "smooth" });
+      } else {
+        console.log("scrollIntoView is false");
+        this.scrollIntoView = true;
+      }
       this.items.forEach((item, index) => {
         item.selected = index === selectedIndex;
       });
@@ -48,10 +55,8 @@ export default class ScreencastComic extends HTMLElement {
     effect(() => {
       this.setAttribute("data-playing", this.playing);
       if (this.playing) {
-        console.log("playing");
         this.selectedItem?.play();
       } else {
-        console.log("pausing");
         clearInterval(this.selectNextTimeout);
         this.selectNextTimeout = null;
         this.selectedItem?.pause();
@@ -99,32 +104,28 @@ export default class ScreencastComic extends HTMLElement {
     });
 
     // If the document scrolls and we weren't expecting it to, pause
-    // document.addEventListener("scroll", () => {
-    //   if (!this.scrollingExpected) {
-    //     console.log("user scrolled");
-    //     this.pause();
-
-    //     // Select item in the center of the viewport
-    //     const centerItem = this.getCenterItem();
-    //     if (centerItem) {
-    //       this.selectedIndex = this.items.indexOf(centerItem);
-    //     }
-    //   }
-    // });
+    document.addEventListener("scroll", () => {
+      if (!this.scrollingExpected) {
+        setTimeout(() => {
+          this.scrollIntoView = false;
+          this.selectCenterItem();
+        }, 250);
+      }
+    });
 
     // If we have items, select one
-    // if (this.items.length > 0) {
-    //   if (document.documentElement.scrollTop > 0) {
-    //     // Page was reloaded while scrolled down, select item in center
-    //     const centerItem = this.getCenterItem();
-    //     if (centerItem) {
-    //       this.selectedIndex = this.items.indexOf(centerItem);
-    //     }
-    //   } else {
-    //     // Select first item by default
-    //     this.selectFirst();
-    //   }
-    // }
+    if (this.items.length > 0) {
+      if (document.documentElement.scrollTop > 0) {
+        // Page was reloaded while scrolled down, select item in center
+        const centerItem = this.getCenterItem();
+        if (centerItem) {
+          this.selectedIndex = this.items.indexOf(centerItem);
+        }
+      } else {
+        // Select first item by default
+        this.selectFirst();
+      }
+    }
   }
 
   get items() {
@@ -156,11 +157,11 @@ export default class ScreencastComic extends HTMLElement {
     return item;
   }
 
-  get scrollingExpected() {
-    return this.scrollingExpectedSignal.value;
-  }
-  set scrollingExpected(scrollingExpected) {
-    this.scrollingExpectedSignal.value = scrollingExpected;
+  selectCenterItem() {
+    const centerItem = this.getCenterItem();
+    if (centerItem !== this.selectedItem) {
+      this.selectedIndex = this.items.indexOf(centerItem);
+    }
   }
 
   get selectedItem() {

@@ -7,6 +7,7 @@ screencast-panel {
   grid-template-rows: auto 1fr;
   max-height: 90svh;
   max-width: 800px;
+  overflow: hidden;
   position: relative;
   scroll-snap-align: center;
   width: 100%;

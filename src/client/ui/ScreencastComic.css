@@ -39,6 +39,13 @@ screencast-comic {
     transition: opacity 0.75s;
   }
 
+  /* TEMP */
+  > * {
+    &[aria-selected="false"] {
+      opacity: 0.66;
+    }
+  }
+
   /* If this attribute is set, JS is loaded */
   &[data-playing="true"] {
     /* During playback, panels that aren't selected are faded */
