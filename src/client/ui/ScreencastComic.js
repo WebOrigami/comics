@@ -36,16 +36,26 @@ export default class ScreencastComic extends HTMLElement {
     // Tell items whether they're selected
     effect(() => {
       const selectedIndex = this.selectedIndex;
-      console.log(selectedIndex);
+
       if (this.scrollIntoView) {
+        // Programmatically scrolling the document is expected
+        this.scrollingExpected = true;
+        if (this.scrollingExpectedTimeout) {
+          clearTimeout(this.scrollingExpectedTimeout);
+        }
+        this.scrollingExpectedTimeout = setTimeout(() => {
+          this.scrollingExpected = false;
+          this.scrollingExpectedTimeout = null;
+        }, 1000);
         this.selectedItem?.scrollIntoView({ behavior: "smooth" });
       } else {
-        console.log("scrollIntoView is false");
         this.scrollIntoView = true;
       }
+
       this.items.forEach((item, index) => {
         item.selected = index === selectedIndex;
       });
+
       if (this.playing) {
         this.selectedItem?.play();
       }
@@ -172,16 +182,6 @@ export default class ScreencastComic extends HTMLElement {
     return this.selectedIndexSignal.value;
   }
   set selectedIndex(selected) {
-    // Programmatically scrolling the document is expected
-    this.scrollingExpected = true;
-    if (this.scrollingExpectedTimeout) {
-      clearTimeout(this.scrollingExpectedTimeout);
-    }
-    this.scrollingExpectedTimeout = setTimeout(() => {
-      this.scrollingExpected = false;
-      this.scrollingExpectedTimeout = null;
-    }, 1000);
-
     this.selectedIndexSignal.value = selected;
   }
 

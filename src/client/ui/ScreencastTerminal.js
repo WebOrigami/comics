@@ -40,6 +40,9 @@ export default class ScreencastTerminal extends HTMLElement {
         // Next tick
         if (this.time === this.frameCount) {
           this.playing = false;
+          this.dispatchEvent(
+            new CustomEvent("animation-ended", { bubbles: true })
+          );
         } else {
           // Give a shorter delay if typing an alphabetic character
           const character =
@@ -85,10 +88,8 @@ export default class ScreencastTerminal extends HTMLElement {
     return this.playingSignal.value;
   }
   set playing(playing) {
-    if (this.command) {
-      this.playingSignal.value = playing;
-      this.time = 0;
-    }
+    this.playingSignal.value = playing;
+    this.time = 0;
   }
 
   render(time) {
@@ -99,19 +100,24 @@ export default class ScreencastTerminal extends HTMLElement {
     this.classList.toggle("waiting", phase === "waiting");
     this.classList.toggle("running", phase === "running");
 
-    // Simulate typing
-    this.command.style.width =
-      phase === "starting"
-        ? "0ch"
-        : phase === "typing"
-        ? `${time - startingFrames}ch`
-        : "";
+    if (this.command) {
+      // Simulate typing
+      this.command.style.width =
+        phase === "starting"
+          ? "0ch"
+          : phase === "typing"
+          ? `${time - startingFrames}ch`
+          : "";
 
-    // Play sound effects; don't wait
-    if (phase === "typing" && time > 0) {
-      playSoundEffect("keyClick");
-    } else if (time === startingFrames + this.textLength + waitingPhaseFrames) {
-      playSoundEffect("returnClick");
+      // Play sound effects; don't wait
+      if (phase === "typing" && time > 0) {
+        playSoundEffect("keyClick");
+      } else if (
+        time ===
+        startingFrames + this.textLength + waitingPhaseFrames
+      ) {
+        playSoundEffect("returnClick");
+      }
     }
   }
 
