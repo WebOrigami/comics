@@ -11,13 +11,14 @@ export default function ScrollingStoppedMixin(Base) {
     constructor() {
       super();
       this.touching = false;
+      this.scrollInProgress = false;
     }
 
     connectedCallback() {
       super.connectedCallback?.();
 
       let tops = [0, 0];
-      let wasMoving = false;
+      this.scrollInProgress = false;
       setInterval(() => {
         tops.shift();
         tops.push(document.documentElement.scrollTop);
@@ -25,13 +26,13 @@ export default function ScrollingStoppedMixin(Base) {
         const stopped = tops.every((top) => Math.abs(top - average) < 1);
         if (!stopped) {
           // console.log(tops);
-          wasMoving = true;
-        } else if (wasMoving) {
+          this.scrollInProgress = true;
+        } else if (this.scrollInProgress) {
           // console.log(
           //   tops,
           //   this.touching ? "still touching" : "scrolling stopped"
           // );
-          wasMoving = false;
+          this.scrollInProgress = false;
           if (!this.touching) {
             this.scrollingStopped?.();
           }

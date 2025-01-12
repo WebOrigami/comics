@@ -36,7 +36,7 @@ screencast-comic {
   padding: 30vh 0;
 
   > * {
-    transition: opacity 0.75s;
+    transition: opacity 0.25s;
   }
 
   /* TEMP */

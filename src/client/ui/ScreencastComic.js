@@ -25,6 +25,9 @@ export default class ScreencastComic extends ScrollingStoppedMixin(
     // Clicking an item selects it. We use mouseup/touchend instead of "click"
     // because, on iOS, "click" doesn't seem to always fire.
     const clickHandler = (event) => {
+      if (this.scrollInProgress) {
+        return; // Ignore clicks while scrolling
+      }
       const item = event.target.closest("screencast-panel");
       if (item) {
         // this.scrollIntoView = true;
@@ -54,7 +57,10 @@ export default class ScreencastComic extends ScrollingStoppedMixin(
       //   this.selectedItem?.scrollIntoView({ behavior: "smooth" });
       // }
       if (this.selectedItem !== this.getCenterItem()) {
-        this.selectedItem?.scrollIntoView({ behavior: "smooth" });
+        this.selectedItem?.scrollIntoView({
+          behavior: "smooth",
+          block: "center",
+        });
       }
 
       const selectedIndex = this.selectedIndex;

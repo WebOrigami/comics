@@ -2,7 +2,7 @@ import { effect, signal } from "@preact/signals-core";
 import playSoundEffect from "./playSoundEffect.js";
 
 const startingFrames = 2; // Waiting to start typing
-const waitingPhaseFrames = 4; // Waiting to press return key
+const waitingPhaseFrames = 3; // Waiting to press return key
 const runningPhaseFrames = 4; // Waiting for program to run
 
 export default class ScreencastTerminal extends HTMLElement {

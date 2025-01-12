@@ -8,7 +8,7 @@
   runCommand: «hello»
   narration: >
     If I type **ori "hello"** ori displays **hello**.
-  footnote: In the shell, you need to escape quotes or use nested quotes.
+  footnote: In the shell, you need to escape or nest quotes.
 
 - actor: Bob
   narration: >
@@ -84,3 +84,21 @@
   narration: >
     You can freely combine these ideas, so you can call a JavaScript function
     using data from a file.
+
+- actor: Bob
+  footnote: Origami files have a .ori extension.
+  narration: >
+    You can save an Origami expression in its own file so you can quickly invoke
+    it later.
+
+- actor: Bob
+  command: greet.ori
+  narration: >
+    This kind of dot ori file is like a spreadsheet cell containing a formula.
+    If we ask Origami for this file, we just get the formula back.
+
+- actor: Bob
+  command: greet.ori/
+  narration: >
+    But adding a slash lets Origami know that, instead of seeing the formula, we
+    want to see its value.
