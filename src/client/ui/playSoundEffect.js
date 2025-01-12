@@ -1,4 +1,4 @@
-const audioContext = new window.AudioContext();
+let audioContext;
 
 const soundFiles = {
   keyClick: "/assets/sounds/keyClick.mp3",
@@ -9,6 +9,7 @@ const audioPromises = {};
 
 // Function to play the cached MP3 file
 export default async function playSoundEffect(effect) {
+  audioContext ??= new window.AudioContext();
   audioPromises[effect] ??= loadAudio(soundFiles[effect]);
   const audioBuffer = await audioPromises[effect];
 
@@ -24,13 +25,16 @@ export default async function playSoundEffect(effect) {
 }
 
 async function loadAudio(soundFile) {
+  audioContext ??= new window.AudioContext();
   let audioBuffer = null;
 
   try {
     // Fetch the MP3 file
     const response = await fetch(soundFile);
     if (!response.ok) {
-      throw new Error(`Failed to fetch audio file: ${response.statusText}`);
+      throw new Error(
+        `Failed to fetch audio file: ${soundFile}: ${response.statusText}`
+      );
     }
 
     // Read the MP3 file as an ArrayBuffer
@@ -39,7 +43,7 @@ async function loadAudio(soundFile) {
     // Decode the audio data into an AudioBuffer and cache it
     audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
   } catch (error) {
-    console.error("Error preloading MP3:", error);
+    console.error(`Error loading ${soundFile}:`, error);
   }
 
   return audioBuffer;

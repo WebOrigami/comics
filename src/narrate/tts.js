@@ -12,6 +12,7 @@ export default async function textToSpeech(text, voice) {
     voice,
   };
 
+  console.log(`*** tts ${text}`);
   const response = await fetch("https://api.openai.com/v1/audio/speech", {
     method: "POST",
     headers: {

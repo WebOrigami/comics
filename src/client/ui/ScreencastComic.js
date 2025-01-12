@@ -1,17 +1,19 @@
 import { effect, signal } from "@preact/signals-core";
+import ScrollingStoppedMixin from "./ScrollingStoppedMixin.js";
 
-export default class ScreencastComic extends HTMLElement {
+export default class ScreencastComic extends ScrollingStoppedMixin(
+  HTMLElement
+) {
   constructor() {
     super();
     this.playingSignal = signal(false);
-    this.scrollIntoView = true;
-    this.scrollingExpected = false;
-    this.scrollingExpectedTimeout = null;
-    this.selectNextTimeout = null;
+    // this.selectNextTimeout = null;
     this.selectedIndexSignal = signal(-1);
   }
 
   connectedCallback() {
+    super.connectedCallback?.();
+
     // Make the comic a listbox
     this.setAttribute("role", "listbox");
 
@@ -20,10 +22,12 @@ export default class ScreencastComic extends HTMLElement {
       this.setAttribute("tabindex", "0");
     }
 
-    // Clicking an item selects it
-    this.addEventListener("click", (event) => {
+    // Clicking an item selects it. We use mouseup/touchend instead of "click"
+    // because, on iOS, "click" doesn't seem to always fire.
+    const clickHandler = (event) => {
       const item = event.target.closest("screencast-panel");
       if (item) {
+        // this.scrollIntoView = true;
         this.selectedIndex = this.items.indexOf(item);
       }
       const playButton = event.target.closest("button");
@@ -31,27 +35,29 @@ export default class ScreencastComic extends HTMLElement {
         // Toggle play state
         this.playing = !this.playing;
       }
-    });
+    };
+    this.addEventListener("mouseup", clickHandler);
+    this.addEventListener("touchend", clickHandler);
 
     // Tell items whether they're selected
     effect(() => {
-      const selectedIndex = this.selectedIndex;
-
-      if (this.scrollIntoView) {
-        // Programmatically scrolling the document is expected
-        this.scrollingExpected = true;
-        if (this.scrollingExpectedTimeout) {
-          clearTimeout(this.scrollingExpectedTimeout);
-        }
-        this.scrollingExpectedTimeout = setTimeout(() => {
-          this.scrollingExpected = false;
-          this.scrollingExpectedTimeout = null;
-        }, 1000);
+      // if (this.scrollIntoView) {
+      //   // Programmatically scrolling the document is expected
+      //   if (this.scrollIntoViewTimeout) {
+      //     clearTimeout(this.scrollIntoViewTimeout);
+      //   }
+      //   this.scrollIntoView = false;
+      //   this.scrollIntoViewTimeout = setTimeout(() => {
+      //     this.scrollIntoView = true;
+      //     this.scrollIntoViewTimeout = null;
+      //   }, 250);
+      //   this.selectedItem?.scrollIntoView({ behavior: "smooth" });
+      // }
+      if (this.selectedItem !== this.getCenterItem()) {
         this.selectedItem?.scrollIntoView({ behavior: "smooth" });
-      } else {
-        this.scrollIntoView = true;
       }
 
+      const selectedIndex = this.selectedIndex;
       this.items.forEach((item, index) => {
         item.selected = index === selectedIndex;
       });
@@ -121,29 +127,26 @@ export default class ScreencastComic extends HTMLElement {
       }
     });
 
-    // If the document scrolls and we weren't expecting it to, pause
-    document.addEventListener("scroll", () => {
-      if (!this.scrollingExpected) {
-        setTimeout(() => {
-          this.scrollIntoView = false;
-          this.selectCenterItem();
-        }, 250);
-      }
-    });
-
     // If we have items, select one
     if (this.items.length > 0) {
       if (document.documentElement.scrollTop > 0) {
-        // Page was reloaded while scrolled down, select item in center
-        const centerItem = this.getCenterItem();
-        if (centerItem) {
-          this.selectedIndex = this.items.indexOf(centerItem);
-        }
+        // Page was reloaded while scrolled down
+        this.selectCenterItem();
       } else {
         // Select first item by default
         this.selectFirst();
       }
     }
+  }
+
+  // Return the item in the center of the viewport
+  getCenterItem() {
+    const middle = window.innerHeight / 2;
+    const item = this.items.find((item) => {
+      const itemRect = item.getBoundingClientRect();
+      return itemRect.top <= middle && middle <= itemRect.bottom;
+    });
+    return item;
   }
 
   get items() {
@@ -165,14 +168,9 @@ export default class ScreencastComic extends HTMLElement {
     this.playingSignal.value = playing;
   }
 
-  // Return the item in the center of the viewport
-  getCenterItem() {
-    const middle = window.innerHeight / 2;
-    const item = this.items.find((item) => {
-      const itemRect = item.getBoundingClientRect();
-      return itemRect.top <= middle && middle <= itemRect.bottom;
-    });
-    return item;
+  // Called by ScrollingStoppedMixin when scrolling appears to have stopped
+  scrollingStopped() {
+    this.selectCenterItem();
   }
 
   selectCenterItem() {

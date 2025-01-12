@@ -82,5 +82,5 @@
 - actor: Alice
   command: greet.js teamData.yaml/0/name
   narration: >
-    You can freely combine these ideas, so you can read data out of a file and
-    then pass it to a JavaScript function.
+    You can freely combine these ideas, so you can call a JavaScript function
+    using data from a file.

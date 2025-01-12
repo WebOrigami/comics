@@ -38,7 +38,7 @@ export default class ScreencastPanel extends HTMLElement {
     // then signal that the overall panel has ended.
     effect(() => {
       if (
-        this.playingSignal.value &&
+        this.playing &&
         !this.audioPlayingSignal.value &&
         !this.animationPlayingSignal.value
       ) {
@@ -69,6 +69,10 @@ export default class ScreencastPanel extends HTMLElement {
     this.playingSignal.value = true;
   }
 
+  get playing() {
+    return this.playingSignal.value;
+  }
+
   pause() {
     this.audioElement?.pause?.();
     this.audioPlayingSignal.value = false;
@@ -90,15 +94,13 @@ export default class ScreencastPanel extends HTMLElement {
     return this.selectedSignal.value;
   }
   set selected(selected) {
-    // If we lose selection while play, pause the audio
-    if (!selected && this.playing) {
-      this.pause();
+    // If we lose selection while playing, pause and reset
+    if (!selected) {
+      if (this.playing) {
+        this.pause();
+      }
+      this.reset();
     }
-
-    // If selection state has changed, reset the audio
-    // if (this.selected !== selected) {
-    //   this.reset();
-    // }
 
     this.selectedSignal.value = selected;
   }

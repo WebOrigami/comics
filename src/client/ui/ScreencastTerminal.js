@@ -1,9 +1,9 @@
 import { effect, signal } from "@preact/signals-core";
 import playSoundEffect from "./playSoundEffect.js";
 
-const startingFrames = 4; // Waiting to start typing
+const startingFrames = 2; // Waiting to start typing
 const waitingPhaseFrames = 4; // Waiting to press return key
-const runningPhaseFrames = 5; // Waiting for program to run
+const runningPhaseFrames = 4; // Waiting for program to run
 
 export default class ScreencastTerminal extends HTMLElement {
   constructor() {
@@ -110,9 +110,7 @@ export default class ScreencastTerminal extends HTMLElement {
 
       // Play sound effects; don't wait
       if (phase === "typing" && time > 0) {
-        const character = this.command.textContent[time - startingFrames - 1];
-        const effect = character === " " ? "spaceClick" : "keyClick";
-        playSoundEffect(effect);
+        playSoundEffect("keyClick");
       } else if (
         time ===
         startingFrames + this.textLength + waitingPhaseFrames
