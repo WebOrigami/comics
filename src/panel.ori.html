@@ -14,5 +14,5 @@ ${ terminal.ori.html(panel)} ${ panel/footnote ? indent`
     <button class="button play"><div class="iconContainer">⏵</div></button>
     <button class="button pause"><div class="iconContainer">⏸︎</div></button>
   </div>
-  <audio src="/narration/${ key }.mp3"></audio>
+  <audio src="/narration/${ slash/remove(key) }.mp3"></audio>
 </screencast-panel>
