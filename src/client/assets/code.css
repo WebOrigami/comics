@@ -3,7 +3,7 @@
 .hljs {
   /* background: #1B2B34; */
   color: #D8DEE9;
-  /* font-family: 'Fira Code', monospace; */
+  font-family: var(--editor-font-family);
   line-height: 1.5;
 }
 
@@ -17,7 +17,7 @@
 .hljs-selector-tag,
 .hljs-subst {
   color: #C594C5;
-  font-weight: bold;
+  /* font-weight: bold; */
 }
 
 .hljs-number,

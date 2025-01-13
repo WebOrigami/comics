@@ -3,6 +3,11 @@ screencast-editor {
   color: var(--editor-color);
   display: grid;
   grid-template-rows: auto 1fr 1fr;
+  overflow: hidden;
+
+  > * {
+    overflow: hidden;
+  }
   
   .tabBar {
     background: color-mix(in oklch, var(--editor-background), var(--editor-color) 10%);
@@ -22,7 +27,9 @@ screencast-editor {
     padding: var(--window-padding);
 
     pre {
+      font-family: inherit;
       margin: 0;
+      overflow: hidden;
     }
   }
 

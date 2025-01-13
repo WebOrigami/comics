@@ -61,12 +61,13 @@
     like objects in memory, data in files, or content on a server.
 
 - actor: Alice
-  scene: terminal.ori.html
-  options: teamData.yaml/0/name
+  scene: editor.ori.html
+  options:
+    file: teamData.yaml
+    command: teamData.yaml/0/name
   narration: >
-    Just like your operating system associates **file extensions** with
-    applications, Origami associates extensions with handlers that can traverse
-    into data.
+    Just like your operating system associates **file extensions** with apps,
+    Origami associates extensions with handlers that can traverse into data.
 
 - actor: Bob
   narration: >
@@ -107,10 +108,10 @@
   scene: editor.ori.html
   options:
     file: greet.ori
-  footnote: Origami files have a .ori extension.
   narration: >
     You can save an Origami expression **in its own file** so you can quickly
     invoke it later.
+  footnote: Origami files have a .ori extension.
 
 - actor: Bob
   scene: editor.ori.html

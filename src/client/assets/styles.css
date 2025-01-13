@@ -6,7 +6,7 @@ html {
 body {
   --editor-background: #1d2225;
   --editor-color: white;
-  --editor-font-family: 'Courier New', Courier, monospace;
+  --editor-font-family: monospace; /* 'Courier New', Courier, monospace; */
   --window-padding: 0.5rem;
 
   margin: 0;
