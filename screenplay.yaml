@@ -94,7 +94,7 @@
 - actor: Bob
   command: greet.ori
   narration: >
-    This kind of dot ori file is like a spreadsheet cell containing a formula.
+    This kind of .ori file is like a spreadsheet cell containing a formula.
     If we ask Origami for this file, we just get the formula back.
 
 - actor: Bob
