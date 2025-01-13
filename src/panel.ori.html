@@ -2,17 +2,17 @@
 (panel, key) => @template()
 ---
 
-<screencast-panel>
+<screencast-panel audio-src="/narration/${ slash/remove(key) }.mp3">
   <div class="caption" data-speaker="${ panel/actor }">
     <img class="icon" src="/assets/${ panel/actor }.png" />
     ${ mdHtml(panel/narration) }
   </div>
-${ terminal.ori.html(panel)} ${ panel/footnote ? indent`
+${ panel/command ? terminal.ori.html(panel/command) : "" } ${ panel/footnote ?
+  indent`
   <div class="footnote">${ mdHtml(panel/footnote) }</div>
   ` : "" }
   <div class="controls">
     <button class="button play"><div class="iconContainer">⏵</div></button>
     <button class="button pause"><div class="iconContainer">⏸︎</div></button>
   </div>
-  <audio src="/narration/${ slash/remove(key) }.mp3"></audio>
 </screencast-panel>

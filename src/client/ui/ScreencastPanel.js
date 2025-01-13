@@ -1,9 +1,14 @@
 import { effect, signal } from "@preact/signals-core";
+import AttributeMarshallingMixin from "./AttributeMarshallingMixin.js";
 
-export default class ScreencastPanel extends HTMLElement {
+export default class ScreencastPanel extends AttributeMarshallingMixin(
+  HTMLElement
+) {
   constructor() {
     super();
+    this.audioElement = null;
     this.audioPlayingSignal = signal(false);
+    this.audioSrcSignal = signal(null);
     this.animationPlayingSignal = signal(false);
     this.playingSignal = signal(false);
     this.selectedSignal = signal(false);
@@ -13,19 +18,33 @@ export default class ScreencastPanel extends HTMLElement {
     return this.querySelector("screencast-terminal");
   }
 
-  get audioElement() {
-    return this.querySelector("audio");
+  get audioSrc() {
+    return this.audioSrcSignal.value;
+  }
+  set audioSrc(src) {
+    this.audioSrcSignal.value = src;
   }
 
   connectedCallback() {
     this.setAttribute("role", "option");
 
+    this.attachShadow({ mode: "open" });
+    this.shadowRoot.innerHTML = `
+      <slot></slot>
+      <audio id="audio"></audio>
+    `;
+    this.audioElement = this.shadowRoot.querySelector("#audio");
+
     effect(() => {
       this.setAttribute("aria-selected", this.selected);
     });
 
+    effect(() => {
+      this.audioElement.src = this.audioSrc;
+    });
+
     // Track when audio ends
-    this.audioElement?.addEventListener("ended", () => {
+    this.audioElement.addEventListener("ended", () => {
       this.audioPlayingSignal.value = false;
     });
 

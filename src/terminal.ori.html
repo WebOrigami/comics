@@ -1,6 +1,10 @@
-<screencast-terminal>${ _/command ? indent`
-  <div class="line1"><span class="prompt">$ </span><span class="command">ori ${ _/command }</span><span class="cursor">█</span></div>
-<pre class="output">${ escapeHtml.js(ori(unescapeQuotes.js(_/command))) }</pre>
-<div class="line2"><span class="prompt">$ </span><span class="cursor">█</span></div>
-` : "" }
+<screencast-terminal>
+  <div class="line1">
+    <span class="prompt">$ </span><span class="command">ori ${ _ }</span
+    ><span class="cursor">█</span>
+  </div>
+<pre class="output">${ escapeHtml.js(ori(unescapeQuotes.js(_))) }</pre>
+  <div class="line2">
+    <span class="prompt">$ </span><span class="cursor">█</span>
+  </div>
 </screencast-terminal>
