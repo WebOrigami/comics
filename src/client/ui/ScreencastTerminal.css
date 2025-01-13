@@ -1,11 +1,11 @@
 screencast-terminal {
-  background: #1d2225;
-  color: white;
+  background: var(--editor-background);
+  color: var(--editor-color);
   display: grid;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: var(--editor-font-family);
   grid-auto-rows: min-content;
-  padding: 0.5rem;
-
+  padding: var(--window-padding);
+  
   .line1 {
     /* Without this Safari messes up vertical alignement */
     display: flex;

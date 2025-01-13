@@ -1,3 +1,27 @@
+@font-face {
+  font-display: fallback;
+  font-family: "Anime Ace";
+  font-style: normal;
+  font-weight: 400;
+  src: url("/assets/fonts/animeace.ttf");
+}
+
+@font-face {
+  font-display: fallback;
+  font-family: "Anime Ace";
+  font-style: italic;
+  font-weight: 400;
+  src: url("/assets/fonts/animeace_i.ttf");
+}
+
+@font-face {
+  font-display: fallback;
+  font-family: "Anime Ace";
+  font-style: bold;
+  font-weight: 700;
+  src: url("/assets/fonts/animeace_b.ttf");
+}
+
 screencast-panel {
   aspect-ratio: 4 / 3;
   border: 3px solid #333;
@@ -20,6 +44,11 @@ screencast-panel {
     height: 64px;
     object-fit: contain;
     width: 64px;
+  }
+
+  .caption,
+  .footnote {
+    font-family: "Anime Ace", "Helvetica Neue", Helvetica, Arial, sans-serif;
   }
 
   .caption {

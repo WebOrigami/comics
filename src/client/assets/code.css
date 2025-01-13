@@ -1,0 +1,78 @@
+/* Highlight.js Oceanic Next Theme */
+
+.hljs {
+  /* background: #1B2B34; */
+  color: #D8DEE9;
+  /* font-family: 'Fira Code', monospace; */
+  line-height: 1.5;
+}
+
+.hljs-comment,
+.hljs-quote {
+  color: #65737E;
+  font-style: italic;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-subst {
+  color: #C594C5;
+  font-weight: bold;
+}
+
+.hljs-number,
+.hljs-literal,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag .hljs-attr {
+  color: #F99157;
+}
+
+.hljs-string,
+.hljs-doctag,
+.hljs-title,
+.hljs-section,
+.hljs-selector-id,
+.hljs-selector-class {
+  color: #99C794;
+}
+
+.hljs-attr,
+.hljs-attribute,
+.hljs-builtin,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-code {
+  color: #FAC863;
+}
+
+.hljs-addition {
+  background-color: #334C56;
+  color: #99C794;
+}
+
+.hljs-deletion {
+  background-color: #4C3A3A;
+  color: #EC5f67;
+}
+
+.hljs-meta {
+  color: #5FB3B3;
+}
+
+.hljs-meta .hljs-keyword {
+  color: #C594C5;
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}
+
+.hljs-link {
+  text-decoration: underline;
+  color: #5FB3B3;
+}

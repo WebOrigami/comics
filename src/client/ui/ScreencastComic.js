@@ -7,7 +7,6 @@ export default class ScreencastComic extends ScrollingStoppedMixin(
   constructor() {
     super();
     this.playingSignal = signal(false);
-    // this.selectNextTimeout = null;
     this.selectedIndexSignal = signal(-1);
   }
 
@@ -30,7 +29,6 @@ export default class ScreencastComic extends ScrollingStoppedMixin(
       }
       const item = event.target.closest("screencast-panel");
       if (item) {
-        // this.scrollIntoView = true;
         this.selectedIndex = this.items.indexOf(item);
       }
       const playButton = event.target.closest("button");
@@ -44,19 +42,7 @@ export default class ScreencastComic extends ScrollingStoppedMixin(
 
     // Tell items whether they're selected
     effect(() => {
-      // if (this.scrollIntoView) {
-      //   // Programmatically scrolling the document is expected
-      //   if (this.scrollIntoViewTimeout) {
-      //     clearTimeout(this.scrollIntoViewTimeout);
-      //   }
-      //   this.scrollIntoView = false;
-      //   this.scrollIntoViewTimeout = setTimeout(() => {
-      //     this.scrollIntoView = true;
-      //     this.scrollIntoViewTimeout = null;
-      //   }, 250);
-      //   this.selectedItem?.scrollIntoView({ behavior: "smooth" });
-      // }
-      if (this.selectedItem !== this.getCenterItem()) {
+      if (this.selectedItem && this.selectedItem !== this.getCenterItem()) {
         this.selectedItem?.scrollIntoView({
           behavior: "smooth",
           block: "center",
@@ -84,15 +70,6 @@ export default class ScreencastComic extends ScrollingStoppedMixin(
         this.selectedItem?.pause?.();
       }
     });
-
-    // When a panel finishes, advance to the next panel
-    // this.addEventListener("panel-ended", () => {
-    //   if (this.selectedIndex < this.items.length - 1) {
-    //     this.selectNext();
-    //   } else {
-    //     this.playing = false;
-    //   }
-    // });
 
     // Home/End/Up/Down keys move selection, Space toggles play
     this.addEventListener("keydown", (event) => {

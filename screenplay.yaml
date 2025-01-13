@@ -1,10 +1,12 @@
 - actor: Bob
-  command: 1 + 1
+  scene: terminal.ori.html
+  options: 1 + 1
   narration: >
     If I type **ori 1 + 1** it evaluates that and displays **2**.
 
 - actor: Bob
-  command: |-
+  scene: terminal.ori.html
+  options: |-
     \"hello\"
   narration: >
     If I type **ori "hello"** ori displays **hello**.
@@ -13,9 +15,13 @@
 - actor: Bob
   narration: >
     But to build a site, you'll want to reference **files**!
+  scene: editor.ori.html
+  options:
+    file: hello.md
 
 - actor: Alice
-  command: hello.md
+  scene: terminal.ori.html
+  options: hello.md
   narration: >
     Think of a file as a spreadsheet cell… but instead of A1, B2 style
     references like a spreadsheet, you use **paths** and file names to refer to
@@ -30,26 +36,30 @@
     for **transforming data** for use in sites.
 
 - actor: Bob
-  command: |-
+  scene: terminal.ori.html
+  options: |-
     "mdHtml(hello.md)"
   narration: >
     We can call a function that transforms markdown to HTML, passing our
     markdown file as input.
 
 - actor: Bob
-  command: mdHtml hello.md
+  scene: terminal.ori.html
+  options: mdHtml hello.md
   narration: >
     To avoid quoting parentheses in the shell, we can **omit them**! Origami
     figures out where they would be.
 
 - actor: Alice
-  command: teamData.yaml
+  scene: terminal.ori.html
+  options: teamData.yaml
   narration: >
     In addition to the file system, Origami can work with other tree structures,
     like objects in memory, data in files, or content on a server.
 
 - actor: Alice
-  command: teamData.yaml/0/name
+  scene: terminal.ori.html
+  options: teamData.yaml/0/name
   narration: >
     Just like your operating system associates **file extensions** with
     applications, Origami associates extensions with handlers that can traverse
@@ -61,42 +71,58 @@
     languages, but scope in Origami extends to the file system.
 
 - actor: Bob
-  command: README.md
+  scene: terminal.ori.html
+  options: README.md
   narration: >
     If I ask for a file that doesn't exist in this folder, Origami searches up
     the folder hierarchy until it finds the file.
 
 - actor: Alice
+  scene: editor.ori.html
+  options:
+    file: greet.js
   narration: >
     You don't have to know **JavaScript** to use Origami -- but if you do know
     JavaScript, you can use it to easily extend what Origami can do!
 
 - actor: Alice
-  command: |-
-    greet.js \"world\"
+  scene: editor.ori.html
+  options:
+    file: greet.js
+    command: greet.js \"world\"
   narration: >
     You can call a JavaScript function using its **file name**.
 
 - actor: Alice
-  command: greet.js teamData.yaml/0/name
+  scene: terminal.ori.html
+  options: greet.js teamData.yaml/0/name
   narration: >
     You can freely combine these ideas, so you can call a JavaScript function
     using data from a file.
 
 - actor: Bob
+  scene: editor.ori.html
+  options:
+    file: greet.ori
   footnote: Origami files have a .ori extension.
   narration: >
     You can save an Origami expression **in its own file** so you can quickly
     invoke it later.
 
 - actor: Bob
-  command: greet.ori
+  scene: editor.ori.html
+  options:
+    file: greet.ori
+    command: greet.ori
   narration: >
-    This kind of .ori file is like a spreadsheet cell containing a formula.
-    If we ask Origami for this file, we just get the formula back.
+    This kind of file is like a spreadsheet cell with a formula. If we ask
+    Origami for this file, we just get the formula back.
 
 - actor: Bob
-  command: greet.ori/
+  scene: editor.ori.html
+  options:
+    file: greet.ori
+    command: greet.ori/
   narration: >
-    But **adding a slash** lets Origami know that, instead of seeing the
-    formula, we want to see its **value**.
+    But **adding a slash** lets Origami know that, instead of getting the
+    formula, we want to get its **value**.

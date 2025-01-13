@@ -7,7 +7,7 @@
     <img class="icon" src="/assets/${ panel/actor }.png" />
     ${ mdHtml(panel/narration) }
   </div>
-${ panel/command ? terminal.ori.html(panel/command) : "" } ${ panel/footnote ?
+${ panel/scene ? scope:(panel/scene)(panel/options) : "" } ${ panel/footnote ?
   indent`
   <div class="footnote">${ mdHtml(panel/footnote) }</div>
   ` : "" }

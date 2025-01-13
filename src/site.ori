@@ -1,6 +1,6 @@
 {
   ...client
-  index.html = index.ori.html(data.ori)
+  index.html = comic.ori.html(data.ori)
   audio.html
   preact: node_modules/@preact/signals-core/dist
   narration/ = narrate/narrate.ori/

@@ -1,26 +1,3 @@
-@font-face {
-  font-display: fallback;
-  font-family: "Anime Ace";
-  font-style: normal;
-  font-weight: 400;
-  src: url("/assets/fonts/animeace.ttf");
-}
-
-@font-face {
-  font-display: fallback;
-  font-family: "Anime Ace";
-  font-style: italic;
-  font-weight: 400;
-  src: url("/assets/fonts/animeace_i.ttf");
-}
-
-@font-face {
-  font-display: fallback;
-  font-family: "Anime Ace";
-  font-style: bold;
-  font-weight: 700;
-  src: url("/assets/fonts/animeace_b.ttf");
-}
 
 screencast-comic {
   --gap: 1rem;
@@ -28,7 +5,8 @@ screencast-comic {
   background: #faf9f6;
   container-type: inline-size;
   display: grid;
-  font-family: "Anime Ace", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
   gap: var(--gap) 0;
   grid-template-columns: var(--gutter) 1fr var(--gutter);
   justify-content: center;
