@@ -4,8 +4,8 @@
     If I type **ori 1 + 1** it evaluates that and displays **2**.
 
 - actor: Bob
-  command: \"hello\"
-  runCommand: «hello»
+  command: |-
+    \"hello\"
   narration: >
     If I type **ori "hello"** ori displays **hello**.
   footnote: In the shell, you need to escape or nest quotes.
@@ -30,22 +30,20 @@
     for **transforming data** for use in sites.
 
 - actor: Bob
-  command: '"mdHtml(hello.md)"'
-  runCommand: "mdHtml(hello.md)"
+  command: |-
+    "mdHtml(hello.md)"
   narration: >
     We can call a function that transforms markdown to HTML, passing our
     markdown file as input.
 
 - actor: Bob
   command: mdHtml hello.md
-  runCommand: mdHtml hello.md
   narration: >
     To avoid quoting parentheses in the shell, we can **omit them**! Origami
     figures out where they would be.
 
 - actor: Alice
   command: teamData.yaml
-  runCommand: yaml(teamData.yaml)
   narration: >
     In addition to the file system, Origami can work with other tree structures,
     like objects in memory, data in files, or content on a server.
@@ -74,8 +72,8 @@
     JavaScript, you can use it to easily extend what Origami can do!
 
 - actor: Alice
-  command: greet.js \"world\"
-  runCommand: greet.js «world»
+  command: |-
+    greet.js \"world\"
   narration: >
     You can call a JavaScript function using its **file name**.
 

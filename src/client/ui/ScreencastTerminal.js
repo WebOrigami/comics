@@ -1,16 +1,16 @@
 import { effect, signal } from "@preact/signals-core";
 import playSoundEffect from "./playSoundEffect.js";
+import SceneMixin from "./SceneMixin.js";
 
 const startingFrames = 2; // Waiting to start typing
 const waitingPhaseFrames = 3; // Waiting to press return key
 const runningPhaseFrames = 4; // Waiting for program to run
 
-export default class ScreencastTerminal extends HTMLElement {
+export default class ScreencastTerminal extends SceneMixin(HTMLElement) {
   constructor() {
     super();
     this.command = null;
     this.frameCount = 0;
-    this.playingSignal = signal(false);
     this.nextFrameTimeout = null;
     this.textLength = 0;
     this.timeSignal = signal(-1);
@@ -61,10 +61,6 @@ export default class ScreencastTerminal extends HTMLElement {
     });
   }
 
-  pause() {
-    this.playing = false;
-  }
-
   phase(time) {
     if (time <= startingFrames) {
       return "starting";
@@ -79,19 +75,15 @@ export default class ScreencastTerminal extends HTMLElement {
     }
   }
 
-  play() {
-    this.playing = true;
-  }
-
   get playable() {
     return this.command?.textContent.length > 0;
   }
 
   get playing() {
-    return this.playingSignal.value;
+    return super.playing;
   }
   set playing(playing) {
-    this.playingSignal.value = playing;
+    super.playing = playing;
     this.time = 0;
   }
 
