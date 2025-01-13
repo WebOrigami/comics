@@ -23,9 +23,8 @@
   scene: terminal.ori.html
   options: hello.md
   narration: >
-    Think of a file as a spreadsheet cell… but instead of A1, B2 style
-    references like a spreadsheet, you use **paths** and file names to refer to
-    things.
+    Think of a file as a spreadsheet cell… but instead of A1, B2 style cell
+    references, you use **paths** and file names to refer to things.
   footnote: >
     Unlike most programming languages, Origami lets you use characters like
     periods and hyphens in names!
@@ -36,16 +35,20 @@
     for **transforming data** for use in sites.
 
 - actor: Bob
-  scene: terminal.ori.html
-  options: |-
-    "mdHtml(hello.md)"
+  scene: editor.ori.html
+  options:
+    file: hello.md
+    command: |-
+      "mdHtml(hello.md)"
   narration: >
     We can call a function that transforms markdown to HTML, passing our
     markdown file as input.
 
 - actor: Bob
-  scene: terminal.ori.html
-  options: mdHtml hello.md
+  scene: editor.ori.html
+  options:
+    file: hello.md
+    command: mdHtml hello.md
   narration: >
     To avoid quoting parentheses in the shell, we can **omit them**! Origami
     figures out where they would be.
