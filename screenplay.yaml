@@ -27,7 +27,7 @@
 - actor: Bob
   narration: >
     Where a spreadsheet has built-in math functions, Origami has built-in functions
-    for transforming data for use in sites.
+    for **transforming data** for use in sites.
 
 - actor: Bob
   command: '"mdHtml(hello.md)"'
@@ -88,8 +88,8 @@
 - actor: Bob
   footnote: Origami files have a .ori extension.
   narration: >
-    You can save an Origami expression in its own file so you can quickly invoke
-    it later.
+    You can save an Origami expression **in its own file** so you can quickly
+    invoke it later.
 
 - actor: Bob
   command: greet.ori
@@ -100,5 +100,5 @@
 - actor: Bob
   command: greet.ori/
   narration: >
-    But adding a slash lets Origami know that, instead of seeing the formula, we
-    want to see its value.
+    But **adding a slash** lets Origami know that, instead of seeing the
+    formula, we want to see its **value**.

@@ -59,7 +59,7 @@ export default class ScreencastPanel extends HTMLElement {
     this.audioElement?.play();
     this.audioPlayingSignal.value = true;
 
-    if (this.animationElement) {
+    if (this.animationElement?.playable) {
       this.animationElement?.play();
       this.animationPlayingSignal.value = true;
     } else {

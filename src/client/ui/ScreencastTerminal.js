@@ -83,6 +83,10 @@ export default class ScreencastTerminal extends HTMLElement {
     this.playing = true;
   }
 
+  get playable() {
+    return this.command?.textContent.length > 0;
+  }
+
   get playing() {
     return this.playingSignal.value;
   }
