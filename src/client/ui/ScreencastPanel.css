@@ -23,8 +23,22 @@
 }
 
 screencast-panel {
-  scroll-snap-align: center;
+  display: grid;
+  grid-template-rows: 1fr auto;
   width: 100%;
+
+  .panel {
+    aspect-ratio: 4 / 3;
+    border: 3px solid #333;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    max-height: 90svh;
+    max-width: 800px;
+    overflow: hidden;
+    position: relative;
+    scroll-snap-align: center;
+  }
 
   p {
     margin: 0;
@@ -68,55 +82,15 @@ screencast-panel {
       width: fit-content;
     }
   }
-
-  .controls {
-    align-content: center;
-    bottom: 0;
-    display: none;
-    justify-content: center;
-    left: 0;
-    position: absolute;
-    right: 0;
-    top: 0;
-    
-    .button {
-      align-content: center;
-      background: rgba(0, 0, 0, 0.5);
-      border-radius: 50%;
-      border: 2px solid white;
-      color: white;
-      cursor: pointer;
-      height: 6em;
-      justify-content: center;
-      width: 6em;
-
-      &:hover {
-        background: rgba(255, 255, 255, 0.25);
-      }
-      
-      .iconContainer {
-        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-        font-size: 4rem;
-        line-height: 1;
-      }
-    }
-
-  }
-
-  /* Only enable hover effects if JavaScript is enabled */
-  &[aria-selected]:hover {
-    .controls {
-      display: grid;
-    }
-  }
-
 }
 
 
 /* On narrow screens, use a taller aspect ratio */
 @container (max-width: 500px) {
   screencast-panel {
-    aspect-ratio: 0.66;
+    .panel {
+      aspect-ratio: 0.66;
+    }
     
     /* Hide consecutive icons for the same speaker */
     :has(> [data-speaker="Alice"]) + & > [data-speaker="Alice"],

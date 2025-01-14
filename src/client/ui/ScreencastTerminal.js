@@ -1,12 +1,15 @@
 import { effect, signal } from "@preact/signals-core";
 import playSoundEffect from "./playSoundEffect.js";
 import SceneMixin from "./SceneMixin.js";
+import SoundMixin from "./SoundMixin.js";
 
 const startingFrames = 2; // Waiting to start typing
 const waitingPhaseFrames = 3; // Waiting to press return key
 const runningPhaseFrames = 4; // Waiting for program to run
 
-export default class ScreencastTerminal extends SceneMixin(HTMLElement) {
+export default class ScreencastTerminal extends SoundMixin(
+  SceneMixin(HTMLElement)
+) {
   constructor() {
     super();
     this.command = null;
@@ -104,14 +107,16 @@ export default class ScreencastTerminal extends SceneMixin(HTMLElement) {
           ? `${time - startingFrames}ch`
           : "";
 
-      // Play sound effects; don't wait
-      if (phase === "typing" && time > 0) {
-        playSoundEffect("keyClick");
-      } else if (
-        time ===
-        startingFrames + this.textLength + waitingPhaseFrames
-      ) {
-        playSoundEffect("returnClick");
+      if (this.sound) {
+        // Play sound effects; don't wait
+        if (phase === "typing" && time > 0) {
+          playSoundEffect("keyClick");
+        } else if (
+          time ===
+          startingFrames + this.textLength + waitingPhaseFrames
+        ) {
+          playSoundEffect("returnClick");
+        }
       }
     }
   }

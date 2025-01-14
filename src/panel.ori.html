@@ -3,16 +3,15 @@
 ---
 
 <screencast-panel audio-src="/narration/${ slash/remove(key) }.mp3">
-  <div class="caption" data-speaker="${ panel/actor }">
-    <img class="icon" src="/assets/${ panel/actor }.png" />
-    ${ mdHtml(panel/narration) }
-  </div>
-${ panel/scene ? scope:(panel/scene)(panel/options) : "" } ${ panel/footnote ?
-  indent`
-  <div class="footnote">${ mdHtml(panel/footnote) }</div>
-  ` : "" }
-  <div class="controls">
-    <button class="button play"><div class="iconContainer">⏵</div></button>
-    <button class="button pause"><div class="iconContainer">⏸︎</div></button>
+  <div class="panel">
+    <div class="caption" data-speaker="${ panel/actor }">
+      <img class="icon" src="/assets/${ panel/actor }.png" />
+      ${ mdHtml(panel/narration) }
+    </div>
+${ panel/scene ? scope:(panel/scene)(panel/options) : "" }
+  ${ panel/footnote ?
+    indent`
+    <div class="footnote">${ mdHtml(panel/footnote) }</div>
+    ` : "" }
   </div>
 </screencast-panel>

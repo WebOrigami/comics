@@ -1,52 +1,23 @@
 
 screencast-comic {
-  --gap: 1rem;
   --gutter: clamp(1rem, 3vw, 2rem);
   background: #faf9f6;
   container-type: inline-size;
   display: grid;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 16px;
-  gap: var(--gap) 0;
-  grid-template-columns: var(--gutter) 1fr var(--gutter);
+  gap: 5rem 0;
+  grid-template-columns: var(--gutter) auto var(--gutter);
   justify-content: center;
   justify-items: center;
   padding: 30vh 0;
 
   > * {
-    transition: opacity 0.25s;
-  }
+    grid-column: 2;
+    transition: opacity var(--selection-transition-speed);
 
-  /* TEMP */
-  > * {
     &[aria-selected="false"] {
       opacity: 0.66;
-    }
-  }
-
-  /* If this attribute is set, JS is loaded */
-  &[data-playing="true"] {
-    /* During playback, panels that aren't selected are faded */
-    > * {
-      &[aria-selected="false"] {
-        opacity: 0.66;
-      }
-    }
-
-    .button.play {
-      display: none;
-    }
-    .button.pause {
-      display: grid;
-    }
-  }
-
-  &[data-playing="false"] {
-    .button.play {
-      display: grid;
-    }
-    .button.pause {
-      display: none;
     }
   }
 }

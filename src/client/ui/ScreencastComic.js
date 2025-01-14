@@ -1,13 +1,16 @@
 import { effect, signal } from "@preact/signals-core";
 import ScrollingStoppedMixin from "./ScrollingStoppedMixin.js";
+import SoundMixin from "./SoundMixin.js";
 
-export default class ScreencastComic extends ScrollingStoppedMixin(
-  HTMLElement
+const soundStorageKey = "sound";
+
+export default class ScreencastComic extends SoundMixin(
+  ScrollingStoppedMixin(HTMLElement)
 ) {
   constructor() {
     super();
-    this.playingSignal = signal(false);
     this.selectedIndexSignal = signal(-1);
+    this.sound = localStorage.getItem(soundStorageKey) ?? true;
   }
 
   connectedCallback() {
@@ -31,11 +34,6 @@ export default class ScreencastComic extends ScrollingStoppedMixin(
       if (item) {
         this.selectedIndex = this.items.indexOf(item);
       }
-      const playButton = event.target.closest("button");
-      if (playButton) {
-        // Toggle play state
-        this.playing = !this.playing;
-      }
     };
     this.addEventListener("mouseup", clickHandler);
     this.addEventListener("touchend", clickHandler);
@@ -53,22 +51,13 @@ export default class ScreencastComic extends ScrollingStoppedMixin(
       this.items.forEach((item, index) => {
         item.selected = index === selectedIndex;
       });
-
-      if (this.playing) {
-        this.selectedItem?.play();
-      }
     });
 
-    // When playing, automatically play the selected panel
+    // Tell items whether to play sound
     effect(() => {
-      this.setAttribute("data-playing", this.playing);
-      if (this.playing) {
-        this.selectedItem?.play();
-      } else {
-        clearInterval(this.selectNextTimeout);
-        this.selectNextTimeout = null;
-        this.selectedItem?.pause?.();
-      }
+      this.items.forEach((item) => {
+        item.setAttribute("sound", this.sound);
+      });
     });
 
     // Home/End/Up/Down keys move selection, Space toggles play
@@ -102,10 +91,12 @@ export default class ScreencastComic extends ScrollingStoppedMixin(
           this.selectFirst();
           break;
 
-        // Space toggles play state
+        // Space toggles play state of selected item
         case " ":
           event.preventDefault();
-          this.playing = !this.playing;
+          if (this.selectedItem) {
+            this.selectedItem.playing = !this.selectedItem.playing;
+          }
           break;
       }
     });
@@ -120,6 +111,15 @@ export default class ScreencastComic extends ScrollingStoppedMixin(
         this.selectFirst();
       }
     }
+
+    // Save sound value in localStorage
+    effect(() => {
+      localStorage.setItem(soundStorageKey, this.sound);
+    });
+
+    this.addEventListener("sound-change", (event) => {
+      this.sound = event.detail.sound;
+    });
   }
 
   // Return the item in the center of the viewport
@@ -134,21 +134,6 @@ export default class ScreencastComic extends ScrollingStoppedMixin(
 
   get items() {
     return Array.from(this.children);
-  }
-
-  pause() {
-    this.playing = false;
-  }
-
-  play() {
-    this.playing = true;
-  }
-
-  get playing() {
-    return this.playingSignal.value;
-  }
-  set playing(playing) {
-    this.playingSignal.value = playing;
   }
 
   // Called by ScrollingStoppedMixin when scrolling appears to have stopped
