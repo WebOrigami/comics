@@ -23,16 +23,16 @@
   scene: terminal.ori.html
   options: hello.md
   narration: >
-    Think of a file as a spreadsheet cell… but instead of A1, B2 style cell
-    references, you use **paths** and file names to refer to things.
+    Think of your files as a spreadsheet… but instead of using A1, B2 style cell
+    references, you refer to files with **paths and file names**.
   footnote: >
-    Unlike most programming languages, Origami lets you use characters like
-    periods and hyphens in names!
+    Unlike most programming languages, Origami lets you use periods and hyphens
+    in names!
 
 - actor: Bob
   narration: >
-    Where a spreadsheet has built-in math functions, Origami has built-in functions
-    for **transforming data** for use in sites.
+    Where a spreadsheet has built-in math functions, Origami has functions for
+    **transforming data** for use in sites.
 
 - actor: Bob
   scene: editor.ori.html
@@ -41,8 +41,8 @@
     command: |-
       "mdHtml(hello.md)"
   narration: >
-    We can call a function that transforms markdown to HTML, passing our
-    markdown file as input.
+    We can pass our markdown file to a function that **transforms markdown** to
+    HTML.
 
 - actor: Bob
   scene: editor.ori.html
@@ -57,8 +57,8 @@
   scene: terminal.ori.html
   options: teamData.yaml
   narration: >
-    In addition to the file system, Origami can work with other tree structures,
-    like objects in memory, data in files, or content on a server.
+    In addition to the file system, Origami can work with other **tree
+    structures**, like objects in memory, data in files, or content on a server.
 
 - actor: Alice
   scene: editor.ori.html
@@ -67,19 +67,19 @@
     command: teamData.yaml/0/name
   narration: >
     Just like your operating system associates **file extensions** with apps,
-    Origami associates extensions with handlers that can traverse into data.
+    Origami associates extensions with **handlers** that can traverse into data.
 
 - actor: Bob
   narration: >
     Origami resolves references using a **scope** like other programming
-    languages, but scope in Origami extends to the file system.
+    languages, but scope in Origami extends to the **file system**.
 
 - actor: Bob
   scene: terminal.ori.html
   options: README.md
   narration: >
-    If I ask for a file that doesn't exist in this folder, Origami searches up
-    the folder hierarchy until it finds the file.
+    If I ask for a file that doesn't exist in this folder, Origami searches **up
+    the folder hierarchy** until it finds the file.
 
 - actor: Alice
   scene: editor.ori.html
@@ -87,7 +87,7 @@
     file: greet.js
   narration: >
     You don't have to know **JavaScript** to use Origami -- but if you do know
-    JavaScript, you can use it to easily extend what Origami can do!
+    JavaScript, you can use it to extend what Origami can do!
 
 - actor: Alice
   scene: editor.ori.html

@@ -2,9 +2,9 @@
 (panel, key) => @template()
 ---
 
-<screencast-panel audio-src="/narration/${ slash/remove(key) }.mp3">
+<screencast-panel audio-src="/narration/${ slash/remove(key) }.mp3" data-speaker="${ panel/actor }">
   <div class="panel">
-    <div class="caption" data-speaker="${ panel/actor }">
+    <div class="caption">
       <img class="icon" src="/assets/${ panel/actor }.png" />
       ${ mdHtml(panel/narration) }
     </div>
@@ -12,6 +12,7 @@ ${ panel/scene ? scope:(panel/scene)(panel/options) : "" }
   ${ panel/footnote ?
     indent`
     <div class="footnote">${ mdHtml(panel/footnote) }</div>
-    ` : "" }
+    ` : ""
+  }
   </div>
 </screencast-panel>

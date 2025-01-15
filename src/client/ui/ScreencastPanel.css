@@ -62,8 +62,21 @@ screencast-panel {
     gap: 1rem;
     padding: 1rem 0.5rem;
 
-    &[data-speaker="Alice"] {
-      flex-direction: row-reverse;
+  }
+
+  &[data-speaker="Alice"] .caption {
+    flex-direction: row-reverse;
+  }
+
+  /* Hide consecutive icons for the same speaker */
+  &[data-speaker="Alice"] + &[data-speaker="Alice"],
+  &[data-speaker="Bob"] + &[data-speaker="Bob"] {
+    .icon {
+      display: none;
+    }
+
+    .caption {
+      flex-direction: row;
     }
   }
 
@@ -91,13 +104,5 @@ screencast-panel {
     .panel {
       aspect-ratio: 0.66;
     }
-    
-    /* Hide consecutive icons for the same speaker */
-    :has(> [data-speaker="Alice"]) + & > [data-speaker="Alice"],
-    :has(> [data-speaker="Bob"]) + & > [data-speaker="Bob"] {
-      .icon {
-        display: none;
-      }
-    }
-  }
+  }  
 }
