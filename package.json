@@ -2,7 +2,7 @@
   "name": "intro-screencast",
   "type": "module",
   "dependencies": {
-    "@weborigami/origami": "0.2.2",
+    "@weborigami/origami": "0.2.6",
     "@preact/signals-core": "1.8.0"
   },
   "scripts": {
