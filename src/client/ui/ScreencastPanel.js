@@ -231,6 +231,7 @@ export default class ScreencastPanel extends SoundMixin(
 }
 
 function raiseSoundChangeEvent(target, sound) {
+  console.log("raiseSoundChangeEvent", sound);
   target.dispatchEvent(
     new CustomEvent("sound-change", {
       bubbles: true,

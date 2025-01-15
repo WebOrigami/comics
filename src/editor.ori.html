@@ -4,7 +4,7 @@
   </div>
   <div class="editor">
 ${ mdHtml(`\`\`\`${ extension/extname(_/file)/slice(1) }
-${ scope:(_/file) } \`\`\``) }
+${ files:sample(_/file) } \`\`\``) }
   </div>
 ${ _/command ? terminal.ori.html(_/command) : "" }
 </screencast-editor>
