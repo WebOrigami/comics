@@ -1,3 +1,13 @@
+#
+# This is the screenplay for the Origami intro screencast. Everything in the
+# final animated comic, including the voiceover, is directly derived from this
+# screenplay.
+#
+# YAML is used for this purpose because it is fairly easy to write by hand, easy
+# to parse, and accommodates multi-line text well. The narration and footnotes
+# can include markdown formatting that will be transformed to HTML.
+#
+
 - actor: Bob
   scene: terminal.ori.html
   options: 1 + 1
