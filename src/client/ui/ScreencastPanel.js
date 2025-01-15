@@ -52,11 +52,19 @@ export default class ScreencastPanel extends SoundMixin(
     // Acquire elements
     this.animationElement = this.querySelector("screencast-terminal");
     this.audioElement = this.shadowRoot.querySelector("#audio");
+    const buttonSoundIsOff = this.shadowRoot.querySelector("#soundIsOff");
+    const buttonSoundIsOn = this.shadowRoot.querySelector("#soundIsOn");
 
     // Respond to selection
     let played = false;
     effect(() => {
       this.setAttribute("aria-selected", this.selected);
+
+      // Show the buttons when selected
+      // See styling note in template property
+      const opacity = this.selected ? 1 : 0;
+      buttonSoundIsOff.style.opacity = opacity;
+      buttonSoundIsOn.style.opacity = opacity;
 
       if (this.selected) {
         // If we've gained selection and haven't played yet, start playing
@@ -109,31 +117,35 @@ export default class ScreencastPanel extends SoundMixin(
       this.animationPlaying = false;
     });
 
+    effect(() => {
+      // See styling note in template property
+      buttonSoundIsOff.style.display = this.sound ? "none" : "block";
+      buttonSoundIsOn.style.display = this.sound ? "block" : "none";
+    });
+
     // Sound buttons raise events for comic to manage sound
-    this.shadowRoot
-      .querySelector("#soundIsOff")
-      .addEventListener("click", (event) => {
-        this.dispatchEvent(
-          new CustomEvent("sound-change", {
-            bubbles: true,
-            detail: {
-              sound: true,
-            },
-          })
-        );
-      });
-    this.shadowRoot
-      .querySelector("#soundIsOn")
-      .addEventListener("click", (event) => {
-        this.dispatchEvent(
-          new CustomEvent("sound-change", {
-            bubbles: true,
-            detail: {
-              sound: false,
-            },
-          })
-        );
-      });
+    buttonSoundIsOff.addEventListener("click", (event) => {
+      this.audioPlaying = true;
+      this.dispatchEvent(
+        new CustomEvent("sound-change", {
+          bubbles: true,
+          detail: {
+            sound: true,
+          },
+        })
+      );
+    });
+    buttonSoundIsOn.addEventListener("click", (event) => {
+      this.audioPlaying = false;
+      this.dispatchEvent(
+        new CustomEvent("sound-change", {
+          bubbles: true,
+          detail: {
+            sound: false,
+          },
+        })
+      );
+    });
 
     // Absorb mousedown and touchend events so they don't bubble up to the comic
     this.shadowRoot
@@ -174,31 +186,27 @@ export default class ScreencastPanel extends SoundMixin(
 
   get template() {
     // Icons from Google Material Design Icons
+
+    // Note: We'd much prefer to handle some of the styling of the button state
+    // in CSS, but Safari is buggy as hell when it comes to rendering SVGs in
+    // Shadow DOM. We're forced to do it JS effects instead.
     return `
       <style>
+        #controls {
+          position: relative;
+        }
+
         button {
           background: transparent;
           border: none;
           color: #555;
+          display: block;
+          opacity: 0;
           padding: 0;
-          /* visibility: hidden; */
-        }
-
-        :host([aria-selected="true"]) {
-          button {
-            /* visibility: visible; */
-          }
-        }
-
-        :host([sound="true"]) {
-          #soundIsOff {
-            display: none;
-          }
-        }
-        :host([sound="false"]) {
-          #soundIsOn {
-            display: none;
-          }
+          position: absolute;
+          top: 0;
+          transition: opacity 0.25s;
+          left: 0;
         }
       </style>
       <slot></slot>
