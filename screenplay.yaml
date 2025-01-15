@@ -8,6 +8,11 @@
 # can include markdown formatting that will be transformed to HTML.
 #
 
+- actor: Alice
+  narration: >
+    Let's start by writing some expressions in Origami using the command-line
+    interface called **ori**.
+
 - actor: Bob
   scene: terminal.ori.html
   options: 1 + 1
@@ -51,7 +56,7 @@
     command: |-
       "mdHtml(hello.md)"
   narration: >
-    We can pass our markdown file to a function that **transforms it** to HTML.
+    We can pass our markdown file to a function that **transforms** it to HTML.
 
 - actor: Bob
   scene: editor.ori.html
@@ -110,8 +115,8 @@
   scene: terminal.ori.html
   options: greet.js teamData.yaml/0/name
   narration: >
-    You can freely combine these ideas, so you can call a JavaScript function
-    using data from a file.
+    You can freely **combine these ideas**, so you can call a JavaScript
+    function using data from a file.
 
 - actor: Bob
   scene: editor.ori.html

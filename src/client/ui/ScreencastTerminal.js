@@ -30,7 +30,11 @@ export default class ScreencastTerminal extends SoundMixin(
       runningPhaseFrames;
 
     this.addEventListener("click", () => {
-      this.playing = !this.playing;
+      if (!this.playing) {
+        this.play();
+      } else {
+        this.pause();
+      }
     });
 
     effect(() => {

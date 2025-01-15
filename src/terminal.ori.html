@@ -1,9 +1,9 @@
 <screencast-terminal>
   <div class="line1">
-    <span class="prompt">$ </span><span class="command">ori ${ _ }</span
+    <span class="prompt">$ </span><span class="command">${ scope:_ ? `ori ${ _ }` : "" }</span
     ><span class="cursor">█</span>
   </div>
-<pre class="output">${ escapeHtml.js(evaluate.js(_)) }</pre>
+<pre class="output">${ scope:_ ? escapeHtml.js(evaluate.js(_)) : "" }</pre>
   <div class="line2">
     <span class="prompt">$ </span><span class="cursor">█</span>
   </div>
