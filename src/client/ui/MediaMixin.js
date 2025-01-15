@@ -1,7 +1,8 @@
 import { signal } from "@preact/signals-core";
 
-export default function SceneMixin(Base) {
-  return class Scene extends Base {
+// Mixin for something that can be played
+export default function MediaMixin(Base) {
+  return class Media extends Base {
     constructor() {
       super();
       this.playingSignal = signal(false);
@@ -24,6 +25,11 @@ export default function SceneMixin(Base) {
     }
     set playing(playing) {
       this.playingSignal.value = playing;
+    }
+
+    // Media components can use this to reset to their initial state
+    reset() {
+      this.playing = false;
     }
   };
 }

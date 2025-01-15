@@ -1,6 +1,6 @@
 import { effect, signal } from "@preact/signals-core";
+import MediaMixin from "./MediaMixin.js";
 import playSoundEffect from "./playSoundEffect.js";
-import SceneMixin from "./SceneMixin.js";
 import SoundMixin from "./SoundMixin.js";
 
 const startingFrames = 2; // Waiting to start typing
@@ -8,15 +8,16 @@ const waitingPhaseFrames = 3; // Waiting to press return key
 const runningPhaseFrames = 4; // Waiting for program to run
 
 export default class ScreencastTerminal extends SoundMixin(
-  SceneMixin(HTMLElement)
+  MediaMixin(HTMLElement)
 ) {
   constructor() {
     super();
     this.command = null;
+    this.endedSignal = signal(false);
     this.frameCount = 0;
     this.nextFrameTimeout = null;
     this.textLength = 0;
-    this.timeSignal = signal(-1);
+    this.timeSignal = signal(0);
   }
 
   connectedCallback() {
@@ -37,16 +38,23 @@ export default class ScreencastTerminal extends SoundMixin(
       if (!this.playing) {
         clearTimeout(this.nextFrameTimeout);
         this.nextFrameTimeout = null;
-      } else if (this.time >= 0 && this.time <= this.frameCount) {
+      } else if (this.ended) {
+        // Trying to play past end; restart
+        this.time = 0;
+        this.ended = false;
+      } else {
+        // Render the frame for the current time
         this.render(this.time);
 
-        // Next tick
         if (this.time === this.frameCount) {
+          // Stop
           this.playing = false;
+          this.ended = true;
           this.dispatchEvent(
             new CustomEvent("animation-ended", { bubbles: true })
           );
         } else {
+          // Next tick
           let delay = 100 + Math.random() * 100;
           // Give a shorter delay if typing an alphabetic character
           const character =
@@ -64,6 +72,13 @@ export default class ScreencastTerminal extends SoundMixin(
     });
   }
 
+  get ended() {
+    return this.endedSignal.value;
+  }
+  set ended(ended) {
+    this.endedSignal.value = ended;
+  }
+
   phase(time) {
     if (time <= startingFrames) {
       return "starting";
@@ -78,16 +93,9 @@ export default class ScreencastTerminal extends SoundMixin(
     }
   }
 
+  // Override
   get playable() {
-    return this.command?.textContent.length > 0;
-  }
-
-  get playing() {
-    return super.playing;
-  }
-  set playing(playing) {
-    super.playing = playing;
-    this.time = 0;
+    return super.playable && this.command?.textContent.length > 0;
   }
 
   render(time) {
@@ -119,6 +127,11 @@ export default class ScreencastTerminal extends SoundMixin(
         }
       }
     }
+  }
+
+  reset() {
+    super.reset();
+    this.time = 0;
   }
 
   get time() {

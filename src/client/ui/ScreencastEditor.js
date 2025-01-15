@@ -1,6 +1,6 @@
-import SceneMixin from "./SceneMixin.js";
+import MediaMixin from "./MediaMixin.js";
 
-export default class ScreencastEditor extends SceneMixin(HTMLElement) {
+export default class ScreencastEditor extends MediaMixin(HTMLElement) {
   get playable() {
     return this.terminalElement?.playable ?? false;
   }
