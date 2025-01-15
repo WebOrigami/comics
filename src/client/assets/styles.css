@@ -13,17 +13,3 @@ body {
   margin: 0;
   padding: 0;
 }
-
-.intro {
-  aspect-ratio: 4 / 3;
-  border: 3px solid #333;
-  box-sizing: border-box;
-  display: grid;
-  grid-template-rows: auto 1fr;
-  max-height: 90svh;
-  max-width: 800px;
-  overflow: hidden;
-  position: relative;
-  scroll-snap-align: center;
-  width: 100%;
-}
