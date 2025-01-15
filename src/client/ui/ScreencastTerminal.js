@@ -13,7 +13,6 @@ export default class ScreencastTerminal extends SoundMixin(
   constructor() {
     super();
     this.command = null;
-    this.endedSignal = signal(false);
     this.frameCount = 0;
     this.nextFrameTimeout = null;
     this.textLength = 0;
@@ -35,48 +34,39 @@ export default class ScreencastTerminal extends SoundMixin(
     });
 
     effect(() => {
+      // Render the frame for the current time
+      this.render(this.time);
+
       if (!this.playing) {
         clearTimeout(this.nextFrameTimeout);
         this.nextFrameTimeout = null;
-      } else if (this.ended) {
-        // Trying to play past end; restart
-        this.time = 0;
-        this.ended = false;
+      } else if (this.time === this.frameCount) {
+        // Last frame; stop
+        this.playing = false;
+        this.dispatchEvent(
+          new CustomEvent("animation-ended", { bubbles: true })
+        );
       } else {
-        // Render the frame for the current time
-        this.render(this.time);
-
-        if (this.time === this.frameCount) {
-          // Stop
-          this.playing = false;
-          this.ended = true;
-          this.dispatchEvent(
-            new CustomEvent("animation-ended", { bubbles: true })
-          );
-        } else {
-          // Next tick
-          let delay = 100 + Math.random() * 100;
-          // Give a shorter delay if typing an alphabetic character
-          const character =
-            this.phase(this.time) === "typing"
-              ? this.command.textContent[this.time - startingFrames]
-              : null;
-          if (character && /[A-Za-z]/i.test(character)) {
-            delay /= 2;
-          }
-          this.nextFrameTimeout = setTimeout(() => {
-            this.time++;
-          }, delay);
+        // Next tick
+        let delay = 100 + Math.random() * 100;
+        // Give a shorter delay if typing an alphabetic character
+        const character =
+          this.phase(this.time) === "typing"
+            ? this.command.textContent[this.time - startingFrames]
+            : null;
+        if (character && /[A-Za-z]/i.test(character)) {
+          delay /= 2;
         }
+        this.nextFrameTimeout = setTimeout(() => {
+          this.time++;
+        }, delay);
       }
     });
   }
 
-  get ended() {
-    return this.endedSignal.value;
-  }
-  set ended(ended) {
-    this.endedSignal.value = ended;
+  finish() {
+    super.finish();
+    this.time = this.frameCount;
   }
 
   phase(time) {
@@ -91,6 +81,15 @@ export default class ScreencastTerminal extends SoundMixin(
     } else {
       return "done";
     }
+  }
+
+  // Override
+  play() {
+    if (this.time === this.frameCount) {
+      // Trying to play past end; restart at beginning
+      this.time = 0;
+    }
+    super.play();
   }
 
   // Override
@@ -129,8 +128,8 @@ export default class ScreencastTerminal extends SoundMixin(
     }
   }
 
-  reset() {
-    super.reset();
+  restart() {
+    super.restart();
     this.time = 0;
   }
 

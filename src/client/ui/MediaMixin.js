@@ -8,6 +8,11 @@ export default function MediaMixin(Base) {
       this.playingSignal = signal(false);
     }
 
+    // Media components can use this to show their final state
+    finish() {
+      this.playing = false;
+    }
+
     pause() {
       this.playing = false;
     }
@@ -28,7 +33,7 @@ export default function MediaMixin(Base) {
     }
 
     // Media components can use this to reset to their initial state
-    reset() {
+    restart() {
       this.playing = false;
     }
   };

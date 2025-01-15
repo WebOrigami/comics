@@ -65,18 +65,6 @@ export default class ScreencastPanel extends SoundMixin(
       const opacity = this.selected ? 1 : 0;
       buttonSoundIsOff.style.opacity = opacity;
       buttonSoundIsOn.style.opacity = opacity;
-
-      if (this.selected) {
-        // If we've gained selection and haven't played yet, start playing
-        if (!played && !this.playing) {
-          played = true;
-          this.play();
-        }
-      } else {
-        // If we've lost selection, reset
-        this.reset();
-        played = false;
-      }
     });
 
     // Tell animation element whether to play sound
@@ -94,7 +82,11 @@ export default class ScreencastPanel extends SoundMixin(
     // Play/pause animation
     effect(() => {
       if (this.animationElement) {
-        this.animationElement.playing = this.animationPlaying;
+        if (this.animationPlaying) {
+          this.animationElement.play();
+        } else {
+          this.animationElement.pause();
+        }
       }
     });
 
@@ -153,6 +145,11 @@ export default class ScreencastPanel extends SoundMixin(
       });
   }
 
+  finish() {
+    super.finish();
+    this.animationElement?.finish();
+  }
+
   // Override
   get playing() {
     return this.playingSignal.value;
@@ -163,11 +160,9 @@ export default class ScreencastPanel extends SoundMixin(
   }
 
   // Override; reset the audio to the beginning
-  reset() {
-    super.reset();
-    if (this.audioElement) {
-      this.audioElement.currentTime = 0;
-    }
+  restart() {
+    super.restart();
+    this.animationElement?.restart();
   }
 
   get selected() {

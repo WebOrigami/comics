@@ -30,33 +30,43 @@ export default class ScreencastComic extends SoundMixin(
       if (this.scrollInProgress) {
         return; // Ignore clicks while scrolling
       }
-      const item = event.target.closest("screencast-panel");
-      if (item) {
-        this.selectedIndex = this.items.indexOf(item);
+      const panel = event.target.closest("screencast-panel");
+      if (panel) {
+        this.selectedIndex = this.panels.indexOf(panel);
       }
     };
     this.addEventListener("mouseup", clickHandler);
     this.addEventListener("touchend", clickHandler);
 
-    // Tell items whether they're selected
+    // Tell panels whether they're selected
     effect(() => {
-      if (this.selectedItem && this.selectedItem !== this.getCenterItem()) {
-        this.selectedItem?.scrollIntoView({
+      if (this.selectedPanel && this.selectedPanel !== this.getCenterPanel()) {
+        this.selectedPanel?.scrollIntoView({
           behavior: "smooth",
           block: "center",
         });
       }
 
       const selectedIndex = this.selectedIndex;
-      this.items.forEach((item, index) => {
-        item.selected = index === selectedIndex;
+      this.panels.forEach((panel, index) => {
+        panel.selected = index === selectedIndex;
+        if (index < selectedIndex) {
+          // Show past panels as finished
+          panel.finish();
+        } else if (index === selectedIndex) {
+          // Show selected panel as playing
+          panel.play();
+        } else if (index > selectedIndex) {
+          // Show future panels as not started
+          panel.restart();
+        }
       });
     });
 
     // Tell items whether to play sound
     effect(() => {
-      this.items.forEach((item) => {
-        item.setAttribute("sound", this.sound);
+      this.panels.forEach((panel) => {
+        panel.setAttribute("sound", this.sound);
       });
     });
 
@@ -94,18 +104,18 @@ export default class ScreencastComic extends SoundMixin(
         // Space toggles play state of selected item
         case " ":
           event.preventDefault();
-          if (this.selectedItem) {
-            this.selectedItem.playing = !this.selectedItem.playing;
+          if (this.selectedPanel) {
+            this.selectedPanel.playing = !this.selectedPanel.playing;
           }
           break;
       }
     });
 
     // If we have items, select one
-    if (this.items.length > 0) {
+    if (this.panels.length > 0) {
       if (document.documentElement.scrollTop > 0) {
         // Page was reloaded while scrolled down
-        this.selectCenterItem();
+        this.selectCenterPanel();
       } else {
         // Select first item by default
         this.selectFirst();
@@ -123,33 +133,33 @@ export default class ScreencastComic extends SoundMixin(
   }
 
   // Return the item in the center of the viewport
-  getCenterItem() {
+  getCenterPanel() {
     const middle = window.innerHeight / 2;
-    const item = this.items.find((item) => {
+    const panel = this.panels.find((item) => {
       const itemRect = item.getBoundingClientRect();
       return itemRect.top <= middle && middle <= itemRect.bottom;
     });
-    return item;
+    return panel;
   }
 
-  get items() {
+  get panels() {
     return Array.from(this.children);
   }
 
   // Called by ScrollingStoppedMixin when scrolling appears to have stopped
   scrollingStopped() {
-    this.selectCenterItem();
+    this.selectCenterPanel();
   }
 
-  selectCenterItem() {
-    const centerItem = this.getCenterItem();
-    if (centerItem !== this.selectedItem) {
-      this.selectedIndex = this.items.indexOf(centerItem);
+  selectCenterPanel() {
+    const centerItem = this.getCenterPanel();
+    if (centerItem !== this.selectedPanel) {
+      this.selectedIndex = this.panels.indexOf(centerItem);
     }
   }
 
-  get selectedItem() {
-    return this.items[this.selectedIndex] ?? null;
+  get selectedPanel() {
+    return this.panels[this.selectedIndex] ?? null;
   }
 
   get selectedIndex() {
@@ -164,12 +174,12 @@ export default class ScreencastComic extends SoundMixin(
   }
 
   selectLast() {
-    this.selectedIndex = this.items.length - 1;
+    this.selectedIndex = this.panels.length - 1;
   }
 
   selectNext() {
     this.selectedIndex = Math.min(
-      this.items.length - 1,
+      this.panels.length - 1,
       this.selectedIndex + 1
     );
   }
