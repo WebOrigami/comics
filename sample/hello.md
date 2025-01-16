@@ -1,1 +1,1 @@
-This word should be **bold**.
+Welcome to my **new site**!
