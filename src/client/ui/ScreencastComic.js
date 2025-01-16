@@ -1,6 +1,9 @@
 import { effect, signal } from "@preact/signals-core";
+import ScreencastPanel from "./ScreencastPanel.js";
 import ScrollingStoppedMixin from "./ScrollingStoppedMixin.js";
 import SoundMixin from "./SoundMixin.js";
+
+const forceLoad = [ScreencastPanel];
 
 const soundStorageKey = "sound";
 

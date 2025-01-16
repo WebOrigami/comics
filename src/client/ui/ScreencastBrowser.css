@@ -1,0 +1,49 @@
+screencast-browser {
+  background: #ccc;
+  display: grid;
+  grid-template-rows: auto 1fr;
+
+  .addressBar {
+    background: #f0f0f0;
+    box-sizing: border-box;
+    border: 1px solid transparent;
+    color: black;
+    margin: 0.5rem;
+    padding: 0.5rem;
+  }
+
+  .background {
+    background: white;
+    display: grid;
+    font-family: serif;
+    
+    .page {
+      font-size: larger;
+      padding: 0.5rem;
+    }
+  }
+
+  &.starting {
+    .addressBar {
+      color: white;
+    }
+  }
+
+  &.starting,
+  &.typing,
+  &.waiting {
+    .addressBar {
+      background: white;
+      border-color: lightblue;
+    }
+  }
+
+  &.starting,
+  &.typing,
+  &.waiting,
+  &.loading {
+    .page {
+      visibility: hidden;
+    }
+  }
+}

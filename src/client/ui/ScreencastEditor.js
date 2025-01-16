@@ -1,4 +1,7 @@
 import MediaMixin from "./MediaMixin.js";
+import ScreencastTerminal from "./ScreencastTerminal.js";
+
+const forceLoad = [ScreencastTerminal];
 
 export default class ScreencastEditor extends MediaMixin(HTMLElement) {
   // Override
@@ -13,17 +16,22 @@ export default class ScreencastEditor extends MediaMixin(HTMLElement) {
     this.terminalElement?.restart();
   }
 
+  // Override
+  play() {
+    super.play();
+    this.terminalElement?.play();
+  }
+
   get playable() {
     return this.terminalElement?.playable ?? false;
   }
 
-  get playing() {
-    return super.playing;
+  get sound() {
+    return this.terminalElement?.sound ?? false;
   }
-  set playing(playing) {
-    super.playing = playing;
+  set sound(sound) {
     if (this.terminalElement) {
-      this.terminalElement.playing = playing;
+      this.terminalElement.sound = sound;
     }
   }
 
@@ -31,3 +39,5 @@ export default class ScreencastEditor extends MediaMixin(HTMLElement) {
     return this.querySelector("screencast-terminal");
   }
 }
+
+customElements.define("screencast-editor", ScreencastEditor);

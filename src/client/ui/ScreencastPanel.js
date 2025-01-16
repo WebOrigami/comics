@@ -1,7 +1,12 @@
 import { computed, effect, signal } from "@preact/signals-core";
 import AttributeMarshallingMixin from "./AttributeMarshallingMixin.js";
 import MediaMixin from "./MediaMixin.js";
+import ScreencastBrowser from "./ScreencastBrowser.js";
+import ScreencastEditor from "./ScreencastEditor.js";
+import ScreencastTerminal from "./ScreencastTerminal.js";
 import SoundMixin from "./SoundMixin.js";
+
+const forceLoad = [ScreencastBrowser, ScreencastEditor, ScreencastTerminal];
 
 export default class ScreencastPanel extends SoundMixin(
   MediaMixin(AttributeMarshallingMixin(HTMLElement))
@@ -50,13 +55,15 @@ export default class ScreencastPanel extends SoundMixin(
     this.shadowRoot.innerHTML = this.template;
 
     // Acquire elements
-    this.animationElement = this.querySelector("screencast-terminal");
+    this.animationElement = this.querySelector(".scene");
+    if (this.animationElement?.constructor === HTMLElement) {
+      debugger;
+    }
     this.audioElement = this.shadowRoot.querySelector("#audio");
     const buttonSoundIsOff = this.shadowRoot.querySelector("#soundIsOff");
     const buttonSoundIsOn = this.shadowRoot.querySelector("#soundIsOn");
 
     // Respond to selection
-    let played = false;
     effect(() => {
       this.setAttribute("aria-selected", this.selected);
 
@@ -83,9 +90,9 @@ export default class ScreencastPanel extends SoundMixin(
     effect(() => {
       if (this.animationElement) {
         if (this.animationPlaying) {
-          this.animationElement.play();
+          this.animationElement.play?.();
         } else {
-          this.animationElement.pause();
+          this.animationElement.pause?.();
         }
       }
     });
@@ -147,7 +154,7 @@ export default class ScreencastPanel extends SoundMixin(
 
   finish() {
     super.finish();
-    this.animationElement?.finish();
+    this.animationElement?.finish?.();
   }
 
   // Override
@@ -162,7 +169,7 @@ export default class ScreencastPanel extends SoundMixin(
   // Override; reset the audio to the beginning
   restart() {
     super.restart();
-    this.animationElement?.restart();
+    this.animationElement?.restart?.();
   }
 
   get selected() {

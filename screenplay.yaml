@@ -144,3 +144,55 @@
   narration: >
     But **adding a slash** lets Origami know that, instead of getting the
     formula, we want to get its **value**.
+
+- actor: Alice
+  narration: >
+    Origami is good for creating lots of things but especially websites. You can
+    think of a site as a **tree of resources**.
+
+- actor: Alice
+  scene: terminal.ori.html
+  options: |-
+    { a: 1 }
+  narration: >
+    You can define a tree with an **object expression**. This tiny object has a
+    single property called "a".
+
+- actor: Alice
+  scene: terminal.ori.html
+  options: |-
+    { a: 1 }/a
+  narration: >
+    We can use a **path** to traverse the tree and get the value of that property.
+
+- actor: Bob
+  scene: editor.ori.html
+  options:
+    file: site.ori
+  narration: >
+    In an Origami file, you define an object that has the **structure** you want
+    for your site. This little site has a single page called index.html.
+
+# - actor: Bob
+#   scene: editor.ori.html
+#   options:
+#     file: site.ori
+#     command: site.ori/
+#   narration: >
+#     We can ask Origami to evaluate that file to see the tree it represents.
+
+- actor: Alice
+  scene: editor.ori.html
+  options:
+    file: site.ori
+    command: serve
+  narration: >
+    We can **serve** the tree defined by this file…
+
+- actor: Alice
+  scene: browser.ori.html
+  options:
+    path: localhost:5000
+    page: site.ori/index.html
+  narration: >
+    and open the site **in a browser** to see the page!
