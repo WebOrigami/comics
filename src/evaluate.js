@@ -8,6 +8,12 @@ export default async function evaluate(expression) {
   // Add the sample files to the scope
   const scope = scopeFn(this);
   const sample = await scope.get("sample");
+
+  if (processed.startsWith("serve")) {
+    // Fake server
+    return `Server running at http://localhost:5000. Press Ctrl+C to stop.`;
+  }
+
   const result = await ori.call(sample, processed);
   return result;
 }

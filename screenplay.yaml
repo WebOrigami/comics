@@ -185,7 +185,7 @@
   scene: editor.ori.html
   options:
     file: site.ori
-    command: serve
+    command: serve site.ori
   narration: >
     We can **serve** the tree defined by this file…
 
