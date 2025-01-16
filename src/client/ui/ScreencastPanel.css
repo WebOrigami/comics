@@ -42,6 +42,7 @@ screencast-panel {
 
   p {
     margin: 0;
+    width: 100%;
   }
   
   .icon {
@@ -58,13 +59,14 @@ screencast-panel {
   .caption {
     align-items: center;
     background: white;
+    box-sizing: border-box;
     display: flex;
     gap: 1rem;
     padding: 1rem 0.5rem;
-
   }
 
-  &[data-speaker="Alice"] .caption {
+  /* Icon/caption are flipped for second speaker */
+  &[data-speaker="Bob"] .caption {
     flex-direction: row-reverse;
   }
 
