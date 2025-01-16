@@ -1,26 +1,36 @@
 @font-face {
-  font-display: fallback;
-  font-family: "Anime Ace";
+  font-family: "Anime Ace 3";
+  src: url("/assets/fonts/AnimeAce3BB-Regular.woff") format("woff");
   font-style: normal;
-  font-weight: 400;
-  src: url("/assets/fonts/animeace.ttf");
+  font-weight: normal;
+  text-rendering: optimizeLegibility;
 }
 
+/* 
 @font-face {
-  font-display: fallback;
-  font-family: "Anime Ace";
+  font-family: "Anime Ace 3";
+  src: url("/assets/fonts/AnimeAce3BB-Bold.woff") format("woff");
+  font-style: normal;
+  font-weight: bold;
+  text-rendering: optimizeLegibility;
+} */
+ 
+@font-face {
+  font-family: "Anime Ace 3";
+  src: url("/assets/fonts/AnimeAce3BB-Italic.woff") format("woff");
   font-style: italic;
-  font-weight: 400;
-  src: url("/assets/fonts/animeace_i.ttf");
+  font-weight: normal;
+  text-rendering: optimizeLegibility;
 }
 
 @font-face {
-  font-display: fallback;
-  font-family: "Anime Ace";
-  font-style: bold;
-  font-weight: 700;
-  src: url("/assets/fonts/animeace_b.ttf");
+  font-family: "Anime Ace 3";
+  src: url("/assets/fonts/AnimeAce3BB-BoldItalic.woff") format("woff");
+  font-style: italic;
+  font-weight: bold;
+  text-rendering: optimizeLegibility;
 }
+
 
 screencast-panel {
   display: grid;
@@ -53,7 +63,9 @@ screencast-panel {
 
   .caption,
   .footnote {
-    font-family: "Anime Ace", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: "Anime Ace 3", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 20px;
+    line-height: 1.1;
   }
 
   .caption {
@@ -63,6 +75,11 @@ screencast-panel {
     display: flex;
     gap: 1rem;
     padding: 1rem 0.5rem;
+
+    /* strong = bold and italic */
+    strong {
+      font-style: italic;
+    }
   }
 
   /* Icon/caption are flipped for second speaker */
@@ -86,6 +103,7 @@ screencast-panel {
     bottom: 0.5em;
     display: flex;
     flex-direction: row-reverse;
+    font-style: italic;
     left: 0.5em;
     position: absolute;
     right: 0.5em;

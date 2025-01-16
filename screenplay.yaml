@@ -17,14 +17,14 @@
   scene: terminal.ori.html
   options: 1 + 1
   narration: >
-    If I type **ori 1 + 1** it evaluates that and displays **2**.
+    If I type **ori 1 + 1**, it evaluates that and displays **2**.
 
 - actor: Bob
   scene: terminal.ori.html
   options: |-
     \"hello\"
   narration: >
-    If I type **ori "hello"** ori displays **hello**.
+    If I type **ori "hello"**, ori displays **hello**.
   footnote: In the shell, you need to escape or nest quotes.
 
 - actor: Bob
@@ -41,8 +41,8 @@
     Think of your files as a spreadsheet… but instead of using A1, B2 style cell
     references, you refer to files with **paths and file names**.
   footnote: >
-    Unlike most programming languages, Origami lets you use periods and hyphens
-    in names!
+    Unlike most programming languages, Origami lets you use **periods** and
+    **hyphens** in names!
 
 - actor: Bob
   narration: >
@@ -125,7 +125,7 @@
   narration: >
     You can save an Origami expression **in its own file** so you can quickly
     invoke it later.
-  footnote: Origami files have a .ori extension.
+  footnote: Origami files have a **.ori** extension.
 
 - actor: Bob
   scene: editor.ori.html
@@ -170,8 +170,8 @@
   options:
     file: site.ori
   narration: >
-    In an Origami file, you define an object that has the **structure** you want
-    for your site.
+    To create a site, you can define an object with the **structure** and
+    **contents** you want.
   footnote: This little site has a **single page** called index.html!
 
 # - actor: Bob
