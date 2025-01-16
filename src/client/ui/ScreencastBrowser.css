@@ -4,12 +4,24 @@ screencast-browser {
   grid-template-rows: auto 1fr;
 
   .addressBar {
-    background: #f0f0f0;
-    box-sizing: border-box;
-    border: 1px solid transparent;
+    align-items: center;
     color: black;
-    margin: 0.5rem;
+    display: grid;
+    grid-template-columns: auto auto 1fr;
     padding: 0.5rem;
+
+    .icon {
+      height: 1.5rem;
+      width: 1.5rem;
+    }
+
+    screencast-typewriter {
+      background: #f0f0f0;
+      box-sizing: border-box;
+      border: 1px solid transparent;
+      margin-left: 0.5rem;
+      padding: 0.5rem;
+    }
   }
 
   .background {
@@ -26,7 +38,7 @@ screencast-browser {
   &.starting,
   &.typing,
   &.waiting {
-    .addressBar {
+    .addressBar screencast-typewriter {
       background: white;
       border-color: lightblue;
     }

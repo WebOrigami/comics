@@ -73,12 +73,12 @@ screencast-panel {
   /* Hide consecutive icons for the same speaker */
   &[data-speaker="Alice"] + &[data-speaker="Alice"],
   &[data-speaker="Bob"] + &[data-speaker="Bob"] {
-    .icon {
-      display: none;
-    }
-
     .caption {
       flex-direction: row;
+
+      .icon {
+        display: none;
+      }
     }
   }
 
