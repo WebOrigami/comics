@@ -6,26 +6,16 @@ screencast-terminal {
   grid-auto-rows: min-content;
   padding: var(--window-padding);
   
-  .line1 {
-    /* Without this Safari messes up vertical alignement */
-    display: flex;
-  }
+  screencast-typewriter {
+    .prefix {
+      color: #FAC863;
+      font-weight: bold;
+      width: 2ch; /* Since we have to use grid */
+    }
 
-  .prompt {
-    color: #FAC863;
-    font-weight: bold;
-    width: 2ch; /* Since we have to use grid */
-  }
-
-  .line1 .cursor {
-    display: none;
-  }
-
-  .command {
-    display: inline-block;
-    font-weight: bold;
-    overflow: clip;
-    text-wrap: nowrap;
+    .text {
+      font-weight: bold;
+    }
   }
 
   pre {
@@ -34,28 +24,15 @@ screencast-terminal {
     overflow: hidden;
   }
 
-  &.starting,
-  &.typing,
-  &.waiting {
-    .line1 .cursor {
-      display: inline;
-    }
-
+  &.typing {
     .output {
-      display: none;
-    }
-
-    .line2 {
       display: none;
     }
   }
 
+  &.typing,
   &.running {
-    .output {
-      display: none;
-    }
-
-    .line2 .prompt {
+    screencast-typewriter:nth-of-type(2) {
       display: none;
     }
   }

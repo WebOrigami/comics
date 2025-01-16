@@ -13,7 +13,11 @@ export default class ScreencastTypewriter extends TimelineMixin(
   }
 
   connectedCallback() {
-    this.text = this.textElement?.textContent ?? "";
+    // Get initial text from textElement
+    let text = this.textElement?.textContent ?? "";
+    // Use non-breaking spaces
+    text = text.replace(/ /g, "\u00A0");
+    this.text = text;
 
     super.connectedCallback();
 

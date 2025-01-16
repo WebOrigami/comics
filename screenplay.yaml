@@ -196,4 +196,4 @@
     path: localhost:5000
     page: site.ori/index.html
   narration: >
-    and open the site **in a browser** to see the page!
+    …and open the site **in a browser** to see the page!

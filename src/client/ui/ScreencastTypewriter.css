@@ -20,7 +20,7 @@ screencast-typewriter {
 
   &.typing,
   &.waiting {
-    .cursor {
+    .caret {
       animation: blink 1s step-start infinite;
     }
   }

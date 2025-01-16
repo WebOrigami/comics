@@ -1,10 +1,5 @@
 <screencast-terminal class="scene">
-  <div class="line1">
-    <span class="prompt">$ </span><span class="command">${ scope:_ ? `ori ${ _ }` : "" }</span
-    ><span class="cursor">█</span>
-  </div>
+  ${ typewriter.ori.html(scope:_ ? `ori ${ _ }` : "", "$&nbsp;", "block") }
 <pre class="output">${ scope:_ ? escapeHtml.js(evaluate.js(_)) : "" }</pre>
-  <div class="line2">
-    <span class="prompt">$ </span><span class="cursor">█</span>
-  </div>
+  ${ typewriter.ori.html("", "$&nbsp;", "block") }
 </screencast-terminal>
