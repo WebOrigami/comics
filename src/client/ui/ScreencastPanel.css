@@ -107,12 +107,14 @@ screencast-panel {
     left: 0.5em;
     position: absolute;
     right: 0.5em;
-
+    
     p {
       background: palegoldenrod;
       padding: 0.5em;
       text-wrap: balance;
-      width: fit-content;
+      min-width: 300px;
+      width: min-content;
+      /* width: fit-content; */
     }
   }
 }
