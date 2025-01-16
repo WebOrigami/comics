@@ -63,10 +63,8 @@ export default class ScreencastTypewriter extends TimelineMixin(
       let effect;
       if (phase === "typing") {
         effect = "keyClick";
-        console.log(this.text[index], effect);
       } else if (phase === "return") {
         effect = "returnClick";
-        console.log("return", effect);
       }
       if (effect) {
         // Don't wait for async function to complete

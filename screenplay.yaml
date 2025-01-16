@@ -171,7 +171,8 @@
     file: site.ori
   narration: >
     In an Origami file, you define an object that has the **structure** you want
-    for your site. This little site has a single page called index.html.
+    for your site.
+  footnote: This little site has a **single page** called index.html!
 
 # - actor: Bob
 #   scene: editor.ori.html
