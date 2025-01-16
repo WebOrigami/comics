@@ -1,0 +1,41 @@
+screencast-typewriter {
+  /* Without this Safari messes up vertical alignement */
+  display: flex;
+
+  .caret {
+    border-left: 1.5px solid black;
+    margin-left: 1px;
+  }
+
+  .text {
+    overflow: clip;
+    text-wrap: nowrap;
+  }
+
+  .prompt {
+    color: #FAC863;
+    font-weight: bold;
+    width: 2ch; /* Since we have to use grid */
+  }
+
+  &.typing,
+  &.waiting {
+    .cursor {
+      animation: blink 1s step-start infinite;
+    }
+  }
+
+  &.return,
+  &.done {
+    .cursor {
+      display: none;
+    }
+  }
+}
+
+/* Text caret blink animation */
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}

@@ -8,6 +8,7 @@ export default function SoundMixin(Base) {
     }
 
     attributeChangedCallback(name, oldValue, newValue) {
+      super.attributeChangedCallback?.(name, oldValue, newValue);
       if (name === "sound") {
         this.sound = String(newValue) === "true";
       } else {

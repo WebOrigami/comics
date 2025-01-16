@@ -1,111 +1,52 @@
-import { effect, signal } from "@preact/signals-core";
+import { effect } from "@preact/signals-core";
 import MediaMixin from "./MediaMixin.js";
+import ScreencastTypewriter from "./ScreencastTypewriter.js";
+import SoundMixin from "./SoundMixin.js";
+import TimelineMixin from "./TimelineMixin.js";
 
-const startingFrames = 2; // Waiting to start typing
-const typingFrames = 1;
-const waitingPhaseFrames = 1; // Waiting to press return key
-const loadingPhaseFrames = 3; // Waiting for page to load
+const forceLoad = [ScreencastTypewriter];
 
-export default class ScreencastBrowser extends MediaMixin(HTMLElement) {
-  constructor() {
-    super();
-    // this.command = null;
-    this.frameCount = 0;
-    this.nextFrameTimeout = null;
-    // this.textLength = 0;
-    this.timeSignal = signal(0);
-  }
-
+export default class ScreencastBrowser extends TimelineMixin(
+  MediaMixin(SoundMixin(HTMLElement))
+) {
   connectedCallback() {
-    // this.command = this.querySelector(".command");
-    // this.textLength = this.command?.textContent.length ?? 0;
+    super.connectedCallback?.();
 
-    this.frameCount =
-      startingFrames + typingFrames + waitingPhaseFrames + loadingPhaseFrames;
+    // this.addEventListener("click", () => {
+    //   if (!this.playing) {
+    //     this.play();
+    //   } else {
+    //     this.pause();
+    //   }
+    // });
 
-    this.addEventListener("click", () => {
-      if (!this.playing) {
-        this.play();
-      } else {
-        this.pause();
-      }
-    });
-
+    // Propagate sound setting to typewriter
     effect(() => {
-      // Render the frame for the current time
-      this.render(this.time);
-
-      if (!this.playing) {
-        clearTimeout(this.nextFrameTimeout);
-        this.nextFrameTimeout = null;
-      } else if (this.time === this.frameCount) {
-        // Last frame; stop
-        this.playing = false;
-        this.dispatchEvent(
-          new CustomEvent("animation-ended", { bubbles: true })
-        );
-      } else {
-        // Next tick
-        let delay = 150;
-        this.nextFrameTimeout = setTimeout(() => {
-          this.time++;
-        }, delay);
+      if (this.typewriterElement) {
+        this.typewriterElement.sound = this.sound;
       }
     });
+
+    // Incorporate typewriter phases
+    const typing = this.typewriterElement ? this.typewriterElement.frames : [];
+    this.phases = {
+      typing,
+      loading: [300],
+    };
   }
 
-  finish() {
-    super.finish();
-    this.time = this.frameCount;
-  }
+  renderFrame(phase, index) {
+    super.renderFrame(phase, index);
 
-  phase(time) {
-    if (time <= startingFrames) {
-      return "starting";
-    } else if (time <= startingFrames + typingFrames) {
-      return "typing";
-    } else if (time <= startingFrames + typingFrames + waitingPhaseFrames) {
-      return "waiting";
-    } else if (time < this.frameCount) {
-      return "loading";
-    } else {
-      return "done";
+    if (this.typewriterElement) {
+      const typewriterTime =
+        phase === "typing" ? index : this.phases.typing?.length;
+      this.typewriterElement.renderTime(typewriterTime);
     }
   }
 
-  // Override
-  play() {
-    if (this.time === this.frameCount) {
-      // Trying to play past end; restart at beginning
-      this.time = 0;
-    }
-    super.play();
-  }
-
-  // Override
-  get playable() {
-    return super.playable && this.command?.textContent.length > 0;
-  }
-
-  render(time) {
-    // Update phase
-    const phase = this.phase(time);
-    this.classList.toggle("starting", phase === "starting");
-    this.classList.toggle("typing", phase === "typing");
-    this.classList.toggle("waiting", phase === "waiting");
-    this.classList.toggle("loading", phase === "loading");
-  }
-
-  restart() {
-    super.restart();
-    this.time = 0;
-  }
-
-  get time() {
-    return this.timeSignal.value;
-  }
-  set time(time) {
-    this.timeSignal.value = time;
+  get typewriterElement() {
+    return this.querySelector("screencast-typewriter");
   }
 }
 

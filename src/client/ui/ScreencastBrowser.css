@@ -23,12 +23,6 @@ screencast-browser {
     }
   }
 
-  &.starting {
-    .addressBar {
-      color: white;
-    }
-  }
-
   &.starting,
   &.typing,
   &.waiting {
