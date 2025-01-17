@@ -33,13 +33,14 @@
 
 
 screencast-panel {
+  --border: 3px solid #333;
   display: grid;
   grid-template-rows: 1fr auto;
   width: 100%;
 
   .panel {
     aspect-ratio: 4 / 3;
-    border: 3px solid #333;
+    border: var(--border);
     box-sizing: border-box;
     display: grid;
     grid-template-rows: auto 1fr;
@@ -71,6 +72,7 @@ screencast-panel {
   .caption {
     align-items: center;
     background: white;
+    border-bottom: var(--border);
     box-sizing: border-box;
     display: flex;
     gap: 1rem;

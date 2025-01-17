@@ -146,6 +146,8 @@
     formula, we want to get its **value**.
 
 - actor: Alice
+  scene: graphic.ori.html
+  options: tree.ori.html/
   narration: >
     Origami is good for creating lots of things but especially websites. You can
     think of a site as a **tree of resources**.

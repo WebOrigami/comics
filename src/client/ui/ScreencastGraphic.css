@@ -1,0 +1,25 @@
+screencast-graphic {
+  background: black;
+  display: grid;
+  overflow: hidden;
+
+  > * {
+    opacity: 1;
+    transition: opacity 0.5s;
+  }
+
+  &.hidden {
+    > * {
+      opacity: 0;
+    }
+  }
+
+  > figure {
+    margin: 0;
+    max-width: 100%;
+
+    svg {
+      max-width: 150%;
+    }
+  }
+}

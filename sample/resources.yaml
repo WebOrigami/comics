@@ -1,0 +1,6 @@
+assets:
+  styles.css: "body { background-color: #f0f0f0; }"
+  favicon.ico: "[binary data]"
+index.html: <h1>Home</h1>
+about:
+  index.html: <h1>About Us</h1>
