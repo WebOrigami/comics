@@ -209,12 +209,18 @@ export default class ScreencastPanel extends SoundMixin(
           padding: 0;
           position: absolute;
           top: 0;
-          transition: opacity 0.25s;
+          transition: opacity var(--selection-transition-speed);
           left: 0;
+
+          svg {
+            height: 2rem;
+            width: 2rem;
+          }
         }
 
         #soundMessage {
           display: none;
+          font-size: 1rem;
 
           :host(:first-of-type) & {
             display: inline-block;
