@@ -11,6 +11,7 @@ screencast-browser {
     padding: 0.5rem;
 
     .icon {
+      color: #555;
       height: 1.5rem;
       width: 1.5rem;
     }

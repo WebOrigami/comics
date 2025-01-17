@@ -7,6 +7,11 @@ screencast-typewriter {
     margin-left: 1px;
   }
 
+  .block {
+    background: currentColor;
+    width: 1ch;
+  }
+
   .text {
     overflow: clip;
     text-wrap: nowrap;

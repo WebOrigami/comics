@@ -33,6 +33,9 @@
   scene: editor.ori.html
   options:
     file: hello.md
+  footnote: >
+    This is an example of a **markdown** file, a common way to write text with
+    formatting.
 
 - actor: Alice
   scene: terminal.ori.html
