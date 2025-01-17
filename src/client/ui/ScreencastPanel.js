@@ -3,10 +3,16 @@ import AttributeMarshallingMixin from "./AttributeMarshallingMixin.js";
 import MediaMixin from "./MediaMixin.js";
 import ScreencastBrowser from "./ScreencastBrowser.js";
 import ScreencastEditor from "./ScreencastEditor.js";
+import ScreencastGraphic from "./ScreencastGraphic.js";
 import ScreencastTerminal from "./ScreencastTerminal.js";
 import SoundMixin from "./SoundMixin.js";
 
-const forceLoad = [ScreencastBrowser, ScreencastEditor, ScreencastTerminal];
+const forceLoad = [
+  ScreencastBrowser,
+  ScreencastEditor,
+  ScreencastGraphic,
+  ScreencastTerminal,
+];
 
 export default class ScreencastPanel extends SoundMixin(
   MediaMixin(AttributeMarshallingMixin(HTMLElement))
@@ -57,7 +63,9 @@ export default class ScreencastPanel extends SoundMixin(
     // Acquire elements
     this.animationElement = this.querySelector(".scene");
     if (this.animationElement?.constructor === HTMLElement) {
-      debugger;
+      console.warn(
+        "ScreencastPanel was instantiated before the scene component class was loaded."
+      );
     }
     this.audioElement = this.shadowRoot.querySelector("#audio");
     const buttonSoundIsOff = this.shadowRoot.querySelector("#soundIsOff");

@@ -6,13 +6,16 @@ import SoundMixin from "./SoundMixin.js";
 const forceLoad = [ScreencastPanel];
 
 const soundStorageKey = "sound";
+const selectedPanelKey = "selectedPanel";
 
 export default class ScreencastComic extends SoundMixin(
   ScrollingStoppedMixin(HTMLElement)
 ) {
   constructor() {
     super();
-    this.selectedIndexSignal = signal(-1);
+    const previousSelectedIndex =
+      parseInt(localStorage.getItem(selectedPanelKey)) ?? -1;
+    this.selectedIndexSignal = signal(previousSelectedIndex);
     this.sound = localStorage.getItem(soundStorageKey) ?? true;
   }
 
@@ -42,12 +45,14 @@ export default class ScreencastComic extends SoundMixin(
     this.addEventListener("touchend", clickHandler);
 
     // Tell panels whether they're selected
+    let firstSelection = false;
     effect(() => {
       if (this.selectedPanel && this.selectedPanel !== this.getCenterPanel()) {
         this.selectedPanel?.scrollIntoView({
-          behavior: "smooth",
+          behavior: firstSelection ? "instant" : "smooth",
           block: "center",
         });
+        firstSelection = false;
       }
 
       const selectedIndex = this.selectedIndex;
@@ -114,19 +119,15 @@ export default class ScreencastComic extends SoundMixin(
       }
     });
 
-    // If we have items, select one
-    if (this.panels.length > 0) {
-      if (document.documentElement.scrollTop > 0) {
-        // Page was reloaded while scrolled down
-        this.selectCenterPanel();
-      } else {
-        // Select first item by default
-        this.selectFirst();
-      }
+    // If we have items, select first panel by default
+    if (this.selectedIndex === -1 && this.panels.length > 0) {
+      // Select first item by default
+      this.selectFirst();
     }
 
-    // Save sound value in localStorage
+    // Save values in localStorage
     effect(() => {
+      localStorage.setItem(selectedPanelKey, this.selectedIndex);
       localStorage.setItem(soundStorageKey, this.sound);
     });
 
