@@ -84,16 +84,21 @@
     Origami associates extensions with **handlers** that can traverse into data.
 
 - actor: Bob
+  scene: graphic.ori.html
+  options: graphics/scope.ori.html/
   narration: >
     Origami resolves references using a **scope** like other programming
     languages, but scope in Origami extends to the **file system**.
+  footnote: >
+    If you were in the **src** folder, the project's top-level files would
+    also be in scope.
 
 - actor: Bob
   scene: terminal.ori.html
   options: README.md
   narration: >
-    If I ask for a file that doesn't exist in this folder, Origami searches **up
-    the folder hierarchy** until it finds the file.
+    If I ask for a file that doesn't exist in the current folder, Origami
+    searches **up the folder hierarchy** until it finds the file.
 
 - actor: Alice
   scene: editor.ori.html

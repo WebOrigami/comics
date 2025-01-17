@@ -2,6 +2,7 @@ screencast-graphic {
   background: black;
   display: grid;
   overflow: hidden;
+  padding: 0.5rem;
 
   > * {
     opacity: 1;
@@ -21,5 +22,14 @@ screencast-graphic {
     svg {
       max-width: 150%;
     }
+  }
+
+  &:has(> figure) {
+    background: white;
+  }
+
+  > pre {
+    color: white;
+    margin: 0;
   }
 }
