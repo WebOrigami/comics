@@ -119,6 +119,15 @@ screencast-panel {
       /* width: fit-content; */
     }
   }
+
+  &:nth-of-type(even) {
+    .footnote {
+      p {
+        /* Vary width a bit to relieve monotony */
+        min-width: 350px;
+      }
+    }
+  }
 }
 
 

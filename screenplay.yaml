@@ -9,15 +9,18 @@
 #
 
 - actor: Alice
+  scene: graphic.ori.html
+  options: graphics/title.ori.html/
   narration: >
-    Let's start by writing some expressions in Origami using the command-line
+    Let's start looking at the Origami language by using the command-line
     interface called **ori**.
 
 - actor: Bob
   scene: terminal.ori.html
   options: 1 + 1
   narration: >
-    If I type **ori 1 + 1**, it evaluates that and displays **2**.
+    The ori tool evaluates an **expression in the Origami language**, so if I
+    type **ori 1 + 1**, it displays **2**.
 
 - actor: Bob
   scene: terminal.ori.html
@@ -25,11 +28,11 @@
     \"hello\"
   narration: >
     If I type **ori "hello"**, ori displays **hello**.
-  footnote: In the shell, you need to escape or nest quotes.
+  footnote: In the shell, you need to **escape** or nest quotes.
 
 - actor: Bob
   narration: >
-    But to build a site, you'll want to reference **files**!
+    But to do more interesting things, you'll want to reference **files**!
   scene: editor.ori.html
   options:
     file: hello.md
@@ -48,6 +51,8 @@
     **hyphens** in names!
 
 - actor: Bob
+  scene: graphic.ori.html
+  options: graphics/builtins.ori.html/
   narration: >
     Where a spreadsheet has built-in math functions, Origami has functions for
     **transforming data** for use in sites.
@@ -83,8 +88,8 @@
     file: teamData.yaml
     command: teamData.yaml/0/name
   narration: >
-    Just like your operating system associates **file extensions** with apps,
-    Origami associates extensions with **handlers** that can traverse into data.
+    Just like your OS associates **file extensions** with apps, Origami
+    associates extensions with **handlers** that can traverse into data.
 
 - actor: Bob
   scene: graphic.ori.html
@@ -207,3 +212,11 @@
     page: site.ori/index.html
   narration: >
     …and open the site **in a browser** to see the index page!
+
+- actor: Bob
+  scene: graphic.ori.html
+  options: graphics/title.ori.html/
+  narration: >
+    To learn more about using Origami to create websites, check out the
+    **documentation**!
+  footnote: Thanks for watching!
