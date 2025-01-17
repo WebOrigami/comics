@@ -181,16 +181,16 @@
     file: site.ori
   narration: >
     To create a site, you can define an object with the **structure** and
-    **contents** you want.
+    **contents** of the site's tree of resources.
   footnote: This little site has a **single page** called index.html!
 
-# - actor: Bob
-#   scene: editor.ori.html
-#   options:
-#     file: site.ori
-#     command: site.ori/
-#   narration: >
-#     We can ask Origami to evaluate that file to see the tree it represents.
+- actor: Bob
+  scene: editor.ori.html
+  options:
+    file: site.ori
+    command: site.ori/
+  narration: >
+    We can **evaluate** that file to see the tree it defines.
 
 - actor: Alice
   scene: editor.ori.html
@@ -198,7 +198,7 @@
     file: site.ori
     command: serve site.ori
   narration: >
-    We can **serve** the tree defined by this file…
+    We can start a **web server** to serve that tree…
 
 - actor: Alice
   scene: browser.ori.html
@@ -206,4 +206,4 @@
     path: localhost:5000
     page: site.ori/index.html
   narration: >
-    …and open the site **in a browser** to see the page!
+    …and open the site **in a browser** to see the index page!
