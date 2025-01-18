@@ -114,9 +114,8 @@ screencast-panel {
       background: palegoldenrod;
       padding: 0.5em;
       text-wrap: balance;
-      min-width: 300px;
+      min-width: 275px;
       width: min-content;
-      /* width: fit-content; */
     }
   }
 
@@ -124,7 +123,7 @@ screencast-panel {
     .footnote {
       p {
         /* Vary width a bit to relieve monotony */
-        min-width: 350px;
+        min-width: 300px;
       }
     }
   }
