@@ -7,6 +7,9 @@ import ScreencastGraphic from "./ScreencastGraphic.js";
 import ScreencastTerminal from "./ScreencastTerminal.js";
 import SoundMixin from "./SoundMixin.js";
 
+// We'll handle unlocking audio
+Howler.autoUnlock = false;
+
 const forceLoad = [
   ScreencastBrowser,
   ScreencastEditor,
@@ -22,7 +25,8 @@ export default class ScreencastPanel extends SoundMixin(
 
     this.animationElement = null;
     this.animationPlayingSignal = signal(false);
-    this.audioElement = null;
+    this.audioLoadedSignal = signal(false);
+    this.audioPlayer = null;
     this.audioPlayingSignal = signal(false);
     this.audioSrcSignal = signal(null);
     this.selectedSignal = signal(false);
@@ -47,6 +51,13 @@ export default class ScreencastPanel extends SoundMixin(
     this.audioPlayingSignal.value = audioPlaying;
   }
 
+  get audioLoaded() {
+    return this.audioLoadedSignal.value;
+  }
+  set audioLoaded(audioLoaded) {
+    this.audioLoadedSignal.value = audioLoaded;
+  }
+
   get audioSrc() {
     return this.audioSrcSignal.value;
   }
@@ -67,7 +78,7 @@ export default class ScreencastPanel extends SoundMixin(
         "ScreencastPanel was instantiated before the scene component class was loaded."
       );
     }
-    this.audioElement = this.shadowRoot.querySelector("#audio");
+    // this.audioElement = this.shadowRoot.querySelector("audio");
     const buttonSoundIsOff = this.shadowRoot.querySelector("#soundIsOff");
     const buttonSoundIsOn = this.shadowRoot.querySelector("#soundIsOn");
 
@@ -89,11 +100,6 @@ export default class ScreencastPanel extends SoundMixin(
       }
     });
 
-    // Tell audio element which sound to play
-    effect(() => {
-      this.audioElement.src = this.audioSrc;
-    });
-
     // Play/pause animation
     effect(() => {
       if (this.animationElement) {
@@ -105,25 +111,19 @@ export default class ScreencastPanel extends SoundMixin(
       }
     });
 
-    // Play/pause audio in response to our own signals
-    effect(async () => {
-      if (this.audioPlaying) {
-        // For some reason a regular try/catch doesn't work here (at least in
-        // Firefox); we need to use a promise to catch the error.
-        this.audioElement.play().catch((error) => {
-          if (error instanceof DOMException) {
-            // User has disabled autoplay
-            raiseSoundChangeEvent(this, false);
-          }
-        });
-      } else {
-        this.audioElement.pause();
-      }
+    effect(() => {
+      this.createAudioPlayer(this.audioSrc);
     });
 
-    // Track when audio ends
-    this.audioElement.addEventListener("ended", () => {
-      this.audioPlaying = false;
+    // Play/pause audio in response to our own signals
+    effect(async () => {
+      if (this.audioLoaded) {
+        if (this.audioPlaying) {
+          this.audioPlayer.play();
+        } else {
+          this.audioPlayer?.stop();
+        }
+      }
     });
 
     // Track when animation ends
@@ -139,6 +139,9 @@ export default class ScreencastPanel extends SoundMixin(
 
     // Sound buttons raise events for comic to manage sound
     buttonSoundIsOff.addEventListener("click", (event) => {
+      // We initialize the player immediately because iOS Safari seems
+      // incredibly picky about when/how audio is initialized
+      this.createAudioPlayer(this.audioSrc);
       this.audioPlaying = true;
       raiseSoundChangeEvent(this, true);
     });
@@ -158,6 +161,30 @@ export default class ScreencastPanel extends SoundMixin(
       .addEventListener("touchend", (event) => {
         event.stopPropagation();
       });
+  }
+
+  createAudioPlayer(src) {
+    if (this.audioPlayer) {
+      // Already created
+      return;
+    } else if (!src) {
+      // Don't know what to play yet
+      return;
+    }
+
+    this.audioPlayer = new Howl({
+      src: [src],
+    });
+    this.audioPlayer.on("end", () => {
+      this.audioPlaying = false;
+    });
+    this.audioPlayer.on("load", () => {
+      if (Howler.ctx.state === "suspended" && this.sound) {
+        // The user has most likely disabled autoplay
+        raiseSoundChangeEvent(this, false);
+      }
+      this.audioLoaded = true;
+    });
   }
 
   finish() {
@@ -241,13 +268,12 @@ export default class ScreencastPanel extends SoundMixin(
           </svg>
         </button>
       </div>
-      <audio id="audio"></audio>
     `;
   }
 }
 
 function raiseSoundChangeEvent(target, sound) {
-  // console.log("raiseSoundChangeEvent", sound);
+  console.log("raiseSoundChangeEvent", sound);
   target.dispatchEvent(
     new CustomEvent("sound-change", {
       bubbles: true,

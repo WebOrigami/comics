@@ -6,7 +6,7 @@ import SoundMixin from "./SoundMixin.js";
 const forceLoad = [ScreencastPanel];
 
 const soundStorageKey = "sound";
-const selectedPanelKey = "selectedPanel";
+const selectedIndexKey = "selectedIndex";
 
 export default class ScreencastComic extends SoundMixin(
   ScrollingStoppedMixin(HTMLElement)
@@ -14,9 +14,10 @@ export default class ScreencastComic extends SoundMixin(
   constructor() {
     super();
     const previousSelectedIndex =
-      parseInt(localStorage.getItem(selectedPanelKey)) ?? -1;
+      parseInt(localStorage.getItem(selectedIndexKey)) ?? -1;
     this.selectedIndexSignal = signal(previousSelectedIndex);
     this.sound = localStorage.getItem(soundStorageKey) ?? true;
+    this.audioElement = null;
   }
 
   connectedCallback() {
@@ -69,6 +70,12 @@ export default class ScreencastComic extends SoundMixin(
           panel.restart();
         }
       });
+    });
+
+    // Listen for changes in whether the panels do/don't want sound
+    this.addEventListener("sound-change", (event) => {
+      console.log("sound-change", event.detail);
+      this.sound = event.detail.sound;
     });
 
     // Tell items whether to play sound
@@ -127,12 +134,8 @@ export default class ScreencastComic extends SoundMixin(
 
     // Save values in localStorage
     effect(() => {
-      localStorage.setItem(selectedPanelKey, this.selectedIndex);
+      localStorage.setItem(selectedIndexKey, this.selectedIndex);
       localStorage.setItem(soundStorageKey, this.sound);
-    });
-
-    this.addEventListener("sound-change", (event) => {
-      this.sound = event.detail.sound;
     });
   }
 

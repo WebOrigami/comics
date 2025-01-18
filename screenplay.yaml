@@ -64,7 +64,7 @@
     command: |-
       "mdHtml(hello.md)"
   narration: >
-    We can pass our markdown file to a function that **transforms** it to HTML.
+    We can pass our markdown file to a function that **transforms it** to HTML.
 
 - actor: Bob
   scene: editor.ori.html

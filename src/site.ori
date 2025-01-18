@@ -1,7 +1,7 @@
 {
   ...client
   index.html = templates/comic.ori.html(data.ori)
-  audio.html
+  howler.js = node_modules/howler/dist/howler.min.js
   preact: node_modules/@preact/signals-core/dist
   narration/ = narrate/narrate.ori/
 }
