@@ -49,8 +49,13 @@ export default class ScreencastComic extends SoundMixin(
     let firstSelection = false;
     effect(() => {
       if (this.selectedPanel && this.selectedPanel !== this.getCenterPanel()) {
+        const prefersReducedMotion = window.matchMedia(
+          "(prefers-reduced-motion)"
+        ).matches;
+        const behavior =
+          firstSelection || prefersReducedMotion ? "instant" : "smooth";
         this.selectedPanel?.scrollIntoView({
-          behavior: firstSelection ? "instant" : "smooth",
+          behavior,
           block: "center",
         });
         firstSelection = false;

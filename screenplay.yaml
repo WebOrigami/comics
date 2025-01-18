@@ -93,7 +93,7 @@
 
 - actor: Bob
   scene: graphic.ori.html
-  options: graphics/scope.ori.html/
+  options: graphics/scope.html/
   narration: >
     Origami resolves references using a **scope** like other programming
     languages, but scope in Origami extends to the **file system**.
@@ -214,6 +214,21 @@
     page: site.ori/index.html
   narration: >
     …and open the site **in a browser** to see the home page!
+
+- actor: Bob
+  scene: terminal.ori.html
+  options: copy src/site.ori, files:build
+  narration: >
+    To prepare the site for public use, we can copy it to plain **static files**
+    that won't need to change often.
+
+- actor: Alice
+  scene: terminal.ori.html
+  options: build/index.html
+  narration: >
+    These static files are all the resources your site needs, and you can host
+    them **anywhere** on the internet!
+  footnote: Some file hosting services are **free**!
 
 - actor: Bob
   scene: graphic.ori.html

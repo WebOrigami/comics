@@ -12,6 +12,9 @@ export default async function evaluate(expression) {
   if (processed.startsWith("serve")) {
     // Fake server
     return `Server running at http://localhost:5000. Press Ctrl+C to stop.`;
+  } else if (processed.startsWith("copy")) {
+    // Fake copy
+    return "";
   }
 
   const result = await ori.call(sample, processed);
