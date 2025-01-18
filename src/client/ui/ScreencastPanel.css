@@ -115,17 +115,22 @@ screencast-panel {
       background: palegoldenrod;
       padding: 0.5em;
       text-wrap: balance;
+    }
+    
+    &.long p {
       min-width: 275px;
       width: min-content;
     }
+
+    &.short p {
+      width: fit-content;
+    }
   }
 
-  &:nth-of-type(even) {
+  &:has(.footnote) + &:has(.footnote):nth-of-type(odd) {
     .footnote {
-      p {
-        /* Vary width a bit to relieve monotony */
-        min-width: 300px;
-      }
+      /* Vary alignment to relieve monotony */
+      flex-direction: row;
     }
   }
 }

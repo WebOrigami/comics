@@ -11,7 +11,9 @@
 ${ panel/scene ? scope:(panel/scene)(panel/options) : "" }
   ${ panel/footnote ?
     indent`
-    <div class="footnote">${ mdHtml(panel/footnote) }</div>
+      <div class="footnote ${ panel/footnote/length > 60 ? "long" : "short" }">
+        ${ mdHtml(panel/footnote) }
+      </div>
     ` : ""
   }
   </div>
