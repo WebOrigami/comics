@@ -113,7 +113,7 @@
   options:
     file: greet.js
   narration: >
-    You don't have to know **JavaScript** to use Origami -- but if you do know
+    You don't have to know **JavaScript** to use Origami — but if you do know
     JavaScript, you can use it to extend what Origami can do!
 
 - actor: Alice
@@ -187,15 +187,17 @@
   narration: >
     To create a site, you can define an object with the **structure** and
     **contents** of the site's tree of resources.
-  footnote: This little site has a **single page** called index.html!
+  footnote: This little site has a single page called **index.html**, the
+    name given to a site's default page.
 
 - actor: Bob
   scene: editor.ori.html
   options:
     file: site.ori
-    command: site.ori/
+    command: site.ori/index.html
   narration: >
-    We can **evaluate** that file to see the tree it defines.
+    When this tree is served as a site, each path the user visits will return
+    the **resource** at that path.
 
 - actor: Alice
   scene: editor.ori.html
@@ -203,7 +205,7 @@
     file: site.ori
     command: serve site.ori
   narration: >
-    We can start a **web server** to serve that tree…
+    We can start a **web server** on our own computer to serve that tree…
 
 - actor: Alice
   scene: browser.ori.html
@@ -211,7 +213,7 @@
     path: localhost:5000
     page: site.ori/index.html
   narration: >
-    …and open the site **in a browser** to see the index page!
+    …and open the site **in a browser** to see the home page!
 
 - actor: Bob
   scene: graphic.ori.html
