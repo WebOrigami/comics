@@ -34,6 +34,7 @@
 
 screencast-panel {
   --border: 3px solid #333;
+  color: #333;
   display: grid;
   grid-template-rows: 1fr auto;
   width: 100%;
