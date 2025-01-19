@@ -217,7 +217,7 @@
 
 - actor: Bob
   scene: terminal.ori.html
-  options: copy src/site.ori, files:build
+  options: copy src/site.ori, ./build
   narration: >
     To prepare the site for public use, we can copy it to plain **static files**
     that won't need to change often.
@@ -234,6 +234,6 @@
   scene: graphic.ori.html
   options: graphics/title.ori.html/
   narration: >
-    To learn more about using Origami to create websites, check out the
-    **documentation**!
-  footnote: Thanks for watching!
+    Thanks for watching! To learn more about using Origami to create websites,
+    check out the **documentation**.
+  footnote: To be continued…?
