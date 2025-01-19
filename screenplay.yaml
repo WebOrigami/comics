@@ -155,8 +155,7 @@
     file: greet.ori
     command: greet.ori/
   narration: >
-    But **adding a slash** lets Origami know that, instead of getting the
-    formula, we want to get its **value**.
+    But **adding a slash** lets us get the formula's **value**!
 
 - actor: Alice
   scene: graphic.ori.html
