@@ -4,8 +4,8 @@
   howler.js = node_modules/howler/dist/howler.min.js
   preact: node_modules/@preact/signals-core/dist
   narration/ = narrate/narrate.ori/
-  bundle.js = package:@weborigami/esbuild(
-    filter(client/ui, globKeys({ *.js: true }))
-    "main.js"
-  )
+  // bundle.js = package:@weborigami/esbuild(
+  //   filter(client/ui, globKeys({ *.js: true }))
+  //   "main.js"
+  // )
 }
