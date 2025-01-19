@@ -1,4 +1,5 @@
 build
+!sample/build
 cache
 creds.json
 node_modules
