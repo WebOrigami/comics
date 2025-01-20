@@ -5,7 +5,11 @@
 <screencast-panel audio-src="/narration/${ slash/remove(key) }.mp3" data-speaker="${ panel/actor }">
   <div class="panel">
     <div class="caption">
-      <img class="icon" src="/assets/${ panel/actor }.png" />
+      ${ panel/face ? `
+          <div class="iconContainer">
+            <img class="icon" src="/assets/${ panel/actor/toLowerCase() }/${ panel/face }.svg" />
+          </div>
+        ` : "" }
       ${ mdHtml(panel/narration) }
     </div>
 ${ panel/scene ? scope:(panel/scene)(panel/options) : "" }

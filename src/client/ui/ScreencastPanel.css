@@ -57,10 +57,30 @@ screencast-panel {
     width: 100%;
   }
   
-  .icon {
+  .iconContainer {
+    aspect-ratio: 1; /* not sure why this is necessary height=width */
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    clip-path: circle();
     height: 64px;
-    object-fit: contain;
     width: 64px;
+
+    .icon {
+      position: relative;
+      
+      /* Adjustments for specific SVG positions */
+      &[src*="alice"] {
+        left: -2px;
+        top: 5px;
+        width: 74px;
+      }
+
+      &[src*="bob"] {
+        top: 6px;
+        left: -9px;
+        width: 84px;
+      }
+    }
   }
 
   .caption,
@@ -86,20 +106,8 @@ screencast-panel {
   }
 
   /* Icon/caption are flipped for second speaker */
-  &[data-speaker="Bob"] .caption {
+  &[data-speaker="Bob"]:has(.icon) .caption {
     flex-direction: row-reverse;
-  }
-
-  /* Hide consecutive icons for the same speaker */
-  &[data-speaker="Alice"] + &[data-speaker="Alice"],
-  &[data-speaker="Bob"] + &[data-speaker="Bob"] {
-    .caption {
-      flex-direction: row;
-
-      .icon {
-        display: none;
-      }
-    }
   }
 
   .footnote {

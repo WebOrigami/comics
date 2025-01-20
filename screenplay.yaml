@@ -41,6 +41,7 @@
     formatting.
 
 - actor: Alice
+  face: happy
   scene: terminal.ori.html
   options: hello.md
   narration: >
@@ -51,6 +52,7 @@
     **hyphens** in names!
 
 - actor: Bob
+  face: talk
   scene: graphic.ori.html
   options: graphics/builtins.ori.html/
   narration: >
@@ -76,6 +78,7 @@
     figures out where they would be.
 
 - actor: Alice
+  face: talk
   scene: terminal.ori.html
   options: teamData.yaml
   narration: >
@@ -92,6 +95,7 @@
     associates extensions with **handlers** that can traverse into data.
 
 - actor: Bob
+  face: concerned
   scene: graphic.ori.html
   options: graphics/scope.html/
   narration: >
@@ -109,6 +113,7 @@
     searches **up the folder hierarchy** until it finds the file.
 
 - actor: Alice
+  face: wow
   scene: editor.ori.html
   options:
     file: greet.js
@@ -132,6 +137,7 @@
     function using data from a file.
 
 - actor: Bob
+  face: wow
   scene: editor.ori.html
   options:
     file: greet.ori
@@ -158,6 +164,7 @@
     But **adding a slash** lets us get the formula's **value**!
 
 - actor: Alice
+  face: grin
   scene: graphic.ori.html
   options: graphics/tree.ori.html/
   narration: >
@@ -173,6 +180,7 @@
     single property called "a".
 
 - actor: Alice
+  face: talk
   scene: terminal.ori.html
   options: |-
     { a: 1 }/a
@@ -180,6 +188,7 @@
     We can use a **path** to traverse the tree and get the value of that property.
 
 - actor: Bob
+  face: happy
   scene: editor.ori.html
   options:
     file: site.ori
@@ -199,6 +208,7 @@
     the **resource** at that path.
 
 - actor: Alice
+  face: wow
   scene: editor.ori.html
   options:
     file: site.ori
@@ -215,6 +225,7 @@
     …and open the site **in a browser** to see the home page!
 
 - actor: Bob
+  face: default
   scene: terminal.ori.html
   options: copy src/site.ori, ./build
   narration: >
@@ -222,6 +233,7 @@
     that won't need to change often.
 
 - actor: Alice
+  face: grin
   scene: terminal.ori.html
   options: build/index.html
   narration: >
@@ -230,6 +242,7 @@
   footnote: Some file hosting services are **free**!
 
 - actor: Bob
+  face: happy
   scene: graphic.ori.html
   options: graphics/title.ori.html/
   narration: >
