@@ -1,5 +1,5 @@
 screencast-editor {
-  background: var(--editor-background);
+  background: var(--terminal-background);
   color: var(--editor-color);
   display: grid;
   grid-template-rows: auto 1fr 1fr;
@@ -10,13 +10,13 @@ screencast-editor {
   }
   
   .tabBar {
-    background: color-mix(in oklch, var(--editor-background), var(--editor-color) 10%);
+    background: var(--editor-background);
     padding: var(--window-padding);
     padding-bottom: 0;
     
     .tab {
-      background: var(--editor-background);
-      color: color-mix(in oklch, var(--editor-color), var(--editor-background) 10%);
+      background: var(--terminal-background);
+      color: color-mix(in oklch, var(--editor-color), var(--terminal-background) 10%);
       display: inline-block;
       padding: 0.5rem 1rem;
     } 
@@ -34,6 +34,6 @@ screencast-editor {
   }
 
   screencast-terminal {
-    border-top: 1px solid color-mix(in oklch, var(--editor-background), white 25%);
+    border-top: 1px solid color-mix(in oklch, var(--terminal-background), white 25%);
   }
 }

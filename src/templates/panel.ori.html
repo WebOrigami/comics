@@ -2,7 +2,9 @@
 (panel, key) => @template()
 ---
 
-<screencast-panel audio-src="/narration/${ slash/remove(key) }.mp3" data-speaker="${ panel/actor }">
+<screencast-panel audio-src="/narration/${ slash/remove(key) }.mp3" data-speaker="${ panel/actor }" ${
+  panel/background ? ` style="background: ${ panel/background };"` : ""
+}>
   <div class="panel">
     <div class="caption">
       ${ panel/face ? `
@@ -10,7 +12,12 @@
             <img class="icon" src="/assets/${ panel/actor/toLowerCase() }/${ panel/face }.svg" />
           </div>
         ` : "" }
-      ${ mdHtml(panel/narration) }
+      <div class="bubble">
+        <div class="tail"></div>
+        <div class="speech">
+          ${ mdHtml(panel/narration) }
+        </div>
+      </div>
     </div>
 ${ panel/scene ? scope:(panel/scene)(panel/options) : "" }
   ${ panel/footnote ?

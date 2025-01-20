@@ -1,5 +1,5 @@
 screencast-split {
-  background: var(--editor-background);
+  background: var(--terminal-background);
   color: var(--editor-color);
   display: grid;
   grid-template-rows: 1fr 1fr;
@@ -15,6 +15,6 @@ screencast-split {
   }
   
   screencast-terminal {
-    border-top: 1px solid color-mix(in oklch, var(--editor-background), white 25%);
+    border-top: 1px solid color-mix(in oklch, var(--terminal-background), white 25%);
   }
 }

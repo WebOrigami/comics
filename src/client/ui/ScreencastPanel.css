@@ -59,7 +59,8 @@ screencast-panel {
   
   .iconContainer {
     aspect-ratio: 1; /* not sure why this is necessary height=width */
-    border: 1px solid #ccc;
+    background: white;
+    border: 2px solid black;
     border-radius: 50%;
     clip-path: circle();
     height: 64px;
@@ -92,22 +93,67 @@ screencast-panel {
 
   .caption {
     align-items: center;
-    background: white;
-    border-bottom: var(--border);
-    box-sizing: border-box;
     display: flex;
-    gap: 0.5rem;
-    padding: 1rem 0.5rem;
+    gap: 0.7rem;
+    padding: 0.5rem 0.5rem;
 
     /* strong = bold and italic */
     strong {
       font-style: italic;
+    }
+
+    /* If icon is present, show text in speech balloon */
+    &:has(.icon) {
+      .bubble {
+        --bubble-border-color: black;
+        --bubble-border-width: 2px;
+        align-items: center;
+        background: var(--bubble-border-color);
+        display: flex;
+        padding: var(--bubble-border-width);
+        position: relative;
+      }
+
+      .tail {
+        --tail-shift: -5px;
+        aspect-ratio: 1;
+        background: white;
+        border: var(--bubble-border-width) solid var(--bubble-border-color);
+        box-sizing: border-box;
+        height: 15px;
+        position: absolute;
+        transform: rotate(45deg);
+        width: 15px;
+      }
+
+      .speech {
+        background: white;
+        padding: 0.5em;
+        z-index: 1;
+      }
+    }
+
+    &:not(:has(.icon)) {
+      background: white;
+      border-bottom: var(--border);
+      box-sizing: border-box;  
+    }
+  }
+
+  /* Speech orientation for first speaker */
+  &[data-speaker="Alice"]:has(.icon) .caption {
+    .tail {
+      left: var(--tail-shift);
     }
   }
 
   /* Icon/caption are flipped for second speaker */
   &[data-speaker="Bob"]:has(.icon) .caption {
     flex-direction: row-reverse;
+
+    .tail {
+      right: var(--tail-shift);
+    }
   }
 
   .footnote {
@@ -141,8 +187,20 @@ screencast-panel {
       flex-direction: row;
     }
   }
-}
 
+  /* Set default background color based on specific scene */
+  &:has(.icon) {
+    &:has(screencast-graphic) {
+      background: black;
+    }
+    &:has(screencast-terminal) {
+      background: var(--terminal-background);
+    }
+    &:has(screencast-editor) {
+      background: var(--editor-background);
+    }
+  }
+}
 
 /* On narrow screens, use a taller aspect ratio */
 @container (max-width: 500px) {

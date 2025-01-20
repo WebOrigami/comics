@@ -162,7 +162,7 @@
     command: greet.ori
   narration: >
     This kind of file is like a spreadsheet cell with a formula. If we ask for
-    this file, we just get the formula back.
+    this file, we just get the formula back…
 
 - actor: Bob
   scene: editor.ori.html
@@ -175,6 +175,7 @@
 - actor: Alice
   face: default
   scene: graphic.ori.html
+  background: white
   options: graphics/tree.ori.html/
   narration: >
     Origami is good for creating lots of things but especially websites. You can
@@ -206,7 +207,7 @@
     To create a site, define an object with the **structure** and **contents**
     of the site's tree of resources.
   footnote: This little site has a single page called **index.html**, the
-    name given to a site's default page.
+    name given to the default page.
 
 - actor: Bob
   scene: editor.ori.html

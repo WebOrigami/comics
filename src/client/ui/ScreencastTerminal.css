@@ -1,5 +1,5 @@
 screencast-terminal {
-  background: var(--editor-background);
+  background: var(--terminal-background);
   color: var(--editor-color);
   display: grid;
   font-family: var(--editor-font-family);
