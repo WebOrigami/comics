@@ -9,6 +9,7 @@
 #
 
 - actor: Alice
+  face: default
   scene: graphic.ori.html
   options: graphics/title.ori.html/
   narration: >
@@ -16,6 +17,7 @@
     interface called **ori**.
 
 - actor: Bob
+  face: talk
   scene: terminal.ori.html
   options: 1 + 1
   narration: >
@@ -52,7 +54,7 @@
     **hyphens** in names!
 
 - actor: Bob
-  face: talk
+  face: default
   scene: graphic.ori.html
   options: graphics/builtins.ori.html/
   narration: >
@@ -99,8 +101,8 @@
   scene: graphic.ori.html
   options: graphics/scope.html/
   narration: >
-    Origami resolves references using a **scope** like other programming
-    languages, but scope in Origami extends to the **file system**.
+    Origami resolves names using a **scope** like other programming languages,
+    but the scope extends to the **file system**.
   footnote: >
     If you were in the **src** folder, the project's top-level files would
     also be in scope.
@@ -152,8 +154,8 @@
     file: greet.ori
     command: greet.ori
   narration: >
-    This kind of file is like a spreadsheet cell with a formula. If we ask
-    Origami for this file, we just get the formula back.
+    This kind of file is like a spreadsheet cell with a formula. If we ask for
+    this file, we just get the formula back.
 
 - actor: Bob
   scene: editor.ori.html
@@ -164,7 +166,7 @@
     But **adding a slash** lets us get the formula's **value**!
 
 - actor: Alice
-  face: grin
+  face: default
   scene: graphic.ori.html
   options: graphics/tree.ori.html/
   narration: >
@@ -180,7 +182,6 @@
     single property called "a".
 
 - actor: Alice
-  face: talk
   scene: terminal.ori.html
   options: |-
     { a: 1 }/a
@@ -193,8 +194,8 @@
   options:
     file: site.ori
   narration: >
-    To create a site, you can define an object with the **structure** and
-    **contents** of the site's tree of resources.
+    To create a site, define an object with the **structure** and **contents**
+    of the site's tree of resources.
   footnote: This little site has a single page called **index.html**, the
     name given to a site's default page.
 

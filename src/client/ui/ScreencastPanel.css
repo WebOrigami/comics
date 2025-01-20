@@ -96,7 +96,7 @@ screencast-panel {
     border-bottom: var(--border);
     box-sizing: border-box;
     display: flex;
-    gap: 1rem;
+    gap: 0.5rem;
     padding: 1rem 0.5rem;
 
     /* strong = bold and italic */
