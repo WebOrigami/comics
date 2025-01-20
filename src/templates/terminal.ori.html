@@ -1,5 +1,5 @@
 <screencast-terminal class="scene">
-  ${ typewriter.ori.html(scope:_ ? `ori ${ _ }` : "", "$&nbsp;", "block") }
-<pre class="output">${ scope:_ ? escapeHtml.js(evaluate.js(_)) : "" }</pre>
+  ${ typewriter.ori.html(_/command ? `ori ${ _/command }` : "", "$&nbsp;", "block") }
+<pre class="output">${ _/command ? escapeHtml.js(evaluate.js(_/command)) : "" }</pre>
   ${ typewriter.ori.html("", "$&nbsp;", "block") }
 </screencast-terminal>

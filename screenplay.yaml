@@ -19,15 +19,17 @@
 - actor: Bob
   face: talk
   scene: terminal.ori.html
-  options: 1 + 1
+  options:
+    command: 1 + 1
   narration: >
     The ori tool evaluates an **expression in the Origami language**, so if I
     type **ori 1 + 1**, it displays **2**.
 
 - actor: Bob
   scene: terminal.ori.html
-  options: |-
-    \"hello\"
+  options:
+    command: |-
+      \"hello\"
   narration: >
     If I type **ori "hello"**, ori displays **hello**.
   footnote: In the shell, you need to **escape** or nest quotes.
@@ -45,7 +47,8 @@
 - actor: Alice
   face: happy
   scene: terminal.ori.html
-  options: hello.md
+  options:
+    command: hello.md
   narration: >
     Think of your files as a spreadsheet… but instead of using A1, B2 style cell
     references, you refer to files with **paths and file names**.
@@ -82,7 +85,8 @@
 - actor: Alice
   face: talk
   scene: terminal.ori.html
-  options: teamData.yaml
+  options:
+    command: teamData.yaml
   narration: >
     In addition to the file system, Origami can work with other **tree
     structures**, like objects in memory, data in files, or content on a server.
@@ -109,7 +113,8 @@
 
 - actor: Bob
   scene: terminal.ori.html
-  options: README.md
+  options:
+    command: README.md
   narration: >
     If I ask for a file that doesn't exist in the current folder, Origami
     searches **up the folder hierarchy** until it finds the file.
@@ -133,7 +138,8 @@
 
 - actor: Alice
   scene: terminal.ori.html
-  options: greet.js teamData.yaml/0/name
+  options:
+    command: greet.js teamData.yaml/0/name
   narration: >
     You can freely **combine these ideas**, so you can call a JavaScript
     function using data from a file.
@@ -175,16 +181,18 @@
 
 - actor: Alice
   scene: terminal.ori.html
-  options: |-
-    { a: 1 }
+  options:
+    command: |-
+      { a: 1 }
   narration: >
     You can define a tree with an **object expression**. This tiny object has a
     single property called "a".
 
 - actor: Alice
   scene: terminal.ori.html
-  options: |-
-    { a: 1 }/a
+  options:
+    command: |-
+      { a: 1 }/a
   narration: >
     We can use a **path** to traverse the tree and get the value of that property.
 
@@ -228,7 +236,8 @@
 - actor: Bob
   face: default
   scene: terminal.ori.html
-  options: copy src/site.ori, ./build
+  options:
+    command: copy src/site.ori, ./build
   narration: >
     To prepare the site for public use, we can copy it to plain **static files**
     that won't need to change often.
@@ -236,7 +245,8 @@
 - actor: Alice
   face: grin
   scene: terminal.ori.html
-  options: build/index.html
+  options:
+    command: build/index.html
   narration: >
     These static files are all the resources your site needs, and you can host
     them **anywhere** on the internet!

@@ -70,15 +70,15 @@ screencast-panel {
       
       /* Adjustments for specific SVG positions */
       &[src*="alice"] {
-        left: -2px;
+        left: -7px;
         top: 5px;
-        width: 74px;
+        width: 84px;
       }
 
       &[src*="bob"] {
         top: 6px;
-        left: -9px;
-        width: 84px;
+        left: -11px;
+        width: 88px;
       }
     }
   }

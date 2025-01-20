@@ -1,0 +1,10 @@
+<screencast-split class="scene">
+  <div class="tabBar">
+    <div class="tab">${ _/file }</div>
+  </div>
+  <div class="editor">
+    ${ mdHtml(`\`\`\`${ extension/extname(_/file)/slice(1) } ${
+    files:sample(_/file) } \`\`\``) }
+  </div>
+  ${ _/command ? terminal.ori.html(_/command) : "" }
+</screencast-split>
