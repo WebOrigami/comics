@@ -103,7 +103,7 @@
 - actor: Bob
   face: concerned
   scene: graphic.ori.html
-  options: graphics/scope.html/
+  options: graphics/scope.html
   narration: >
     Origami resolves names using a **scope** like other programming languages,
     but the scope extends to the **file system**.
@@ -112,8 +112,9 @@
     also be in scope.
 
 - actor: Bob
-  scene: terminal.ori.html
+  scene: split.ori.html
   options:
+    graphic: graphics/scope.html
     command: README.md
   narration: >
     If I ask for a file that doesn't exist in the current folder, Origami
@@ -244,8 +245,9 @@
 
 - actor: Alice
   face: grin
-  scene: terminal.ori.html
+  scene: split.ori.html
   options:
+    graphic: graphics/buildAfter.html
     command: build/index.html
   narration: >
     These static files are all the resources your site needs, and you can host

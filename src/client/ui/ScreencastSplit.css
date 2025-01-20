@@ -1,0 +1,20 @@
+screencast-split {
+  background: var(--editor-background);
+  color: var(--editor-color);
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  overflow: hidden;
+
+  > * {
+    overflow: hidden;
+  }
+
+  pre {
+    margin: 0;
+    overflow: hidden;
+  }
+  
+  screencast-terminal {
+    border-top: 1px solid color-mix(in oklch, var(--editor-background), white 25%);
+  }
+}

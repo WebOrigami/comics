@@ -4,6 +4,7 @@ import MediaMixin from "./MediaMixin.js";
 import ScreencastBrowser from "./ScreencastBrowser.js";
 import ScreencastEditor from "./ScreencastEditor.js";
 import ScreencastGraphic from "./ScreencastGraphic.js";
+import ScreencastSplit from "./ScreencastSplit.js";
 import ScreencastTerminal from "./ScreencastTerminal.js";
 import SoundMixin from "./SoundMixin.js";
 
@@ -14,6 +15,7 @@ const forceLoad = [
   ScreencastBrowser,
   ScreencastEditor,
   ScreencastGraphic,
+  ScreencastSplit,
   ScreencastTerminal,
 ];
 
