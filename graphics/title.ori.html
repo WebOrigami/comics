@@ -23,7 +23,7 @@
         color: yellow;
         font-family: "Astounder Squared", "Helvetica Neue", Helvetica, Arial,
           sans-serif;
-        font-size: 5rem;
+        font-size: min(5rem, 16vw);
         font-style: italic;
         font-weight: bold;
         line-height: 0.8;
@@ -34,6 +34,12 @@
 
         .line2 {
           font-size: 1.5em;
+        }
+      }
+
+      @container (max-width: 500px) {
+        .burst svg {
+          height: 100%;
         }
       }
     </style>
