@@ -22,7 +22,7 @@
   options:
     command: 1 + 1
   narration: >
-    The ori tool evaluates an **expression in the Origami language**, so if I
+    The ori tool evaluates an **expression** in the Origami language, so if I
     type **ori 1 + 1**, it displays **2**.
 
 - actor: Bob

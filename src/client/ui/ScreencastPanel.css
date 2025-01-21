@@ -128,7 +128,8 @@ screencast-panel {
 
       .speech {
         background: white;
-        padding: 0.5em;
+        /* Slightly more padding below */
+        padding: 0.5rem 0.5rem 0.6rem 0.6rem;
         z-index: 1;
       }
     }
