@@ -45,7 +45,7 @@ Bonus: The result is a web experience that can hosted anywhere, instead of a vid
 
 This project uses Origami to generate the audio narration from the screenplay.
 
-A small Origami script invokes the OpenAI text-to-speech API to obtain an MP3 file with the generated narration. This is then saved in a `.mp3` file with a name like `000-hi-there.mp3` that includes both a numerical index and the beginning of that entry's text so that it can be easily identified.
+A small Origami script invokes the OpenAI text-to-speech API to obtain an MP3 file with the generated narration. This is then saved in a `.mp3` file with a name like `hi-there.mp3` that includes the beginning of that entry's text so that it can be easily identified.
 
 Switching between two synthetic voices reduces listening fatigue. The screenplay indicates which of the two voices will be used for a given piece of narration.
 
