@@ -1,10 +1,44 @@
-<figure
-  style="
-    align-content: center;
-    display: grid;
-    grid-template-columns: 200px;
-    justify-content: center;
-  "
->
-  ${ bird.svg }
-</figure>
+<div>
+  <template shadowrootmode="open">
+    <style>
+      :host {
+        align-items: center;
+        display: grid;
+        justify-items: center;
+        position: relative;
+      }
+
+      .burst {
+        align-items: center;
+        bottom: 0;
+        display: grid;
+        left: 0;
+        justify-items: center;
+        position: absolute;
+        right: 0;
+        top: -52px;
+      }
+
+      .title {
+        color: yellow;
+        font-family: "Astounder Squared", "Helvetica Neue", Helvetica, Arial,
+          sans-serif;
+        font-size: 5rem;
+        line-height: 0.8;
+        text-align: center;
+        text-shadow: 6px 6px 0px black;
+        -webkit-text-stroke: 4px black;
+        z-index: 1;
+
+        .line2 {
+          font-size: 1.5em;
+        }
+      }
+    </style>
+    <div class="burst">${ burst.svg }</div>
+    <div class="title">
+      <div class="line1">Intro to</div>
+      <div class="line2">Origami!</div>
+    </div>
+  </template>
+</div>

@@ -31,6 +31,13 @@
   text-rendering: optimizeLegibility;
 }
 
+@font-face {
+  font-family: "Astounder Squared";
+  src: url("/assets/fonts/AstounderSquaredBB-BoldItalic.woff") format("woff");
+  font-style: italic;
+  font-weight: bold;
+  text-rendering: optimizeLegibility;
+}
 
 screencast-panel {
   --border: 3px solid #333;

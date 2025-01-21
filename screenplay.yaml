@@ -258,7 +258,7 @@
 - actor: Bob
   face: happy
   scene: graphic.ori.html
-  options: graphics/title.ori.html/
+  options: graphics/end.ori.html/
   narration: >
     Thanks for watching! To learn more about using Origami to create websites,
     check out the **documentation**.
