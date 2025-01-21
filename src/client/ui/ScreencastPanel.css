@@ -108,9 +108,10 @@ screencast-panel {
         --bubble-border-color: black;
         --bubble-border-width: 2px;
         align-items: center;
-        background: var(--bubble-border-color);
+        background: white;
+        border: var(--bubble-border-width) solid var(--bubble-border-color);
+        border-radius: 0.5rem;
         display: flex;
-        padding: var(--bubble-border-width);
         position: relative;
       }
 
@@ -128,6 +129,7 @@ screencast-panel {
 
       .speech {
         background: white;
+        border-radius: 0.5rem;
         /* Slightly more padding below */
         padding: 0.5rem 0.5rem 0.7rem 0.6rem;
         z-index: 1;
