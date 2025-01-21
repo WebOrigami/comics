@@ -129,7 +129,7 @@ screencast-panel {
       .speech {
         background: white;
         /* Slightly more padding below */
-        padding: 0.5rem 0.5rem 0.6rem 0.6rem;
+        padding: 0.5rem 0.5rem 0.7rem 0.6rem;
         z-index: 1;
       }
     }
@@ -138,6 +138,10 @@ screencast-panel {
       background: white;
       border-bottom: var(--border);
       box-sizing: border-box;  
+
+      .speech {
+        padding-bottom: 0.2rem;
+      }
     }
   }
 
@@ -195,7 +199,7 @@ screencast-panel {
       background: black;
     }
     &:has(screencast-terminal) {
-      background: var(--terminal-background);
+      background: var(--editor-background);
     }
     &:has(screencast-editor) {
       background: var(--editor-background);
