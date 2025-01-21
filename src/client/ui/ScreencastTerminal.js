@@ -18,10 +18,15 @@ export default class ScreencastTerminal extends TimelineMixin(
 
     // Incorporate typewriter phases
     const typing = this.typewriterElement ? this.typewriterElement.frames : [];
-    this.phases = {
-      typing,
-      running: [100],
-    };
+    if (typing.length === 0) {
+      // No typing needed
+      this.phases = {};
+    } else {
+      this.phases = {
+        typing,
+        running: [100],
+      };
+    }
   }
 
   renderFrame(phase, index) {

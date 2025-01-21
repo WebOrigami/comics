@@ -41,6 +41,8 @@
 
 screencast-panel {
   --border: 3px solid #333;
+  /* Anime Ace font seems to need more padding below in Safari */
+  --text-padding: 0.5rem 0.5rem 0.7rem 0.6rem;
   color: #333;
   display: grid;
   grid-template-rows: 1fr auto;
@@ -137,8 +139,7 @@ screencast-panel {
       .speech {
         background: white;
         border-radius: 0.5rem;
-        /* Slightly more padding below */
-        padding: 0.5rem 0.5rem 0.7rem 0.6rem;
+        padding: var(--text-padding);
         z-index: 1;
       }
     }
@@ -181,7 +182,7 @@ screencast-panel {
     
     p {
       background: palegoldenrod;
-      padding: 0.5em;
+      padding: var(--text-padding);
       text-wrap: balance;
     }
     

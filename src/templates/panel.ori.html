@@ -19,7 +19,7 @@
         </div>
       </div>
     </div>
-${ panel/scene ? scope:(panel/scene)(panel/options) : "" }
+${ panel/scene ? scope:(panel/scene)(panel/options ?? {}) : "" }
   ${ panel/footnote ?
     indent`
       <div class="footnote ${ panel/footnote/length > 60 ? "long" : "short" }">

@@ -9,12 +9,17 @@
 #
 
 - actor: Alice
-  face: default
   scene: graphic.ori.html
   options: graphics/title.ori.html/
   narration: >
-    Let's start looking at the Origami language by using the command-line
-    interface called **ori**.
+    A quick introduction to the **Origami programming language**!
+
+- actor: Alice
+  face: default
+  scene: terminal.ori.html
+  narration: >
+    We can start by trying the Origami language in the terminal, using a
+    command-line interface called **ori**.
 
 - actor: Bob
   face: talk
@@ -22,8 +27,8 @@
   options:
     command: 1 + 1
   narration: >
-    The ori tool evaluates an **expression** in the Origami language, so if I
-    type **ori 1 + 1**, it displays **2**.
+    The ori tool evaluates an **expression** in Origami, so if I type **ori 1 +
+    1**, it displays **2**.
 
 - actor: Bob
   scene: terminal.ori.html
@@ -262,4 +267,4 @@
   narration: >
     Thanks for watching! To learn more about using Origami to create websites,
     check out the **documentation**.
-  footnote: To be continued…?
+  footnote: To be continued!

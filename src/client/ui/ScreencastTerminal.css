@@ -18,6 +18,11 @@ screencast-terminal {
     }
   }
 
+  /* Hide second typewriter if the first has nothing to type */
+  &:has(screencast-typewriter:first-of-type.notyping) screencast-typewriter:nth-of-type(2) {
+    display: none;
+  }
+
   pre {
     font-family: inherit;
     margin: 0;

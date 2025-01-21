@@ -2,7 +2,7 @@
 (text, prefix, cursor) => @template()
 ---
 
-<screencast-typewriter>
+<screencast-typewriter ${ text === "" ? `class="notyping"` : "" }>
   <span class="prefix">${ scope:prefix ?? "" }</span>
   <span class="text">${ text }</span>
   ${ scope:cursor === "block" ? `<span class="cursor block"></span>` : `<span

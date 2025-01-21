@@ -22,6 +22,12 @@ export default class ScreencastTypewriter extends TimelineMixin(
     super.connectedCallback();
 
     effect(() => {
+      if (this.text.length === 0) {
+        // No typing needed
+        this.phases = {};
+        return;
+      }
+
       const typing = Array.from(this.text).map((char) => {
         // Random character delay
         let delay = 100 + Math.random() * 100;
