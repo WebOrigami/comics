@@ -1,5 +1,8 @@
+// Generate a audio narration file for each screenplay segment
 map(data.ori, {
   extension: "->.mp3"
   value: narrate.js
 })
+
+// Cache the generated audio files in the "narration" folder
 → =cache(_, files:narration)

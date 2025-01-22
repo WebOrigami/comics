@@ -1,2 +1,3 @@
-// Use slugs as keys
+// Prepare the screenplay data. The only thing we need to do is change the keys
+// from array indices to slugs.
 map(screenplay.yaml, { key: panelKey.js })

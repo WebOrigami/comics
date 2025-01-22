@@ -1,11 +1,15 @@
+// Top-level site definition
 {
+  // Merge in all files needed by the client
   ...client
-  index.html = templates/comic.ori.html(data.ori)
-  howler.js = node_modules/howler/dist/howler.min.js
+
+  // Home page
+  index.html: templates/comic.ori.html(data.ori)
+
+  // Dependencies
+  howler.js: node_modules/howler/dist/howler.min.js
   preact: node_modules/@preact/signals-core/dist
-  narration/ = narrate/narrate.ori/
-  // bundle.js = package:@weborigami/esbuild(
-  //   filter(client/ui, globKeys({ *.js: true }))
-  //   "main.js"
-  // )
+
+  // Audio narration files
+  narration/: narrate/narrate.ori/
 }

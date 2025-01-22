@@ -1,6 +1,7 @@
 import { Tree } from "@weborigami/async-tree";
 import tts from "./tts.js";
 
+// Map actor names to OpenAI voice names
 const voices = {
   Alice: "shimmer",
   Bob: "echo",

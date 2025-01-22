@@ -17,6 +17,7 @@ export default async function evaluate(expression) {
     return "";
   }
 
+  // Evaluate the expression
   const result = await ori.call(sample, processed);
   return result;
 }
