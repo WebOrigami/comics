@@ -48,6 +48,11 @@ screencast-panel {
   grid-template-rows: 1fr auto;
   width: 100%;
 
+
+  @media (prefers-color-scheme: dark) {
+    --border: 3px solid #666;
+  }
+
   .panel {
     aspect-ratio: 4 / 3;
     border: var(--border);

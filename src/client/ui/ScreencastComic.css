@@ -13,7 +13,7 @@ screencast-comic {
   padding: 30vh 0;
 
   @media (prefers-color-scheme: dark) {
-    background: #1d2225;
+    background: #111;
     color: white;
   }
 
