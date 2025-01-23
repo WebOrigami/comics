@@ -12,4 +12,7 @@
 
   // Audio narration files
   narration/: narrate/narrate.ori/
+
+  // Merge in bundle and source map for all JS files in client/ui
+  ...package:@weborigami/esbuild(client/ui, { sourcemap: true })
 }

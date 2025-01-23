@@ -7,14 +7,14 @@
     <link rel="stylesheet" href="/assets/styles.css" />
     <link rel="stylesheet" href="/assets/code.css" />
 
-    <link rel="stylesheet" href="/ui/ScreencastBrowser.css" />
-    <link rel="stylesheet" href="/ui/ScreencastComic.css" />
-    <link rel="stylesheet" href="/ui/ScreencastEditor.css" />
-    <link rel="stylesheet" href="/ui/ScreencastGraphic.css" />
-    <link rel="stylesheet" href="/ui/ScreencastPanel.css" />
-    <link rel="stylesheet" href="/ui/ScreencastSplit.css" />
-    <link rel="stylesheet" href="/ui/ScreencastTerminal.css" />
-    <link rel="stylesheet" href="/ui/ScreencastTypewriter.css" />
+    ${ /* Link to all stylesheets */
+      map(client/ui, {
+        extension: ".css"
+        value: (value, key) => indent`
+          <link rel="stylesheet" href="/ui/${ key }">
+        `
+      })
+    }
 
     <script type="importmap">
       {
@@ -23,8 +23,10 @@
         }
       }
     </script>
-    <script src="/howler.js"></script>
-    <script type="module" src="/ui/ScreencastComic.js"></script>
+
+    <script src="./howler.js"></script>
+    <script type="module" src="./main.js"></script>
+    
   </head>
   <body>
     <screencast-comic autofocus tabindex="0">
