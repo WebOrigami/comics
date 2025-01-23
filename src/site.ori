@@ -1,7 +1,6 @@
 // Top-level site definition
 {
-  // Merge in all files needed by the client
-  ...client
+  assets
 
   // Home page
   index.html: templates/comic.ori.html(data.ori)
@@ -13,6 +12,9 @@
   // Audio narration files
   narration/: narrate/narrate.ori/
 
-  // Merge in bundle and source map for all JS files in client/ui
-  ...package:@weborigami/esbuild(client/ui, { sourcemap: true })
+  // Bundled CSS and JS for all UI components
+  components.css: concat(filter(components, globKeys({
+    *.css: true
+  })))
+  ...package:@weborigami/esbuild(components, { sourcemap: true })
 }

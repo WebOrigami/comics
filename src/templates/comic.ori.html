@@ -6,16 +6,7 @@
     <title>Origami Comics</title>
     <link rel="stylesheet" href="/assets/styles.css" />
     <link rel="stylesheet" href="/assets/code.css" />
-
-    ${ /* Link to all stylesheets */
-      map(client/ui, {
-        extension: ".css"
-        value: (value, key) => indent`
-          <link rel="stylesheet" href="/ui/${ key }">
-        `
-      })
-    }
-
+    <link rel="stylesheet" href="/components.css" />
     <script type="importmap">
       {
         "imports": {
@@ -23,10 +14,8 @@
         }
       }
     </script>
-
-    <script src="./howler.js"></script>
-    <script type="module" src="./main.js"></script>
-    
+    <script src="howler.js"></script>
+    <script type="module" src="main.js"></script>
   </head>
   <body>
     <screencast-comic autofocus tabindex="0">
