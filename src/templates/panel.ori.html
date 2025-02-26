@@ -1,8 +1,8 @@
 ---
-(panel, key) => @template()
+(comic, panel, key) => @template()
 ---
 
-<screencast-panel audio-src="/narration/${ slash/remove(key) }.mp3" data-speaker="${ panel/actor }" ${
+<screencast-panel audio-src="/narration/${ panelSlug.js(panel) }.mp3" data-speaker="${ panel/actor }" ${
   panel/background ? ` style="background: ${ panel/background };"` : ""
 }>
   <div class="panel">
@@ -19,7 +19,7 @@
         </div>
       </div>
     </div>
-${ panel/scene ? scope:(panel/scene)(panel/options ?? {}) : "" }
+${ panel/scene ? scope:(panel/scene)(comic, panel/options ?? {}) : "" }
   ${ panel/footnote ?
     indent`
       <div class="footnote ${ panel/footnote/length > 60 ? "long" : "short" }">

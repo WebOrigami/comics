@@ -1,3 +1,7 @@
+---
+(comic, options) => @template()
+---
+
 <screencast-browser class="scene">
   <div class="addressBar">
     <svg
@@ -24,9 +28,9 @@
         d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"
       />
     </svg>
-    ${ typewriter.ori.html(_/path) }
+    ${ typewriter.ori.html(options/path) }
   </div>
   <div class="background">
-    <div class="page">${ evaluate.js(_/page) }</div>
+    <div class="page">${ evaluate.js(options/page, comic/files) }</div>
   </div>
 </screencast-browser>

@@ -1,0 +1,12 @@
+(comics) => 
+
+  // Generate a audio narration file for each panel in each comic
+  map(comics, (comic) =>
+    map(comic/screenplay.yaml, {
+      key: (panel, key) => `${ panelSlug.js(panel) }.mp3`
+      value: narrate.js
+    })
+  )
+
+  // Cache the generated audio files in the "narration" folder
+  → =cache(_, files:narration)

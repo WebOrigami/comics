@@ -1,3 +1,7 @@
+---
+(comic) => @template()
+---
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -19,7 +23,7 @@
   </head>
   <body>
     <screencast-comic autofocus tabindex="0">
-${ map(_, panel.ori.html) }
+${ map(comic/screenplay.yaml, (panel, key) => panel.ori.html(comic, panel, key)) }
     </screencast-comic>
   </body>
 </html>

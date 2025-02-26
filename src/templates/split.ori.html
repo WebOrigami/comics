@@ -1,4 +1,8 @@
+---
+(comic, options) => @template()
+---
+
 <screencast-split class="scene">
-${ evaluate.js(_/graphic) }
-${ _/command ? terminal.ori.html(_) : "" }
+${ evaluate.js(options/graphic, comic/files) }
+${ options/command ? terminal.ori.html(comic, options) : "" }
 </screencast-split>

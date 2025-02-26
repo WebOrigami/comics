@@ -9,6 +9,7 @@ const voices = {
 
 // Function to call the OpenAI Text-to-Speech API
 export default async function narrate(panel) {
+  return;
   const data = await Tree.plain(panel);
   const { actor, narration } = data;
   const voice = voices[actor];

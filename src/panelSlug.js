@@ -1,4 +1,4 @@
-import { trailingSlash, Tree } from "@weborigami/async-tree";
+import { Tree } from "@weborigami/async-tree";
 import { slug } from "@weborigami/origami";
 
 /**
@@ -12,6 +12,5 @@ export default async function panelSlug(panelTree) {
   const words = narration.split(/[\s\.,]+/);
   const text = words.slice(0, 10).join(" ");
   const textSlug = slug(text);
-  const result = trailingSlash.toggle(textSlug);
-  return result;
+  return textSlug;
 }

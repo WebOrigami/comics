@@ -1,13 +1,8 @@
-import { scope as scopeFn } from "@weborigami/async-tree";
 import { ori } from "@weborigami/origami";
 
 // Given an expression, simulate its evaluation on the command line
-export default async function evaluate(expression) {
+export default async function evaluate(expression, files) {
   const processed = processQuotes(expression);
-
-  // Add the sample files to the scope
-  const scope = scopeFn(this);
-  const sample = await scope.get("sample");
 
   if (processed.startsWith("serve")) {
     // Fake server
@@ -18,7 +13,7 @@ export default async function evaluate(expression) {
   }
 
   // Evaluate the expression
-  const result = await ori.call(sample, processed);
+  const result = await ori.call(files, processed);
   return result;
 }
 

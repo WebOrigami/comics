@@ -1,5 +1,9 @@
+---
+(comic, options) => @template()
+---
+
 <screencast-terminal class="scene">
-  ${ typewriter.ori.html(_/command ? `ori ${ _/command }` : "", "$&nbsp;", "block") }
-<pre class="output">${ _/command ? escapeHtml.js(evaluate.js(_/command)) : "" }</pre>
+  ${ typewriter.ori.html(options/command ? `ori ${ options/command }` : "", "$&nbsp;", "block") }
+<pre class="output">${ options/command ? escapeHtml.js(evaluate.js(options/command, comic/files)) : "" }</pre>
   ${ typewriter.ori.html("", "$&nbsp;", "block") }
 </screencast-terminal>
