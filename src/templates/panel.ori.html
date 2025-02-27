@@ -1,8 +1,8 @@
 ---
-(comic, panel, key) => @template()
+(comic, comicId, panel, key) => @template()
 ---
 
-<screencast-panel audio-src="/narration/${ panelSlug.js(panel) }.mp3" data-speaker="${ panel/actor }" ${
+<screencast-panel audio-src="/narration/${comicId}${ panelSlug.js(panel) }.mp3" data-speaker="${ panel/actor }" ${
   panel/background ? ` style="background: ${ panel/background };"` : ""
 }>
   <div class="panel">

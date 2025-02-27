@@ -1,5 +1,5 @@
 ---
-(comic) => @template()
+(comic, comicId) => @template()
 ---
 
 <!DOCTYPE html>
@@ -18,12 +18,12 @@
         }
       }
     </script>
-    <script src="howler.js"></script>
-    <script type="module" src="index.js"></script>
+    <script src="/howler.js"></script>
+    <script type="module" src="/index.js"></script>
   </head>
   <body>
     <screencast-comic autofocus tabindex="0">
-${ map(comic/screenplay.yaml, (panel, key) => panel.ori.html(comic, panel, key)) }
+${ map(comic/screenplay.yaml, (panel, key) => panel.ori.html(comic, comicId, panel, key)) }
     </screencast-comic>
   </body>
 </html>

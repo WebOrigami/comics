@@ -3,13 +3,13 @@
   assets
   
   // Comic pages
-  (comics) = map(files:comics, templates/comic.ori.html)
+  comics/ = map(files:comics, templates/comic.ori.html)
 
   // Home page
-  index.html = comics/intro.html // index(comics, "comics")
+  index.html = index(comics, "comics")
 
   // Audio narration files
-  narration/ = narrate/narration.ori(files:comics)/intro
+  narration/ = narrate/narration.ori(files:comics)
 
   // Dependencies
   howler.js: node_modules/howler/dist/howler.min.js
