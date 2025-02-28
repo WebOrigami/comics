@@ -1,0 +1,34 @@
+- actor: Alice
+  face: default
+  narration: >
+    Everybody has something to say, and **the web** is a great place to say it.
+
+- actor: Alice
+  narration: >
+    Having **your own site** is especially important in a world increasingly
+    dominated by exploitative tech platforms.
+
+- actor: Alice
+  narration: >
+    But creating an interesting site can be **hard or expensive**. Let’s compare
+    some of your choices.
+
+- actor: Bob
+  face: default
+  narration: >
+    The web itself is made from **HTML and CSS**, and it’s actually possible to
+    write those file formats by hand.
+
+- actor: Bob
+  narration: >
+    You can publish HTML and CSS files on a number of services, many of which
+    are **inexpensive or free**.
+
+- actor: Bob
+  narration: >
+    But most sites have too much **repetition** to write every bit of HTML by hand…
+
+- actor: Bob
+  narration: >
+    … and it’s hard to efficiently organize a collection of pages into a
+    **coherent, navigable site**.
