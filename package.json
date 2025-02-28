@@ -9,6 +9,7 @@
   },
   "scripts": {
     "build": "ori copy src/site.ori, clear files:build",
+    "find-old-audio": "ori src/narrate/old.ori/",
     "narrate": "ori 'copy src/narrate/narrate.ori, files:narration'",
     "start": "ori serve watch ., =debug src/site.ori"
   }

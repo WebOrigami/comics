@@ -1,0 +1,15 @@
+// Return the narration files we want as true values
+map(comics, (comic) =>
+  map(comic/screenplay.yaml, {
+    key: (panel, key) => `${ panelSlug.js(panel) }.mp3`
+    value: =true
+  })
+)
+
+// Find files in the narration folder that are *not* in that list
+→ (wanted) =>
+  map(narration, (audioFolder, folderName) =>
+    map(audioFolder, (audioFile, fileName) =>
+      wanted/(folderName)(fileName) ? undefined : "OLD"
+    )
+  )
