@@ -1,15 +1,22 @@
-// Return the narration files we want as true values
-map(comics, (comic) =>
-  map(comic/screenplay.yaml, {
-    key: (panel, key) => `${ panelSlug.js(panel) }.mp3`
-    value: =true
-  })
+// This script is used to find audio files that were generated with a previous
+// version of the screenplay but which are no longer used and can be deleted.
+
+// Create a filter tree of files that are old
+deepMerge(
+  // By default all files are old
+  constant(true)
+
+  // Files that correspond to screenplay are not old
+  map(comics, (comic) =>
+    map(comic/screenplay.yaml, {
+      key: (panel, key) => `${ panelSlug.js(panel) }.mp3`
+      value: =false
+    })
+  )
 )
 
-// Find files in the narration folder that are *not* in that list
-→ (wanted) =>
-  map(narration, (audioFolder, folderName) =>
-    map(audioFolder, (audioFile, fileName) =>
-      wanted/(folderName)(fileName) ? undefined : "OLD"
-    )
-  )
+// Filter the narration folder
+→ (oldFilter) => filter(narration, oldFilter)
+
+// Map to "OLD" value
+→ (oldAudio) => deepMap(oldAudio, ="OLD")
