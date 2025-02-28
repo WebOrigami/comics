@@ -5,13 +5,13 @@
 
 - actor: Alice
   narration: >
-    Having **your own site** is especially important in a world increasingly
-    dominated by exploitative tech platforms.
+    Having **your own site** is especially important in a world dominated by
+    exploitative social media platforms.
 
 - actor: Alice
   narration: >
-    But creating an interesting site can be **hard or expensive**. Let’s compare
-    some of your choices.
+    But creating your own site can be **hard or expensive**. Let’s compare some
+    of your choices.
 
 - actor: Bob
   face: default
@@ -30,51 +30,49 @@
 
 - actor: Bob
   narration: >
-    And it’s hard to efficiently organize a collection of pages into a
-    **coherent, navigable site**.
+    And changing the organization of your site requires **changing every page**.
 
 - actor: Alice
   face: default
   narration: >
     Corporate **site hosting platforms** offer nice drag-and-drop editors and
-    many useful features, so they’re great for busy or non-technical people.
+    useful features, so they're appealing for many projects.
 
 - actor: Alice
   narration: >
-    But they impose **creative limitations** and high monthly costs.
+    But they also impose **creative limitations** and high monthly costs.
 
 - actor: Alice
   narration: >
     Depending on how much you want to reach your audience, a monthly cost can be
-    acceptable, but **that cost is forever**. Stop paying, and your site
+    reasonable, but **that cost is forever**. Stop paying, and your site
     disappears!
 
 - actor: Alice
   narration: >
-    Hosting platforms also have a vested interest in hiding from you how they
-    actually work and making it hard to **move your own content** somewhere
-    else.
+    Hosting platforms also have a vested interest in obscuring how they work and
+    making it hard to **export your own content** to somewhere else.
 
 - actor: Bob
   face: default
   narration: >
-    You could program a site **from scratch** — if you master a full programming
-    language like JavaScript and a wide range of technical concepts.
+    You could program a site from scratch — if you master a **full programming
+    language** like JavaScript and a wide range of technical concepts.
 
 - actor: Bob
   narration: >
-    Many frameworks exist to help you create a site, promising **simplicity**
-    and an instant site.
+    Many programmers rely on a **framework** to help them build a site.
+    Frameworks promise **simplicity** and fast results.
 
 - actor: Bob
   narration: >
-    But frameworks paper over a great deal of hidden **complexity**. Much of
-    their value comes from **not** asking you to understand what you’re making.
+    But frameworks hide a great deal of **complexity** — you can get a site
+    right away, but not have any idea how it works!
 
 - actor: Bob
   narration: >
-    All that complexity is exposed the minute you want to **get creative** and
-    add something they didn’t anticipate.
+    That complexity becomes an obstacle the minute you change your mind or want
+    to **get creative** and add something the framework didn’t anticipate.
 
 - actor: Alice
   face: default
@@ -99,4 +97,4 @@
 - actor: Alice
   narration: >
     and prefer to **fully understand** how your site gets made so you can always
-    change it as your ideas for it evolve.
+    change it as your ideas evolve.
