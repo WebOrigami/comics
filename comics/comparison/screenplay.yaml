@@ -63,6 +63,12 @@
   narration: >
     Many programmers rely on a **framework** to help them build a site.
     Frameworks promise **simplicity** and fast results.
+  scene: terminal.ori.html
+  options:
+    command: npm run create-my-new-site
+    output: |
+      6,347 files created
+      Your new site is ready! ✨
 
 - actor: Bob
   narration: >

@@ -2,15 +2,10 @@ import { ori } from "@weborigami/origami";
 
 // Given an expression, simulate its evaluation on the command line
 export default async function evaluate(expression, files) {
-  const processed = processQuotes(expression);
+  // Remove "ori" from the start
+  expression = expression.replace(/^ori\s?/, "");
 
-  if (processed.startsWith("serve")) {
-    // Fake server
-    return `Server running at http://localhost:5000. Press Ctrl+C to stop.`;
-  } else if (processed.startsWith("copy")) {
-    // Fake copy
-    return "";
-  }
+  const processed = processQuotes(expression);
 
   // Evaluate the expression
   const result = await ori.call(files, processed);

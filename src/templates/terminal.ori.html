@@ -3,7 +3,15 @@
 ---
 
 <screencast-terminal class="scene">
-  ${ typewriter.ori.html(options/command ? `ori ${ options/command }` : "", "$&nbsp;", "block") }
-<pre class="output">${ options/command ? escapeHtml.js(evaluate.js(options/command, comic/files)) : "" }</pre>
+  ${ typewriter.ori.html(options/command ?? "", "$&nbsp;", "block") }
+  <pre class="output">
+${
+  options/output !== undefined
+  ? escapeHtml.js(options/output)
+  : options/command
+  ? escapeHtml.js(evaluate.js(options/command, comic/files))
+  : ""
+}</pre
+  >
   ${ typewriter.ori.html("", "$&nbsp;", "block") }
 </screencast-terminal>

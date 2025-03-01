@@ -25,7 +25,7 @@
   face: talk
   scene: terminal.ori.html
   options:
-    command: 1 + 1
+    command: ori 1 + 1
   narration: >
     The ori tool evaluates an **expression** in Origami, so if I type **ori 1 +
     1**, it displays **2**.
@@ -34,7 +34,7 @@
   scene: terminal.ori.html
   options:
     command: |-
-      \"hello\"
+      ori \"hello\"
   narration: >
     If I type **ori "hello"**, ori displays **hello**.
   footnote: In the shell, you need to **escape** or nest quotes.
@@ -53,7 +53,7 @@
   face: happy
   scene: terminal.ori.html
   options:
-    command: hello.md
+    command: ori hello.md
   narration: >
     Think of your files as a spreadsheet… but instead of using A1, B2 style cell
     references, you refer to files with **paths and file names**.
@@ -74,7 +74,7 @@
   options:
     file: hello.md
     command: |-
-      "mdHtml(hello.md)"
+      ori "mdHtml(hello.md)"
   narration: >
     We can pass our markdown file to a function that **transforms it** to HTML.
 
@@ -82,7 +82,7 @@
   scene: editor.ori.html
   options:
     file: hello.md
-    command: mdHtml hello.md
+    command: ori mdHtml hello.md
   narration: >
     To avoid quoting parentheses in the shell, we can **omit them**! Origami
     figures out where they would be.
@@ -91,7 +91,7 @@
   face: talk
   scene: terminal.ori.html
   options:
-    command: teamData.yaml
+    command: ori teamData.yaml
   narration: >
     In addition to the file system, Origami can work with other **tree
     structures**, like objects in memory, data in files, or content on a server.
@@ -100,7 +100,7 @@
   scene: editor.ori.html
   options:
     file: teamData.yaml
-    command: teamData.yaml/0/name
+    command: ori teamData.yaml/0/name
   narration: >
     Just like your OS associates **file extensions** with apps, Origami
     associates extensions with **handlers** that can traverse into data.
@@ -120,7 +120,7 @@
   scene: split.ori.html
   options:
     graphic: graphics/scope.html
-    command: README.md
+    command: ori README.md
   narration: >
     If I ask for a file that doesn't exist in the current folder, Origami
     searches **up the folder hierarchy** until it finds the file.
@@ -138,14 +138,14 @@
   scene: editor.ori.html
   options:
     file: greet.js
-    command: greet.js \"world\"
+    command: ori greet.js \"world\"
   narration: >
     You can call a JavaScript function using its **file name**.
 
 - actor: Alice
   scene: terminal.ori.html
   options:
-    command: greet.js teamData.yaml/0/name
+    command: ori greet.js teamData.yaml/0/name
   narration: >
     You can freely **combine these ideas**, so you can call a JavaScript
     function using data from a file.
@@ -164,7 +164,7 @@
   scene: editor.ori.html
   options:
     file: greet.ori
-    command: greet.ori
+    command: ori greet.ori
   narration: >
     This kind of file is like a spreadsheet cell with a formula. If we ask for
     this file, we just get the formula back…
@@ -173,7 +173,7 @@
   scene: editor.ori.html
   options:
     file: greet.ori
-    command: greet.ori/
+    command: ori greet.ori/
   narration: >
     But **adding a slash** lets us get the formula's **value**!
 
@@ -181,7 +181,7 @@
   face: default
   scene: graphic.ori.html
   background: white
-  options: graphics/tree.ori.html/
+  options: ori graphics/tree.ori.html/
   narration: >
     Origami is good for creating lots of things but especially websites. You can
     think of a site as a **tree of resources**.
@@ -190,7 +190,7 @@
   scene: terminal.ori.html
   options:
     command: |-
-      { a: 1 }
+      ori { a: 1 }
   narration: >
     You can define a tree with an **object expression**. This tiny object has a
     single property called "a".
@@ -199,7 +199,7 @@
   scene: terminal.ori.html
   options:
     command: |-
-      { a: 1 }/a
+      ori { a: 1 }/a
   narration: >
     We can use a **path** to traverse the tree and get the value of that property.
 
@@ -218,7 +218,7 @@
   scene: editor.ori.html
   options:
     file: site.ori
-    command: site.ori/index.html
+    command: ori site.ori/index.html
   narration: >
     When this tree is served as a site, each path the user visits will return
     the **resource** at that path.
@@ -228,7 +228,8 @@
   scene: editor.ori.html
   options:
     file: site.ori
-    command: serve site.ori
+    command: ori serve site.ori
+    output: Server running at http://localhost:5000. Press Ctrl+C to stop.
   narration: >
     We can start a **web server** on our own computer to serve that tree…
 
@@ -244,7 +245,8 @@
   face: default
   scene: terminal.ori.html
   options:
-    command: copy src/site.ori, ./build
+    command: ori copy src/site.ori, ./build
+    output: ""
   narration: >
     To prepare the site for public use, we can copy it to plain **static files**
     that won't need to change often.
@@ -254,7 +256,9 @@
   scene: split.ori.html
   options:
     graphic: graphics/buildAfter.html
-    command: build/index.html
+    command: ori build/index.html
+    output: |
+      <p>Welcome to my <strong>new site</strong>!</p>
   narration: >
     These static files are all the resources your site needs, and you can host
     them **anywhere** on the internet!
@@ -263,7 +267,7 @@
 - actor: Bob
   face: happy
   scene: graphic.ori.html
-  options: graphics/end.ori.html/
+  options: ori graphics/end.ori.html/
   narration: >
     Thanks for watching! To learn more about using Origami to create websites,
     check out the **documentation**.
