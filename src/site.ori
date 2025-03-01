@@ -3,12 +3,12 @@
   assets
   
   // Comic pages
-  comics/ = map(files:comics, templates/comic.ori.html)
+  comics/ = map(data.ori, templates/comic.ori.html)
 
   // Home page
   index.html = index(comics, "comics")
 
-  // Audio narration files
+  // Audio narration files (skip validation)
   narration/ = narrate/narration.ori(files:comics)
 
   // Dependencies

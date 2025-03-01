@@ -1,0 +1,44 @@
+# Schema for a comic, a combination of files and data
+type: object
+required:
+  - screenplay.yaml
+properties:
+  # Folders (optional)
+  files:
+    type: object
+  graphics:
+    type: object
+
+  # Screenplay file (required)
+  screenplay.yaml:
+    type: array
+    items:
+      type: object
+      required:
+        - actor
+        - narration
+      additionalProperties: false
+      properties:
+        actor:
+          type: string
+        background:
+          type: string
+        face:
+          type: string
+        footnote:
+          type: string
+        narration:
+          type: string
+        options:
+          oneOf:
+            - type: string
+            - type: object
+              properties:
+                command:
+                  type: string
+                file:
+                  type: string
+                output:
+                  type: string
+        scene:
+          type: string

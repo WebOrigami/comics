@@ -4,7 +4,7 @@
   "dependencies": {
     "@preact/signals-core": "1.8.0",
     "@weborigami/esbuild": "0.0.1",
-    "@weborigami/origami": "0.2.7",
+    "@weborigami/origami": "0.2.8",
     "howler": "2.2.4"
   },
   "scripts": {

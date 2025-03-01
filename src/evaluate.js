@@ -8,7 +8,8 @@ export default async function evaluate(expression, files) {
   const processed = processQuotes(expression);
 
   // Evaluate the expression
-  const result = await ori.call(files, processed);
+  const context = files ?? null;
+  const result = await ori.call(context, processed);
   return result;
 }
 
