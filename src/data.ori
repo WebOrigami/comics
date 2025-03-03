@@ -1,5 +1,5 @@
 // Create a validator
-package:@weborigami/json-schema(schema.yaml)
+package:@weborigami/json-schema(schemas/comic.yaml)
 
 // Validate each screenplay
 → (validator) => map(files:comics, validator)

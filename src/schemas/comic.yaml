@@ -1,0 +1,18 @@
+# Schema for a top-level comic folder
+#
+# This schema is defined in JSON Schema format (https://json-schema.org) but
+# written in YAML for readability.
+
+type: object
+required:
+  - screenplay.yaml
+properties:
+  # Folders
+  files:
+    type: object
+  graphics:
+    type: object
+
+  # The screenplay file has its own schema
+  screenplay.yaml:
+    $ref: schemas/screenplay.yaml

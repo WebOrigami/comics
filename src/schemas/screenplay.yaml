@@ -1,0 +1,33 @@
+# Schema for the screenplay file that describes a comic's scenes.
+
+type: array
+items:
+  type: object
+  required:
+    - actor
+    - narration
+  additionalProperties: false
+  properties:
+    actor:
+      type: string
+    background:
+      type: string
+    face:
+      type: string
+    footnote:
+      type: string
+    narration:
+      type: string
+    options:
+      oneOf:
+        - type: string
+        - type: object
+          properties:
+            command:
+              type: string
+            file:
+              type: string
+            output:
+              type: string
+    scene:
+      type: string
