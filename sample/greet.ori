@@ -1,1 +1,1 @@
-greet.js(teamData.yaml/0/name)
+greet.js(teamData.yaml[0].name)

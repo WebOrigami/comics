@@ -100,7 +100,7 @@
   scene: editor.ori.html
   options:
     file: teamData.yaml
-    command: teamData.yaml/0/name
+    command: teamData.yaml[0].name
   narration: >
     Just like your OS associates **file extensions** with apps, Origami
     associates extensions with **handlers** that can traverse into data.
@@ -145,7 +145,7 @@
 - actor: Alice
   scene: terminal.ori.html
   options:
-    command: greet.js teamData.yaml/0/name
+    command: greet.js teamData.yaml[0].name
   narration: >
     You can freely **combine these ideas**, so you can call a JavaScript
     function using data from a file.
