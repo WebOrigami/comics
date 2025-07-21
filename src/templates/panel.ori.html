@@ -2,28 +2,28 @@
 (panel, key) => @template()
 ---
 
-<screencast-panel audio-src="/narration/${ slash/remove(key) }.mp3" data-speaker="${ panel/actor }" ${
-  panel/background ? ` style="background: ${ panel/background };"` : ""
+<screencast-panel audio-src="/narration/${ Origami.slash.remove(key) }.mp3" data-speaker="${ panel.actor }" ${
+  panel.background ? ` style="background: ${ panel.background };"` : ""
 }>
   <div class="panel">
     <div class="caption">
-      ${ panel/face ? `
+      ${ panel.face ? `
           <div class="iconContainer">
-            <img class="icon" src="/assets/${ panel/actor/toLowerCase() }/${ panel/face }.svg" />
+            <img class="icon" src="/assets/${ panel.actor.toLowerCase() }/${ panel.face }.svg" />
           </div>
         ` : "" }
       <div class="bubble">
         <div class="tail"></div>
         <div class="speech">
-          ${ mdHtml(panel/narration) }
+          ${ Origami.mdHtml(panel.narration) }
         </div>
       </div>
     </div>
-${ panel/scene ? scope:(panel/scene)(panel/options ?? {}) : "" }
-  ${ panel/footnote ?
-    indent`
-      <div class="footnote ${ panel/footnote/length > 60 ? "long" : "short" }">
-        ${ mdHtml(panel/footnote) }
+${ panel.scene ? templates/(panel.scene)(panel.options ?? {}) : "" }
+  ${ panel.footnote ?
+    Tree.indent`
+      <div class="footnote ${ panel.footnote.length > 60 ? "long" : "short" }">
+        ${ Origami.mdHtml(panel.footnote) }
       </div>
     ` : ""
   }

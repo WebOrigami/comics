@@ -3,9 +3,9 @@
 ---
 
 <screencast-typewriter class="done ${ text === "" ? "notyping" : "" }">
-  <span class="prefix">${ scope:prefix ?? "" }</span>
+  <span class="prefix">${ prefix ?? "" }</span>
   <span class="text">${ text }</span>
-  ${ scope:cursor === "block" ? `<span class="cursor block"></span>` : `<span
+  ${ cursor === "block" ? `<span class="cursor block"></span>` : `<span
     class="cursor caret"
     >&nbsp;</span
   >` }

@@ -1,3 +1,3 @@
 {
-  index.html: mdHtml(hello.md)
+  index.html: Origami.mdHtml(hello.md)
 }

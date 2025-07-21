@@ -1,10 +1,10 @@
 <screencast-editor class="scene">
   <div class="tabBar">
-    <div class="tab">${ _/file }</div>
+    <div class="tab">${ _.file }</div>
   </div>
   <div class="editor">
-${ mdHtml(`\`\`\`${ extension/extname(_/file)/slice(1) }
-${ files:sample(_/file) } \`\`\``) }
+${ Origami.mdHtml(`\`\`\`${ Origami.extension.extname(_.file).slice(1) }
+${ sample/(_.file) } \`\`\``) }
   </div>
-${ _/command ? terminal.ori.html(_) : "" }
+${ _.command ? terminal.ori.html(_) : "" }
 </screencast-editor>

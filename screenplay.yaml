@@ -199,7 +199,7 @@
   scene: terminal.ori.html
   options:
     command: |-
-      { a: 1 }/a
+      { a: 1 }.a
   narration: >
     We can use a **path** to traverse the tree and get the value of that property.
 
