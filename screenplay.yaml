@@ -74,7 +74,7 @@
   options:
     file: hello.md
     command: |-
-      "mdHtml(hello.md)"
+      "Origami.mdHtml(hello.md)"
   narration: >
     We can pass our markdown file to a function that **transforms it** to HTML.
 
@@ -82,7 +82,7 @@
   scene: editor.ori.html
   options:
     file: hello.md
-    command: mdHtml hello.md
+    command: Origami.mdHtml hello.md
   narration: >
     To avoid quoting parentheses in the shell, we can **omit them**! Origami
     figures out where they would be.

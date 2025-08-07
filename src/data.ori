@@ -1,3 +1,3 @@
 // Prepare the screenplay data. The only thing we need to do is change the keys
 // from array indices to slugs.
-map(screenplay.yaml, { key: panelKey.js })
+Tree.map(screenplay.yaml, { key: panelKey.js })

@@ -1,8 +1,8 @@
 // Generate a audio narration file for each screenplay segment
-map(data.ori, {
+Tree.map(data.ori, {
   extension: "->.mp3"
   value: narrate.js
 })
 
 // Cache the generated audio files in the "narration" folder
-→ =cache(_, files:narration)
+→ =Tree.cache(_, files:narration)
