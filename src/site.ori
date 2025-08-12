@@ -7,12 +7,12 @@
 
   // Dependencies
   howler.js: node_modules/howler/dist/howler.min.js
-  preact: <node_modules/@preact/signals-core/dist/>
+  preact: node_modules/@preact/signals-core/dist/
 
   // Audio narration files
   narration/: narrate/narrate.ori/
 
   // Bundled CSS and JS for all UI components
   components.css: Tree.concat(Tree.mask(components/, (key) => key.endsWith(".css")))
-  ...<package:@weborigami/esbuild>(components/, { sourcemap: true })
+  ...package:@weborigami/esbuild(components/, { sourcemap: true })
 }

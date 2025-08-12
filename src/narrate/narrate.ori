@@ -5,4 +5,4 @@ Tree.map(data.ori, {
 })
 
 // Cache the generated audio files in the "narration" folder
-→ =Tree.cache(_, files:narration)
+→ (narrations) => Tree.cache(narrations, files:narration)
