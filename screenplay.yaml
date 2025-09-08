@@ -12,7 +12,7 @@
   scene: graphic.ori.html
   options: graphics/title.ori.html/
   narration: >
-    A quick introduction to the **Origami programming language**!
+    A quick introduction to the **Origami expression language**!
 
 - actor: Alice
   face: default
@@ -29,6 +29,7 @@
   narration: >
     The ori tool evaluates an **expression** in Origami, so if I type **ori 1 +
     1**, it displays **2**.
+  footnote: Origami is a dialect of **JavaScript** expressions.
 
 - actor: Bob
   scene: terminal.ori.html
@@ -131,8 +132,8 @@
   options:
     file: greet.js
   narration: >
-    You don't have to know **JavaScript** to use Origami — but if you do know
-    JavaScript, you can use it to extend what Origami can do!
+    Origami expressions are often all you'll need, but you can also extend
+    what Origami can do with **JavaScript**.
 
 - actor: Alice
   scene: editor.ori.html
