@@ -13,6 +13,6 @@
   narration/: narrate/narrate.ori/
 
   // Bundled CSS and JS for all UI components
-  components.css: Tree.concat(Tree.mask(components/, (key) => key.endsWith(".css")))
+  components.css: Tree.deepText(Tree.mask(components/, (key) => key.endsWith(".css")))
   ...package:@weborigami/esbuild(components/, { sourcemap: true })
 }

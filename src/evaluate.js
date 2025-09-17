@@ -1,4 +1,4 @@
-import { scope as scopeFn } from "@weborigami/async-tree";
+import { Tree } from "@weborigami/async-tree";
 import { ori } from "@weborigami/origami";
 
 // Given an expression, simulate its evaluation on the command line
@@ -6,7 +6,7 @@ export default async function evaluate(expression) {
   const processed = processQuotes(expression);
 
   // Add the sample files to the scope
-  const scope = scopeFn(this);
+  const scope = await Tree.scope(this);
   const sample = await scope.get("sample");
 
   if (processed.startsWith("serve")) {
