@@ -3,8 +3,8 @@
   "type": "module",
   "dependencies": {
     "@preact/signals-core": "1.12.1",
-    "@weborigami/esbuild": "0.0.1",
-    "@weborigami/origami": "0.5.4",
+    "@weborigami/esbuild": "0.0.13",
+    "@weborigami/origami": "0.5.5",
     "howler": "2.2.4"
   },
   "scripts": {
