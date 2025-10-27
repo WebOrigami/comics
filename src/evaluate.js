@@ -1,5 +1,5 @@
 import { Tree } from "@weborigami/async-tree";
-import { ori } from "@weborigami/origami";
+import { Origami } from "@weborigami/origami";
 
 // Given an expression, simulate its evaluation on the command line
 export default async function evaluate(expression) {
@@ -18,7 +18,7 @@ export default async function evaluate(expression) {
   }
 
   // Evaluate the expression
-  const result = await ori.call(sample, processed);
+  const result = await Origami.ori(processed, { parent: sample });
   return result;
 }
 
