@@ -2,4 +2,4 @@
 Tree.mapExtension(data.ori, "->.mp3", narrate.js)
 
 // Cache the generated audio files in the "narration" folder
-→ (narrations) => Tree.cache(narrations, files:narration)
+→ (narrations) => Tree.cache(narrations, Origami.projectRoot()/narration)
